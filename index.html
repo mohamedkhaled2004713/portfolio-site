@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Milege | AI Portfolio</title>
+    <meta name="description" content="Mohamed Milege — Data Analyst & AI Specialist. Explore my portfolio, certifications, and projects in Artificial Intelligence.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Particle Canvas Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Background Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">M.Milege<span>.AI</span></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#smart-glasses">Smart Glasses</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO BANNER (Full-Width Profile Photo) ===================== -->
+    <header class="hero-banner" id="home">
+        <div class="hero-banner-overlay"></div>
+        <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-banner-img">
+        <div class="hero-banner-content">
+            <div class="hero-badge">AI SPECIALIST</div>
+            <h1 class="hero-title">
+                <span class="line line-1">Mohamed</span>
+                <span class="line line-2">Milege</span>
+            </h1>
+            <p class="hero-tagline">Data Analyst <span class="accent-dot">•</span> AI Specialist <span class="accent-dot">•</span> Future Innovator</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
+                <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </header>
+
+    <!-- ===================== ROBOT SECTION ===================== -->
+    <section class="robot-section" id="robot-reveal">
+        <div class="section-header">
+            <h2 class="reveal-text">The <span class="accent">AI</span> Behind the Vision</h2>
+            <p class="section-subtitle reveal-text">Hover to reveal the future</p>
+        </div>
+        <div class="robot-container reveal-text">
+            <div class="robot-card">
+                <!-- Animated ring -->
+                <div class="rotating-ring"></div>
+                <div class="rotating-ring ring-2"></div>
+                <!-- The image -->
+                <div class="robot-image-wrapper">
+                    <div class="robot-placeholder">
+                        <i class="fas fa-robot"></i>
+                        <span>Hover Me</span>
+                    </div>
+                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img">
+                </div>
+                <!-- Floating particles around robot -->
+                <div class="float-particle fp-1"></div>
+                <div class="float-particle fp-2"></div>
+                <div class="float-particle fp-3"></div>
+                <div class="float-particle fp-4"></div>
+                <div class="float-particle fp-5"></div>
+                <div class="float-particle fp-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="about-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">About <span class="accent">Me</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal-text">
+                <p>A highly motivated Artificial Intelligence student at Aqaba University of Technology with a strong technical foundation in Data Analysis and Machine Learning.</p>
+                <p>Proven expertise in Python programming and AI applications through intensive certified training programs. Skilled in navigating international AI standards (ISO 21001) and committed to delivering data-driven insights in professional environments.</p>
+            </div>
+            <div class="about-stats reveal-text">
+                <div class="stat-box">
+                    <h3 class="counter" data-target="4">0</h3>
+                    <p>Years of Study</p>
+                </div>
+                <div class="stat-box">
+                    <h3>5+</h3>
+                    <p>Certifications</p>
+                </div>
+                <div class="stat-box">
+                    <h3>ISO</h3>
+                    <p>21001 Certified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SKILLS SECTION ===================== -->
+    <section id="skills" class="skills-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">My <span class="accent">Skills</span></h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Programming</span>
+                    <span class="tag" data-delay="1">Artificial Intelligence</span>
+                    <span class="tag" data-delay="2">Data Handling</span>
+                    <span class="tag" data-delay="3">Standards & Compliance</span>
+                    <span class="tag" data-delay="4">Machine Learning</span>
+                    <span class="tag" data-delay="5">Computer Vision</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Leadership</span>
+                    <span class="tag" data-delay="1">Analytical Thinking</span>
+                    <span class="tag" data-delay="2">Resilience</span>
+                    <span class="tag" data-delay="3">Problem Solving</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-language"></i> Languages</h3>
+                <div class="skill-tags">
+                    <span class="tag language-tag" data-delay="0">English</span>
+                    <span class="tag language-tag" data-delay="1">Arabic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CERTIFICATES SECTION ===================== -->
+    <section id="certificates" class="certificates-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Training & <span class="accent">Certifications</span></h2>
+        </div>
+        <div class="cert-list">
+            <div class="cert-item reveal-text">
+                <div class="cert-number">01</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Python & AI Course (36 Hours)</h4>
+                    <p>Black Horse Courses - Grade: Excellent</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">02</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Applications of Artificial Intelligence (15 Hours)</h4>
+                    <p>The British University in Egypt (SCE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">03</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>ISO Artificial Intelligence Training</h4>
+                    <p>MediX International Accredited Institution</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">04</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Artificial Intelligence Training</h4>
+                    <p>Telecom Egypt (WE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">05</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Integrated English Program (94%)</h4>
+                    <p>Egyptian Foundation for Information Technology</p>
+                </div>
+            </div>
+        </div>
+        <div class="cert-download reveal-text">
+            <a href="assets/certificates.pdf" target="_blank" class="btn primary-btn">
+                <i class="fas fa-file-pdf"></i> View Official Certificates
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== SMART GLASSES — DEDICATED SHOWCASE ===================== -->
+    <section id="smart-glasses" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/smart_glasses_hero.png" alt="Smart Glasses AI Project" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-graduation-cap"></i> GRADUATION PROJECT</div>
+                <h2 class="sg-title">Smart <span class="accent">Glasses</span></h2>
+                <p class="sg-subtitle">AI-Powered Wearable for the Visually Impaired</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>An innovative wearable AI device that transforms how visually impaired individuals interact with the world. By integrating real-time <strong>Computer Vision</strong>, <strong>OCR</strong>, <strong>Face Recognition</strong>, and <strong>Voice AI</strong> into a single Python-powered system, the Smart Glasses provide essential auditory feedback — from reading text aloud to recognizing faces and detecting obstacles — making daily life safer and more accessible.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-bolt"></i> Core Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-eye"></i></div>
+                    <h4>Object Detection</h4>
+                    <p>Real-time YOLOv8 object detection with directional audio feedback — tells user what's on their left, right, or ahead.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>OCR Text Reading</h4>
+                    <p>Reads any text in front of the camera powered by Gemini AI — from documents to street signs and product labels.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h4>Face Recognition</h4>
+                    <p>Learns and remembers faces. Announces known people by name with 25-frame training for high accuracy.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h4>Safety Mode</h4>
+                    <p>Continuous obstacle monitoring with proximity warnings — alerts the user when objects get dangerously close.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-coins"></i></div>
+                    <h4>Currency Recognition</h4>
+                    <p>Identifies banknotes and their value using AI vision — helping users handle money independently.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-sos"></i></div>
+                    <h4>Emergency SOS</h4>
+                    <p>Voice-activated distress signal that sends email with GPS location to emergency contacts instantly.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-microphone"></i></div>
+                    <h4>Voice Control</h4>
+                    <p>Full Arabic voice command system — switch modes, save faces, ask time, and trigger features hands-free.</p>
+                </div>
+                <div class="sg-feature-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-battery-half"></i></div>
+                    <h4>Battery Saver Mode</h4>
+                    <p>Intelligent power management that disables heavy AI tasks to extend battery life when needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="sg-gallery">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-images"></i> How It Works</h3>
+            <div class="sg-gallery-grid">
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_detection.png" alt="Object Detection View">
+                    <div class="sg-gallery-label">Object Detection & Scene Analysis</div>
+                </div>
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_ocr.png" alt="OCR Text Reading">
+                    <div class="sg-gallery-label">OCR & Text Reading</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> YOLOv8</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-camera"></i> OpenCV</span>
+                <span class="sg-tech-tag"><i class="fas fa-comment-dots"></i> gTTS</span>
+                <span class="sg-tech-tag"><i class="fas fa-microphone-alt"></i> SpeechRecognition</span>
+                <span class="sg-tech-tag"><i class="fas fa-text-width"></i> Tesseract OCR</span>
+                <span class="sg-tech-tag"><i class="fas fa-map-marker-alt"></i> Geolocation API</span>
+            </div>
+        </div>
+
+        <!-- Download CTA -->
+        <div class="sg-cta reveal-text">
+            <a href="assets/smart_glasses_project.zip" class="btn primary-btn">
+                <i class="fas fa-download"></i> Download Full Source Code
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT SECTION ===================== -->
+    <section id="contact" class="contact-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Get In <span class="accent">Touch</span></h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <a href="mailto:elmilege0@gmail.com" class="contact-card reveal-text">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">elmilege0@gmail.com</span>
+                    </div>
+                </a>
+                <a href="tel:01021118342" class="contact-card reveal-text">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01021118342</span>
+                    </div>
+                </a>
+                <div class="contact-card reveal-text">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Cairo, Egypt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Mohamed Milege. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and AI.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
