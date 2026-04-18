@@ -13,10 +13,13 @@
     <!-- Particle Canvas Background -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- Background Orbs -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-    <div class="bg-orb orb-3"></div>
+    <!-- Mouse Glow Follower -->
+    <div class="mouse-glow" id="mouse-glow"></div>
+
+    <!-- Background Orbs with parallax -->
+    <div class="bg-orb orb-1" data-parallax="0.02"></div>
+    <div class="bg-orb orb-2" data-parallax="-0.03"></div>
+    <div class="bg-orb orb-3" data-parallax="0.015"></div>
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
@@ -25,6 +28,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#sentinel">Sentinel-AI</a></li>
             <li><a href="#smart-glasses">Smart Glasses</a></li>
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -99,15 +103,15 @@
                 <p>Proven expertise in Python programming and AI applications through intensive certified training programs. Skilled in navigating international AI standards (ISO 21001) and committed to delivering data-driven insights in professional environments.</p>
             </div>
             <div class="about-stats reveal-text">
-                <div class="stat-box">
+                <div class="stat-box tilt-card">
                     <h3 class="counter" data-target="4">0</h3>
                     <p>Years of Study</p>
                 </div>
-                <div class="stat-box">
+                <div class="stat-box tilt-card">
                     <h3>5+</h3>
                     <p>Certifications</p>
                 </div>
-                <div class="stat-box">
+                <div class="stat-box tilt-card">
                     <h3>ISO</h3>
                     <p>21001 Certified</p>
                 </div>
@@ -205,6 +209,72 @@
         </div>
     </section>
 
+    <!-- ===================== SENTINEL-AI SECTION ===================== -->
+    <section id="sentinel" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/sentinel_hero.png" alt="Sentinel-AI System" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-shield"></i> CYBERSECURITY SYSTEM</div>
+                <h2 class="sg-title">Sentinel-<span class="accent">AI</span></h2>
+                <p class="sg-subtitle">Multi-Agent Fraud Detection & Cybersecurity Hub</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>Sentinel-AI is an intelligent <strong>multi-agent system</strong> designed to analyze transactions, detect threats, and make real-time security decisions. It combines three specialized AI agents working in harmony to provide comprehensive fraud detection and cybersecurity analysis.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-brain"></i> Core Agents</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <h4>Analyzer Agent</h4>
+                    <p>Reads transaction data and measures anomaly scores with rapid precision. Detects unusual patterns and calculates risk indicators in real-time.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-search"></i></div>
+                    <h4>Forensics Agent</h4>
+                    <p>Traces technical paths and analyzes exploitation indicators. Investigates transaction routes and identifies suspicious behavioral patterns.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h4>Decision Agent</h4>
+                    <p>Issues final verdict: SAFE, SUSPICIOUS, or FRAUD. Provides recommendations and confidence scores based on all agent analyses.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Real-Time Processing</h4>
+                    <p>Analyzes transactions instantly with sub-second latency. Provides immediate alerts and actionable insights for security teams.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-chart-line"></i> Streamlit</span>
+                <span class="sg-tech-tag"><i class="fas fa-shield"></i> Cybersecurity</span>
+                <span class="sg-tech-tag"><i class="fas fa-database"></i> Data Analysis</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Multi-Agent</span>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
     <!-- ===================== SMART GLASSES — DEDICATED SHOWCASE ===================== -->
     <section id="smart-glasses" class="sg-showcase">
         <!-- Hero Image -->
@@ -227,42 +297,42 @@
         <div class="sg-features">
             <h3 class="sg-section-title reveal-text"><i class="fas fa-bolt"></i> Core Features</h3>
             <div class="sg-features-grid">
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-eye"></i></div>
                     <h4>Object Detection</h4>
                     <p>Real-time YOLOv8 object detection with directional audio feedback — tells user what's on their left, right, or ahead.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-file-alt"></i></div>
                     <h4>OCR Text Reading</h4>
                     <p>Reads any text in front of the camera powered by Gemini AI — from documents to street signs and product labels.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-user-check"></i></div>
                     <h4>Face Recognition</h4>
                     <p>Learns and remembers faces. Announces known people by name with 25-frame training for high accuracy.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
                     <h4>Safety Mode</h4>
                     <p>Continuous obstacle monitoring with proximity warnings — alerts the user when objects get dangerously close.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-coins"></i></div>
                     <h4>Currency Recognition</h4>
                     <p>Identifies banknotes and their value using AI vision — helping users handle money independently.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-sos"></i></div>
                     <h4>Emergency SOS</h4>
                     <p>Voice-activated distress signal that sends email with GPS location to emergency contacts instantly.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-microphone"></i></div>
                     <h4>Voice Control</h4>
                     <p>Full Arabic voice command system — switch modes, save faces, ask time, and trigger features hands-free.</p>
                 </div>
-                <div class="sg-feature-card reveal-text">
+                <div class="sg-feature-card tilt-card reveal-text">
                     <div class="sg-feature-icon"><i class="fas fa-battery-half"></i></div>
                     <h4>Battery Saver Mode</h4>
                     <p>Intelligent power management that disables heavy AI tasks to extend battery life when needed.</p>
@@ -300,11 +370,42 @@
             </div>
         </div>
 
-        <!-- Download CTA -->
+        <!-- GitHub Link -->
         <div class="sg-cta reveal-text">
-            <a href="assets/smart_glasses_project.zip" class="btn primary-btn">
-                <i class="fas fa-download"></i> Download Full Source Code
+            <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
             </a>
+        </div>
+    </section>
+
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <section id="projects" class="projects-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Featured <span class="accent">Projects</span></h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-shield"></i></div>
+                <h3>Sentinel-AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> Python • Gemini • Streamlit</p>
+                <p class="project-desc">Multi-Agent Cybersecurity & Fraud Detection Hub. Real-time transaction analysis with specialized AI agents for comprehensive threat detection.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-glasses"></i></div>
+                <h3>Smart Glasses AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> YOLOv8 • OpenCV • Gemini</p>
+                <p class="project-desc">AI-Powered Wearable for the Visually Impaired. Computer Vision, OCR, Face Recognition, and Voice AI integrated into one assistive device.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -315,30 +416,75 @@
         </div>
         <div class="contact-content">
             <div class="contact-info">
-                <a href="mailto:elmilege0@gmail.com" class="contact-card reveal-text">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value">elmilege0@gmail.com</span>
+                <!-- Contact Form via Formspree -->
+                <form action="https://formspree.io/f/xjgjydrg" method="POST" class="contact-form reveal-text">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
                     </div>
-                </a>
-                <a href="tel:01021118342" class="contact-card reveal-text">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <span class="contact-label">Phone</span>
-                        <span class="contact-value">01021118342</span>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
                     </div>
-                </a>
-                <div class="contact-card reveal-text">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <span class="contact-label">Location</span>
-                        <span class="contact-value">Cairo, Egypt</span>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                
+                <!-- Quick Contact Info -->
+                <div class="direct-contact">
+                    <h3>Or reach me directly:</h3>
+                    <a href="mailto:elmilege0@gmail.com" class="contact-card reveal-text">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">elmilege0@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:01021118342" class="contact-card reveal-text">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">01021118342</span>
+                        </div>
+                    </a>
+                    <div class="contact-card reveal-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">Cairo, Egypt</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ===================== CHATBOT ===================== -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with me">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i> Assistant
+                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message assistant">
+                    <div class="message-content">Hi! Ask me about Sentinel-AI, Smart Glasses, my projects, or how to contact me.</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -346,5 +492,64 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Chatbot Functions
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbot-window');
+            chatWindow.classList.toggle('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesDiv = document.getElementById('chatbot-messages');
+            
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="message-content">${message}</div>`;
+            messagesDiv.appendChild(userMsg);
+
+            // Get response
+            const response = getChatResponse(message);
+            
+            setTimeout(() => {
+                const assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                assistantMsg.innerHTML = `<div class="message-content">${response}</div>`;
+                messagesDiv.appendChild(assistantMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 500);
+
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function getChatResponse(input) {
+            const text = input.toLowerCase();
+            
+            if (text.includes('sentinel') || text.includes('system') || text.includes('cybersecurity')) {
+                return 'Sentinel-AI is a multi-agent cybersecurity system with three specialized agents: Analyzer (detects anomalies), Forensics (traces threats), and Decision (issues verdicts). It analyzes transactions in real-time to prevent fraud and detect security threats.';
+            } else if (text.includes('smart glass') || text.includes('glasses')) {
+                return 'Smart Glasses AI is an AI-powered wearable device that helps visually impaired people. It uses computer vision, OCR, face recognition, and voice AI to provide real-time assistance for daily activities.';
+            } else if (text.includes('project')) {
+                return 'I have two main projects: Sentinel-AI (fraud detection system) and Smart Glasses AI (wearable for visually impaired). Both are available on my GitHub!';
+            } else if (text.includes('contact') || text.includes('email') || text.includes('message')) {
+                return 'You can reach me via the contact form above, email me at elmilege0@gmail.com, or call 01021118342. I respond quickly to all inquiries!';
+            } else if (text.includes('hello') || text.includes('hi')) {
+                return 'Hi there! Welcome to my portfolio. Feel free to ask me about my projects, experience, or how to get in touch!';
+            } else {
+                return 'I can help you with questions about Sentinel-AI, Smart Glasses, my projects, or how to contact me. What would you like to know?';
+            }
+        }
+    </script>
 </body>
 </html>
