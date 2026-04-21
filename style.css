@@ -111,15 +111,21 @@ body:hover .mouse-glow {
 }
 
 @keyframes orbFloat1 {
-    to { transform: translate(80px, 60px); }
+    to {
+        transform: translate(80px, 60px);
+    }
 }
 
 @keyframes orbFloat2 {
-    to { transform: translate(-70px, -50px); }
+    to {
+        transform: translate(-70px, -50px);
+    }
 }
 
 @keyframes orbFloat3 {
-    to { transform: translate(-40px, 40px) scale(1.2); }
+    to {
+        transform: translate(-40px, 40px) scale(1.2);
+    }
 }
 
 /* ============ COMMON ============ */
@@ -360,8 +366,13 @@ body:hover .mouse-glow {
 }
 
 @keyframes heroZoom {
-    0% { transform: scale(1.05); }
-    100% { transform: scale(1.12); }
+    0% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1.12);
+    }
 }
 
 .hero-banner-overlay {
@@ -392,8 +403,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(60px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-badge {
@@ -411,8 +429,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes badgePulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
-    50% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.3); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    }
 }
 
 .hero-title {
@@ -443,8 +468,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes textReveal {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero-tagline {
@@ -479,8 +511,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes floatBounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-8px);
+    }
 }
 
 .mouse {
@@ -503,8 +542,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes scrollWheel {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(12px); }
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
 }
 
 .scroll-indicator span {
@@ -573,7 +619,9 @@ body:hover .mouse-glow {
 }
 
 @keyframes spinRing {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .robot-image-wrapper {
@@ -623,8 +671,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes robotIconFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
 }
 
 .robot-placeholder span {
@@ -636,8 +691,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes pulseText {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Robot image (hidden by default, shown on hover) */
@@ -669,8 +731,13 @@ body:hover .mouse-glow {
 }
 
 @keyframes robotGlowPulse {
-    from { filter: brightness(1.1) contrast(1.2) drop-shadow(0 0 10px var(--accent)); }
-    to { filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 30px var(--secondary)); }
+    from {
+        filter: brightness(1.1) contrast(1.2) drop-shadow(0 0 10px var(--accent));
+    }
+
+    to {
+        filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 30px var(--secondary));
+    }
 }
 
 /* Floating Particles around robot */
@@ -685,18 +752,74 @@ body:hover .mouse-glow {
     animation: particleFloat 5s ease-in-out infinite;
 }
 
-.fp-1 { top: 5%; left: 10%; animation-delay: 0s; }
-.fp-2 { top: 15%; right: 5%; animation-delay: 0.8s; background: var(--secondary); box-shadow: 0 0 15px var(--secondary-glow); }
-.fp-3 { bottom: 10%; left: 5%; animation-delay: 1.6s; }
-.fp-4 { bottom: 20%; right: 10%; animation-delay: 2.4s; background: var(--secondary); box-shadow: 0 0 15px var(--secondary-glow); }
-.fp-5 { top: 50%; left: -5%; animation-delay: 3.2s; width: 5px; height: 5px; }
-.fp-6 { top: 50%; right: -5%; animation-delay: 4s; width: 5px; height: 5px; background: var(--secondary); box-shadow: 0 0 10px var(--secondary-glow); }
+.fp-1 {
+    top: 5%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.fp-2 {
+    top: 15%;
+    right: 5%;
+    animation-delay: 0.8s;
+    background: var(--secondary);
+    box-shadow: 0 0 15px var(--secondary-glow);
+}
+
+.fp-3 {
+    bottom: 10%;
+    left: 5%;
+    animation-delay: 1.6s;
+}
+
+.fp-4 {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 2.4s;
+    background: var(--secondary);
+    box-shadow: 0 0 15px var(--secondary-glow);
+}
+
+.fp-5 {
+    top: 50%;
+    left: -5%;
+    animation-delay: 3.2s;
+    width: 5px;
+    height: 5px;
+}
+
+.fp-6 {
+    top: 50%;
+    right: -5%;
+    animation-delay: 4s;
+    width: 5px;
+    height: 5px;
+    background: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary-glow);
+}
 
 @keyframes particleFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-    25% { transform: translate(10px, -15px) scale(1.3); opacity: 1; }
-    50% { transform: translate(-5px, -25px) scale(0.8); opacity: 0.4; }
-    75% { transform: translate(15px, -10px) scale(1.1); opacity: 0.9; }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+
+    25% {
+        transform: translate(10px, -15px) scale(1.3);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-5px, -25px) scale(0.8);
+        opacity: 0.4;
+    }
+
+    75% {
+        transform: translate(15px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
 }
 
 /* ============ GLASS PANELS ============ */
@@ -727,9 +850,17 @@ body:hover .mouse-glow {
 }
 
 @keyframes shine {
-    0% { left: -100%; }
-    20% { left: 200%; }
-    100% { left: 200%; }
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
 }
 
 .section-header h2 {
@@ -1175,7 +1306,7 @@ body:hover .mouse-glow {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     transform: rotate(45deg);
     transition: all 0.5s;
 }
@@ -1697,8 +1828,15 @@ body:hover .mouse-glow {
 }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .chatbot-input {
@@ -1901,7 +2039,10 @@ body:hover .mouse-glow {
     }
 
     #pixelforge .sg-hero-img {
-        object-position: left center;
+        object-fit: contain;
+        object-position: center;
+        background-color: transparent;
+        filter: none;
     }
 
     .sg-gallery-item img {
