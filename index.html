@@ -1,304 +1,655 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixelForge — Real-Time Image Filter Studio</title>
-  <meta name="description" content="A powerful real-time image filtering studio. Upload, transform, and export stunning images with advanced filters powered by Canvas API." />
-  <meta name="author" content="Mohamed Khaled" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Milege | AI Portfolio</title>
+    <meta name="description" content="Mohamed Milege — Data Analyst & AI Specialist. Explore my portfolio, certifications, and projects in Artificial Intelligence.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Animated Background -->
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
-  <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
-  <div class="bg-orb bg-orb-3" aria-hidden="true"></div>
+    <!-- Particle Canvas Background -->
+    <canvas id="particles-canvas"></canvas>
 
-  <!-- Header -->
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="logo">
-        <div class="logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="10" fill="url(#logoGrad)"/>
-            <path d="M10 15 L20 8 L30 15 L30 25 L20 32 L10 25 Z" stroke="white" stroke-width="2" fill="none" stroke-linejoin="round"/>
-            <circle cx="20" cy="20" r="4" fill="white" opacity="0.9"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#6366f1"/>
-                <stop offset="1" stop-color="#a855f7"/>
-              </linearGradient>
-            </defs>
-          </svg>
+    <!-- Mouse Glow Follower -->
+    <div class="mouse-glow" id="mouse-glow"></div>
+
+    <!-- Background Orbs with parallax -->
+    <div class="bg-orb orb-1" data-parallax="0.02"></div>
+    <div class="bg-orb orb-2" data-parallax="-0.03"></div>
+    <div class="bg-orb orb-3" data-parallax="0.015"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">M.Milege<span>.AI</span></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#sentinel">Sentinel-AI</a></li>
+            <li><a href="#smart-glasses">Smart Glasses</a></li>
+            <li><a href="#pixelforge">PixelForge</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
-        <span class="logo-text">Pixel<span class="logo-accent">Forge</span></span>
-      </div>
-      <nav class="header-nav" aria-label="Main navigation">
-        <span class="nav-badge">Pro Studio</span>
-        <span class="nav-version">v2.0</span>
-      </nav>
-      <div class="header-actions">
-        <button id="btn-reset-all" class="btn-ghost" title="Reset everything" aria-label="Reset all filters">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10a6 6 0 1 1 1.8 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 14V10H8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Reset
-        </button>
-        <button id="btn-download" class="btn-primary" disabled aria-label="Download filtered image">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          Export
-        </button>
-      </div>
-    </div>
-  </header>
+    </nav>
 
-  <!-- Main Application -->
-  <main class="app-main" role="main">
-
-    <!-- Upload Zone -->
-    <section id="upload-section" class="upload-section" aria-label="Image upload">
-      <div id="drop-zone" class="drop-zone" role="button" tabindex="0" aria-label="Drop zone: drag and drop an image or click to upload">
-        <div class="drop-zone-content">
-          <div class="drop-icon" aria-hidden="true">
-            <svg viewBox="0 0 80 80" fill="none">
-              <circle cx="40" cy="40" r="38" stroke="url(#dropGrad)" stroke-width="2" stroke-dasharray="8 4"/>
-              <path d="M40 52V32M31 41l9-9 9 9" stroke="url(#dropGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M28 56h24" stroke="url(#dropGrad)" stroke-width="2.5" stroke-linecap="round"/>
-              <defs>
-                <linearGradient id="dropGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <h1 class="drop-title">Drop Your Image Here</h1>
-          <p class="drop-subtitle">or click to browse files</p>
-          <p class="drop-formats">Supports JPG, PNG, WEBP, GIF — Max 20MB</p>
-          <button id="btn-browse" class="btn-upload" aria-label="Browse files">
-            <svg viewBox="0 0 20 20" fill="none"><path d="M3 7h14M7 3h6l2 4H5L7 3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="7" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
-            Browse Files
-          </button>
+    <!-- ===================== HERO BANNER (Full-Width Profile Photo) ===================== -->
+    <header class="hero-banner" id="home">
+        <div class="hero-banner-overlay"></div>
+        <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-banner-img">
+        <div class="hero-banner-content">
+            <div class="hero-badge">AI SPECIALIST</div>
+            <h1 class="hero-title">
+                <span class="line line-1">Mohamed</span>
+                <span class="line line-2">Milege</span>
+            </h1>
+            <p class="hero-tagline">Data Analyst <span class="accent-dot">•</span> AI Specialist <span class="accent-dot">•</span> Future Innovator</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
+                <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+            </div>
         </div>
-        <input type="file" id="file-input" accept="image/*" aria-label="Image file input" hidden />
-      </div>
-    </section>
-
-    <!-- Editor -->
-    <section id="editor-section" class="editor-section hidden" aria-label="Image editor">
-      <div class="editor-layout">
-
-        <!-- Left Panel: Filters -->
-        <aside class="panel panel-left" aria-label="Filter controls">
-          <div class="panel-header">
-            <h2 class="panel-title">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M5 10h10M8 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              Filters
-            </h2>
-            <span class="filter-count" id="active-filter-count">None active</span>
-          </div>
-
-          <!-- Filter Grid -->
-          <div class="filter-grid" id="filter-grid" role="listbox" aria-multiselectable="true" aria-label="Filter selection">
-            <!-- Filters injected by JS -->
-          </div>
-
-          <!-- Adjustments -->
-          <div class="panel-section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 20 20" fill="none"><circle cx="6" cy="10" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="6" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 10h2M10 10h8M2 6h10M16 6h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              Adjustments
-            </h3>
-            <div class="sliders-list" id="sliders-container">
-              <!-- Sliders injected by JS -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
             </div>
-          </div>
+            <span>Scroll Down</span>
+        </div>
+    </header>
 
-          <!-- Multi-filter -->
-          <div class="panel-section">
-            <div class="multi-filter-row">
-              <label class="toggle-label" for="multi-filter-toggle">
-                <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="8" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
-                Stack Filters
-              </label>
-              <div class="toggle-switch">
-                <input type="checkbox" id="multi-filter-toggle" role="switch" aria-checked="false" />
-                <label for="multi-filter-toggle" class="toggle-track" aria-label="Enable stacking multiple filters"></label>
-              </div>
-            </div>
-            <p class="toggle-hint">Combine multiple filters simultaneously</p>
-          </div>
-
-          <!-- Actions -->
-          <div class="panel-actions">
-            <button id="btn-clear-filters" class="btn-outline btn-sm">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              Clear All
-            </button>
-            <button id="btn-random-filter" class="btn-outline btn-sm">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M3 7h3l2-3 3 8 2-5 2 3h2M14 15l2-2 2 2M14 17l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Surprise Me
-            </button>
-          </div>
-        </aside>
-
-        <!-- Center: Canvas -->
-        <div class="editor-center">
-          <!-- Mode Toggle -->
-          <div class="view-controls" role="group" aria-label="View mode">
-            <button id="btn-single" class="view-btn active" aria-pressed="true" aria-label="Single view">
-              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
-              Preview
-            </button>
-            <button id="btn-compare" class="view-btn" aria-pressed="false" aria-label="Before/After comparison">
-              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="14" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="11" y="3" width="6" height="14" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
-              Compare
-            </button>
-            <button id="btn-splitview" class="view-btn" aria-pressed="false" aria-label="Slider split view">
-              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2"/></svg>
-              Slider
-            </button>
-          </div>
-
-          <!-- Canvas Wrapper -->
-          <div class="canvas-wrapper" id="canvas-wrapper" aria-label="Image canvas">
-            <!-- Single View -->
-            <div class="canvas-area" id="single-view">
-              <canvas id="output-canvas" aria-label="Filtered image output"></canvas>
-              <div class="canvas-overlay" id="canvas-overlay">
-                <span class="processing-badge" id="processing-badge" aria-live="polite">
-                  <span class="spinner" aria-hidden="true"></span>Processing…
-                </span>
-              </div>
-            </div>
-
-            <!-- Compare View (side by side) -->
-            <div class="canvas-area compare-view hidden" id="compare-view">
-              <div class="compare-panel">
-                <span class="compare-label">Original</span>
-                <canvas id="canvas-original" aria-label="Original image"></canvas>
-              </div>
-              <div class="compare-divider" aria-hidden="true"></div>
-              <div class="compare-panel">
-                <span class="compare-label">Filtered</span>
-                <canvas id="canvas-filtered" aria-label="Filtered image"></canvas>
-              </div>
-            </div>
-
-            <!-- Split Slider View -->
-            <div class="canvas-area split-view hidden" id="split-view">
-              <canvas id="canvas-split-base" aria-label="Split view base"></canvas>
-              <canvas id="canvas-split-overlay" class="split-overlay-canvas" aria-label="Split view overlay"></canvas>
-              <div class="split-handle" id="split-handle" role="slider" aria-label="Split slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-                <div class="split-handle-line"></div>
-                <div class="split-handle-knob" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- ===================== ROBOT SECTION ===================== -->
+    <section class="robot-section" id="robot-reveal">
+        <div class="section-header">
+            <h2 class="reveal-text">The <span class="accent">AI</span> Behind the Vision</h2>
+            <p class="section-subtitle reveal-text">Hover to reveal the future</p>
+        </div>
+        <div class="robot-container reveal-text">
+            <div class="robot-card">
+                <!-- Animated ring -->
+                <div class="rotating-ring"></div>
+                <div class="rotating-ring ring-2"></div>
+                <!-- The image -->
+                <div class="robot-image-wrapper">
+                    <div class="robot-placeholder">
+                        <i class="fas fa-robot"></i>
+                        <span>Hover Me</span>
+                    </div>
+                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img">
                 </div>
-              </div>
-              <span class="split-label-left">Original</span>
-              <span class="split-label-right">Filtered</span>
+                <!-- Floating particles around robot -->
+                <div class="float-particle fp-1"></div>
+                <div class="float-particle fp-2"></div>
+                <div class="float-particle fp-3"></div>
+                <div class="float-particle fp-4"></div>
+                <div class="float-particle fp-5"></div>
+                <div class="float-particle fp-6"></div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <!-- Image Info Bar -->
-          <div class="info-bar">
-            <span class="info-item" id="info-dimensions" aria-label="Image dimensions">
-              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-              —
-            </span>
-            <span class="info-item" id="info-size" aria-label="File size">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M4 12V4h5l3 3v5H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 4v3h3" stroke="currentColor" stroke-width="1.5"/></svg>
-              —
-            </span>
-            <span class="info-item" id="info-filter" aria-label="Active filter">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              No filter
-            </span>
-            <button id="btn-new-image" class="info-action" aria-label="Upload a new image">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              New Image
-            </button>
-          </div>
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="about-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">About <span class="accent">Me</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal-text">
+                <p>A highly motivated Artificial Intelligence student at Aqaba University of Technology with a strong technical foundation in Data Analysis and Machine Learning.</p>
+                <p>Proven expertise in Python programming and AI applications through intensive certified training programs. Skilled in navigating international AI standards (ISO 21001) and committed to delivering data-driven insights in professional environments.</p>
+            </div>
+            <div class="about-stats reveal-text">
+                <div class="stat-box tilt-card">
+                    <h3 class="counter" data-target="4">0</h3>
+                    <p>Years of Study</p>
+                </div>
+                <div class="stat-box tilt-card">
+                    <h3>5+</h3>
+                    <p>Certifications</p>
+                </div>
+                <div class="stat-box tilt-card">
+                    <h3>ISO</h3>
+                    <p>21001 Certified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SKILLS SECTION ===================== -->
+    <section id="skills" class="skills-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">My <span class="accent">Skills</span></h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Programming</span>
+                    <span class="tag" data-delay="1">Artificial Intelligence</span>
+                    <span class="tag" data-delay="2">Data Handling</span>
+                    <span class="tag" data-delay="3">Standards & Compliance</span>
+                    <span class="tag" data-delay="4">Machine Learning</span>
+                    <span class="tag" data-delay="5">Computer Vision</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Leadership</span>
+                    <span class="tag" data-delay="1">Analytical Thinking</span>
+                    <span class="tag" data-delay="2">Resilience</span>
+                    <span class="tag" data-delay="3">Problem Solving</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-language"></i> Languages</h3>
+                <div class="skill-tags">
+                    <span class="tag language-tag" data-delay="0">English</span>
+                    <span class="tag language-tag" data-delay="1">Arabic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CERTIFICATES SECTION ===================== -->
+    <section id="certificates" class="certificates-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Training & <span class="accent">Certifications</span></h2>
+        </div>
+        <div class="cert-list">
+            <div class="cert-item reveal-text">
+                <div class="cert-number">01</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Python & AI Course (36 Hours)</h4>
+                    <p>Black Horse Courses - Grade: Excellent</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">02</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Applications of Artificial Intelligence (15 Hours)</h4>
+                    <p>The British University in Egypt (SCE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">03</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>ISO Artificial Intelligence Training</h4>
+                    <p>MediX International Accredited Institution</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">04</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Artificial Intelligence Training</h4>
+                    <p>Telecom Egypt (WE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">05</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Integrated English Program (94%)</h4>
+                    <p>Egyptian Foundation for Information Technology</p>
+                </div>
+            </div>
+        </div>
+        <div class="cert-download reveal-text">
+            <a href="assets/certificates.pdf" target="_blank" class="btn primary-btn">
+                <i class="fas fa-file-pdf"></i> View Official Certificates
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== SENTINEL-AI SECTION ===================== -->
+    <section id="sentinel" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/sentinel_hero.png" alt="Sentinel-AI System" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-shield"></i> CYBERSECURITY SYSTEM</div>
+                <h2 class="sg-title">Sentinel-<span class="accent">AI</span></h2>
+                <p class="sg-subtitle">Multi-Agent Fraud Detection & Cybersecurity Hub</p>
+            </div>
         </div>
 
-        <!-- Right Panel: Presets & Intensity -->
-        <aside class="panel panel-right" aria-label="Presets and intensity">
-          <div class="panel-header">
-            <h2 class="panel-title">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2.1 5.9H18l-4.9 3.6 1.9 5.9-5-3.6-5 3.6 1.9-5.9L2 7.9h5.9L10 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              Presets
-            </h2>
-          </div>
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>Sentinel-AI is an intelligent <strong>multi-agent system</strong> designed to analyze transactions, detect threats, and make real-time security decisions. It combines three specialized AI agents working in harmony to provide comprehensive fraud detection and cybersecurity analysis.</p>
+        </div>
 
-          <div class="preset-grid" id="preset-grid" role="listbox" aria-label="Filter presets">
-            <!-- Injected by JS -->
-          </div>
-
-          <!-- Global Intensity -->
-          <div class="panel-section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M10 3v2M10 15v2M3 10h2M15 10h2M5.2 5.2l1.4 1.4M13.4 13.4l1.4 1.4M5.2 14.8l1.4-1.4M13.4 6.6l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              Global Intensity
-            </h3>
-            <div class="intensity-control">
-              <input type="range" id="global-intensity" min="0" max="100" value="100" class="range-input" aria-label="Global filter intensity" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" />
-              <div class="range-labels">
-                <span>0%</span>
-                <span id="intensity-value">100%</span>
-                <span>100%</span>
-              </div>
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-brain"></i> Core Agents</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <h4>Analyzer Agent</h4>
+                    <p>Reads transaction data and measures anomaly scores with rapid precision. Detects unusual patterns and calculates risk indicators in real-time.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-search"></i></div>
+                    <h4>Forensics Agent</h4>
+                    <p>Traces technical paths and analyzes exploitation indicators. Investigates transaction routes and identifies suspicious behavioral patterns.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h4>Decision Agent</h4>
+                    <p>Issues final verdict: SAFE, SUSPICIOUS, or FRAUD. Provides recommendations and confidence scores based on all agent analyses.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Real-Time Processing</h4>
+                    <p>Analyzes transactions instantly with sub-second latency. Provides immediate alerts and actionable insights for security teams.</p>
+                </div>
             </div>
-          </div>
+        </div>
 
-          <!-- Histogram -->
-          <div class="panel-section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M3 16V10h3v6H3zM8 16V6h3v10H8zM14 16V3h3v13h-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              Histogram
-            </h3>
-            <canvas id="histogram-canvas" class="histogram-canvas" width="220" height="80" aria-label="Image histogram"></canvas>
-          </div>
-
-          <!-- Export Options -->
-          <div class="panel-section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M4 14l4-4 3 3 4-5 3 6H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              Export Options
-            </h3>
-            <div class="export-options">
-              <div class="export-row">
-                <label for="export-format" class="export-label">Format</label>
-                <select id="export-format" class="export-select" aria-label="Export format">
-                  <option value="image/png">PNG (Lossless)</option>
-                  <option value="image/jpeg" selected>JPEG (HQ)</option>
-                  <option value="image/webp">WebP (Modern)</option>
-                </select>
-              </div>
-              <div class="export-row" id="quality-row">
-                <label for="export-quality" class="export-label">Quality</label>
-                <input type="range" id="export-quality" min="60" max="100" value="95" class="range-input range-sm" aria-label="Export quality" />
-                <span id="quality-value" class="range-val">95%</span>
-              </div>
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-chart-line"></i> Streamlit</span>
+                <span class="sg-tech-tag"><i class="fas fa-shield"></i> Cybersecurity</span>
+                <span class="sg-tech-tag"><i class="fas fa-database"></i> Data Analysis</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Multi-Agent</span>
             </div>
-            <button id="btn-download-panel" class="btn-primary btn-full" disabled aria-label="Download filtered image">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              Download Image
-            </button>
-          </div>
-        </aside>
-      </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
     </section>
-  </main>
 
-  <!-- Toast Notifications -->
-  <div class="toast-container" id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+    <!-- ===================== SMART GLASSES — DEDICATED SHOWCASE ===================== -->
+    <section id="smart-glasses" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/smart_glasses_hero.png" alt="Smart Glasses AI Project" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-graduation-cap"></i> GRADUATION PROJECT</div>
+                <h2 class="sg-title">Smart <span class="accent">Glasses</span></h2>
+                <p class="sg-subtitle">AI-Powered Wearable for the Visually Impaired</p>
+            </div>
+        </div>
 
-  <!-- Scripts -->
-  <script src="filters/grayscale.js"></script>
-  <script src="filters/blur.js"></script>
-  <script src="filters/edge.js"></script>
-  <script src="filters/more_filters.js"></script>
-  <script src="app.js"></script>
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>An innovative wearable AI device that transforms how visually impaired individuals interact with the world. By integrating real-time <strong>Computer Vision</strong>, <strong>OCR</strong>, <strong>Face Recognition</strong>, and <strong>Voice AI</strong> into a single Python-powered system, the Smart Glasses provide essential auditory feedback — from reading text aloud to recognizing faces and detecting obstacles — making daily life safer and more accessible.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-bolt"></i> Core Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-eye"></i></div>
+                    <h4>Object Detection</h4>
+                    <p>Real-time YOLOv8 object detection with directional audio feedback — tells user what's on their left, right, or ahead.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>OCR Text Reading</h4>
+                    <p>Reads any text in front of the camera powered by Gemini AI — from documents to street signs and product labels.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h4>Face Recognition</h4>
+                    <p>Learns and remembers faces. Announces known people by name with 25-frame training for high accuracy.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h4>Safety Mode</h4>
+                    <p>Continuous obstacle monitoring with proximity warnings — alerts the user when objects get dangerously close.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-coins"></i></div>
+                    <h4>Currency Recognition</h4>
+                    <p>Identifies banknotes and their value using AI vision — helping users handle money independently.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-sos"></i></div>
+                    <h4>Emergency SOS</h4>
+                    <p>Voice-activated distress signal that sends email with GPS location to emergency contacts instantly.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-microphone"></i></div>
+                    <h4>Voice Control</h4>
+                    <p>Full Arabic voice command system — switch modes, save faces, ask time, and trigger features hands-free.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-battery-half"></i></div>
+                    <h4>Battery Saver Mode</h4>
+                    <p>Intelligent power management that disables heavy AI tasks to extend battery life when needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="sg-gallery">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-images"></i> How It Works</h3>
+            <div class="sg-gallery-grid">
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_detection.png" alt="Object Detection View">
+                    <div class="sg-gallery-label">Object Detection & Scene Analysis</div>
+                </div>
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_ocr.png" alt="OCR Text Reading">
+                    <div class="sg-gallery-label">OCR & Text Reading</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> YOLOv8</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-camera"></i> OpenCV</span>
+                <span class="sg-tech-tag"><i class="fas fa-comment-dots"></i> gTTS</span>
+                <span class="sg-tech-tag"><i class="fas fa-microphone-alt"></i> SpeechRecognition</span>
+                <span class="sg-tech-tag"><i class="fas fa-text-width"></i> Tesseract OCR</span>
+                <span class="sg-tech-tag"><i class="fas fa-map-marker-alt"></i> Geolocation API</span>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== PIXELFORGE SECTION ===================== -->
+    <section id="pixelforge" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/pixelforge_hero.png" alt="PixelForge Image Filter App" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3)); border-color: rgba(139,92,246,0.5);"><i class="fas fa-magic"></i> IMAGE PROCESSING APP</div>
+                <h2 class="sg-title">Pixel<span class="accent">Forge</span></h2>
+                <p class="sg-subtitle">Real-Time Image Filtering & Processing Studio</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>PixelForge is a powerful, professional <strong>real-time image filtering web application</strong> built with pure HTML5, CSS3, and Vanilla JavaScript using the Canvas API. It delivers pixel-level image manipulation with zero dependencies — drag, drop, filter, and export in seconds.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-sliders-h"></i> Core Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);"><i class="fas fa-upload"></i></div>
+                    <h4>Smart Upload</h4>
+                    <p>Drag & Drop, file browser, or paste directly from clipboard (Ctrl+V). Supports JPG, PNG, WEBP & GIF up to 20MB.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0e7490, #06b6d4);"><i class="fas fa-palette"></i></div>
+                    <h4>20+ Filters</h4>
+                    <p>Grayscale, Edge Detection, Blur, Sepia, Invert, Emboss, Sharpen, Vintage, Cartoon, Oil Paint and many more effects.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-layer-group"></i></div>
+                    <h4>Stack Filters</h4>
+                    <p>Enable Stack Mode to combine multiple filters simultaneously for unique, creative effects.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);"><i class="fas fa-th-large"></i></div>
+                    <h4>8 One-Click Presets</h4>
+                    <p>Cinematic, Noir, Dreamy, Retro, Comic, Ghost, Cyberpunk & Watercolor — instant professional looks.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0891b2, #0e7490);"><i class="fas fa-columns"></i></div>
+                    <h4>3 View Modes</h4>
+                    <p>Preview, Side-by-Side Compare, and interactive Split Slider — see your edits with full context.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);"><i class="fas fa-chart-bar"></i></div>
+                    <h4>Live Histogram</h4>
+                    <p>Real-time RGB histogram displayed during filtering. Brightness, Contrast, Blur & Intensity controls.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"><i class="fas fa-download"></i></div>
+                    <h4>Multi-Format Export</h4>
+                    <p>Export in PNG (lossless), JPEG (adjustable quality), or WebP (modern format) with one click.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #06b6d4);"><i class="fas fa-tachometer-alt"></i></div>
+                    <h4>Zero Dependencies</h4>
+                    <p>Runs entirely in the browser — no server, no libraries, no install. Just open index.html and start creating.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="sg-tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="sg-tech-tag"><i class="fab fa-js"></i> Vanilla JS</span>
+                <span class="sg-tech-tag"><i class="fas fa-paint-brush"></i> Canvas API</span>
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python (OpenCV)</span>
+                <span class="sg-tech-tag"><i class="fas fa-image"></i> Image Processing</span>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <section id="projects" class="projects-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Featured <span class="accent">Projects</span></h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-shield"></i></div>
+                <h3>Sentinel-AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> Python • Gemini • Streamlit</p>
+                <p class="project-desc">Multi-Agent Cybersecurity & Fraud Detection Hub. Real-time transaction analysis with specialized AI agents for comprehensive threat detection.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-glasses"></i></div>
+                <h3>Smart Glasses AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> YOLOv8 • OpenCV • Gemini</p>
+                <p class="project-desc">AI-Powered Wearable for the Visually Impaired. Computer Vision, OCR, Face Recognition, and Voice AI integrated into one assistive device.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-magic"></i></div>
+                <h3>PixelForge</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> HTML5 • Canvas API • Vanilla JS</p>
+                <p class="project-desc">Real-Time Image Filtering Studio. 20+ filters, 8 presets, live histogram, stack mode, and multi-format export — all in the browser with zero dependencies.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT SECTION ===================== -->
+    <section id="contact" class="contact-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Get In <span class="accent">Touch</span></h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <!-- Contact Form via Formspree -->
+                <form action="https://formspree.io/f/xjgjydrg" method="POST" class="contact-form reveal-text">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                
+                <!-- Quick Contact Info -->
+                <div class="direct-contact">
+                    <h3>Or reach me directly:</h3>
+                    <a href="mailto:elmilege0@gmail.com" class="contact-card reveal-text">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">elmilege0@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:01021118342" class="contact-card reveal-text">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">01021118342</span>
+                        </div>
+                    </a>
+                    <div class="contact-card reveal-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">Cairo, Egypt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CHATBOT ===================== -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with me">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i> Assistant
+                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message assistant">
+                    <div class="message-content">Hi! Ask me about Sentinel-AI, Smart Glasses, my projects, or how to contact me.</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Mohamed Milege. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and AI.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Chatbot Functions
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbot-window');
+            chatWindow.classList.toggle('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesDiv = document.getElementById('chatbot-messages');
+            
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="message-content">${message}</div>`;
+            messagesDiv.appendChild(userMsg);
+
+            // Get response
+            const response = getChatResponse(message);
+            
+            setTimeout(() => {
+                const assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                assistantMsg.innerHTML = `<div class="message-content">${response}</div>`;
+                messagesDiv.appendChild(assistantMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 500);
+
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function getChatResponse(input) {
+            const text = input.toLowerCase();
+            
+            if (text.includes('sentinel') || text.includes('system') || text.includes('cybersecurity')) {
+                return 'Sentinel-AI is a multi-agent cybersecurity system with three specialized agents: Analyzer (detects anomalies), Forensics (traces threats), and Decision (issues verdicts). It analyzes transactions in real-time to prevent fraud and detect security threats.';
+            } else if (text.includes('smart glass') || text.includes('glasses')) {
+                return 'Smart Glasses AI is an AI-powered wearable device that helps visually impaired people. It uses computer vision, OCR, face recognition, and voice AI to provide real-time assistance for daily activities.';
+            } else if (text.includes('pixel') || text.includes('pixelforge') || text.includes('filter') || text.includes('image')) {
+                return 'PixelForge is a real-time image filtering web app with 20+ filters (Grayscale, Edge Detection, Cyberpunk, Noir...), 8 one-click presets, stack filter mode, live RGB histogram, and multi-format export. Built with pure HTML5 Canvas API — no dependencies!';
+            } else if (text.includes('project')) {
+                return 'I have three main projects: Sentinel-AI (fraud detection system), Smart Glasses AI (wearable for visually impaired), and PixelForge (real-time image filtering studio). All are available on my GitHub!';
+            } else if (text.includes('contact') || text.includes('email') || text.includes('message')) {
+                return 'You can reach me via the contact form above, email me at elmilege0@gmail.com, or call 01021118342. I respond quickly to all inquiries!';
+            } else if (text.includes('hello') || text.includes('hi')) {
+                return 'Hi there! Welcome to my portfolio. Feel free to ask me about my projects, experience, or how to get in touch!';
+            } else {
+                return 'I can help you with questions about Sentinel-AI, Smart Glasses, my projects, or how to contact me. What would you like to know?';
+            }
+        }
+    </script>
 </body>
 </html>
