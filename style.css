@@ -1900,6 +1900,10 @@ body:hover .mouse-glow {
         bottom: 25px;
     }
 
+    #pixelforge .sg-hero-img {
+        object-position: left center;
+    }
+
     .sg-gallery-item img {
         height: 220px;
     }
