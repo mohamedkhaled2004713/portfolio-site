@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Sentinel-AI Live Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.31.0/build/stlite.css"
+    />
+    <style>
+      body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #0e1117; }
+      #root { height: 100vh; }
+      /* Custom loading screen */
+      #loading {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: #0e1117; color: #00d2ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        z-index: 9999;
+      }
+      .spinner {
+        width: 50px; height: 50px; border: 5px solid rgba(0, 210, 255, 0.1);
+        border-top: 5px solid #00d2ff; border-radius: 50%;
+        animation: spin 1s linear infinite; margin-bottom: 20px;
+      }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <div class="spinner"></div>
+      <div id="status">Initializing Sentinel-AI Engine...</div>
+      <div style="font-size: 0.8rem; margin-top: 10px; color: #555;">This may take a minute on first load (Downloading Python runtime)</div>
+    </div>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.31.0/build/stlite.js"></script>
+    <script>
+      stlite.mount({
+        requirements: ["google-genai", "pandas", "plotly"],
+        entrypoint: "app.py",
+        files: {
+          "app.py": `
+# 🛡️ Sentinel-AI: Advanced Multi-Agent Cybersecurity Hub
+import streamlit as st
+from google import genai
+from google.genai import types
+import os
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+import time
+import json
+import re
+
+# --- CONFIGURATION & STYLING ---
+st.set_page_config(
+    page_title="Sentinel-AI | Fraud Detection Hub",
+    page_icon="🛡️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+st.markdown("""
+<style>
+    .main { background-color: #0e1117; color: #e0e0e0; }
+    section[data-testid="stSidebar"] { background-color: #1a1c24; border-right: 1px solid #3d4451; }
+    div.stButton > button {
+        background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+        color: white; border: none; padding: 0.6rem 2rem;
+        font-weight: bold; transition: all 0.3s ease; border-radius: 5px; width: 100%;
+    }
+    div.stButton > button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); }
+    .agent-card {
+        background: rgba(255, 255, 255, 0.05); border-left: 5px solid #00d2ff;
+        padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0;
+    }
+    .reviewer-card { border-left-color: #ff00ff; }
+    .decision-card { border-left-color: #ffcc00; }
+    .title-text {
+        background: linear-gradient(90deg, #00d2ff, #9d50bb);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Sidebar
+with st.sidebar:
+    st.markdown("<h1 class='title-text'>SENTINEL SETTINGS</h1>", unsafe_allow_html=True)
+    api_key = st.text_input("🔑 Gemini API Key", value="", type="password")
+    model_choice = st.selectbox("🧠 Intelligence Engine", ["gemini-2.0-flash", "gemini-1.5-pro"])
+    demo_mode = st.toggle("🧪 Demo Mode (Offline)", value=True)
+    st.divider()
+    if api_key or demo_mode:
+        st.success("Core Engine: ACTIVE")
+    else:
+        st.warning("Core Engine: WAITING")
+
+@st.cache_resource
+def get_client(api_key):
+    if not api_key: return None
+    try:
+        return genai.Client(api_key=api_key)
+    except Exception as e:
+        st.error(f"Failed to initialize Client: {e}")
+        return None
+
+client = get_client(api_key)
+
+# --- AGENT LOGIC ---
+def run_agent(name, prompt, data=None):
+    if demo_mode:
+        time.sleep(1)
+        if name == "ANALYZER":
+            amount = data.get('amount', 0)
+            if amount > 5000: return json.dumps({"anomalies": "High-risk transfer detected from unusual source.", "risk_score": 95, "confidence": "High"})
+            elif 1000 <= amount <= 5000: return json.dumps({"anomalies": "Suspicious medium-risk activity.", "risk_score": 55, "confidence": "Medium"})
+            return json.dumps({"anomalies": "Normal transaction activity.", "risk_score": 12, "confidence": "High"})
+        elif name == "FORENSICS":
+            return json.dumps({"attack_vectors": ["N/A"], "technical_validation": "Verified user profile and device fingerprint."})
+        elif name == "DECISION":
+            if "95" in prompt: return json.dumps({"verdict": "FRAUD", "reason": "High risk score from Analyzer", "action": "Block"})
+            elif "55" in prompt: return json.dumps({"verdict": "SUSPICIOUS", "reason": "Moderate risk patterns", "action": "Flag"})
+            return json.dumps({"verdict": "SAFE", "reason": "Normal activity", "action": "Approve"})
+
+    if not client:
+        st.error("Please provide an API Key or enable Demo Mode.")
+        return json.dumps({"error": "NO_API_KEY"})
+
+    with st.spinner(f"Agent {name} is active..."):
+        try:
+            response = client.models.generate_content(
+                model=model_choice,
+                contents=prompt,
+                config=types.GenerateContentConfig(response_mime_type="application/json")
+            )
+            match = re.search(r'\\{.*\\}', response.text, re.DOTALL)
+            return match.group(0) if match else response.text
+        except Exception as e:
+            return json.dumps({"error": "API_ERROR", "message": str(e)})
+
+def analyzer_agent(data):
+    prompt = f"Analyze transaction anomalies: {json.dumps(data)}. Return JSON: anomalies, risk_score (0-100), confidence."
+    return run_agent("ANALYZER", prompt, data)
+
+def forensics_agent(analysis_json):
+    prompt = f"Perform forensics on this analysis: {analysis_json}. Return JSON: attack_vectors (list), technical_validation."
+    return run_agent("FORENSICS", prompt)
+
+def decision_agent(analysis_json, forensics_json):
+    prompt = f"Based on Analysis: {analysis_json} and Forensics: {forensics_json}, classify as SAFE, SUSPICIOUS, or FRAUD. Return JSON: verdict, reason, action."
+    return run_agent("DECISION", prompt)
+
+# --- DASHBOARD UI ---
+st.markdown("<h1 class='title-text'>🛡️ SENTINEL-AI: THREAT HUB</h1>", unsafe_allow_html=True)
+tab1, tab2 = st.tabs(["📝 Manual Entry", "📁 Batch Analysis (CSV)"])
+
+with tab1:
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.markdown("### 📝 Transaction details")
+        amount = st.number_input("Amount ($)", min_value=0.0, format="%.2f", value=1250.0)
+        location = st.text_input("Source Location", value="Cairo, Egypt")
+        dest_location = st.text_input("Destination Location", value="Unknown")
+        tx_type = st.selectbox("Type", ["Online Purchase", "Wire Transfer", "P2P", "ATM Withdrawal"])
+        analyze_btn = st.button("🚀 EXECUTE THREAT ANALYSIS")
+
+    with col2:
+        st.markdown("### 📈 Live Risk Analytics")
+        gauge_placeholder = st.empty()
+        if not analyze_btn:
+            fig = go.Figure(go.Indicator(mode="gauge+number", value=0, gauge={'axis': {'range': [0, 100]}, 'bar': {'color': "#00d2ff"}}))
+            fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font={'color': "white"}, height=350)
+            gauge_placeholder.plotly_chart(fig, use_container_width=True)
+
+if analyze_btn:
+    data = {"amount": amount, "location": location, "destination": dest_location, "type": tx_type}
+    res1 = analyzer_agent(data)
+    d1 = json.loads(res1)
+    res2 = forensics_agent(res1)
+    d2 = json.loads(res2)
+    res3 = decision_agent(res1, res2)
+    d3 = json.loads(res3)
+    
+    score = d1.get('risk_score', 0)
+    with col2:
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number", value=score,
+            gauge={
+                'axis': {'range': [0, 100]},
+                'bar': {'color': "red" if score > 75 else "yellow" if score > 40 else "green"},
+                'steps': [{'range': [0, 40], 'color': "rgba(0, 255, 0, 0.1)"}, {'range': [40, 75], 'color': "rgba(255, 255, 0, 0.1)"}, {'range': [75, 100], 'color': "rgba(255, 0, 0, 0.1)"}]
+            }
+        ))
+        fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font={'color': "white"}, height=350)
+        gauge_placeholder.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+    st.markdown("### 🧠 Multi-Agent Collaborative Reasoning")
+    r1, r2, r3 = st.columns(3)
+    with r1: st.markdown(f"<div class='agent-card'><b>🕵️ ANALYZER AGENT</b><br><hr>{d1.get('anomalies')}</div>", unsafe_allow_html=True)
+    with r2: st.markdown(f"<div class='agent-card reviewer-card'><b>🔬 FORENSICS AGENT</b><br><hr>{d2.get('technical_validation')}</div>", unsafe_allow_html=True)
+    with r3: st.markdown(f"<div class='agent-card decision-card'><b>⚖️ FINAL VERDICT: {d3.get('verdict')}</b><br><hr>{d3.get('reason')}</div>", unsafe_allow_html=True)
+
+with tab2:
+    st.markdown("### 📁 Batch Threat Processing")
+    st.info("Upload CSV to process multiple transactions.")
+
+st.markdown("<br><hr><center>Sentinel-AI © 2026 | Powered by Gemini 2.0 Flash</center>", unsafe_allow_html=True)
+`
+        }
+      }).then(() => {
+        // Hide loading screen when stlite is ready
+        document.getElementById('loading').style.display = 'none';
+      });
+    </script>
+  </body>
+</html>
