@@ -35,7 +35,7 @@ const kb = {
     { name: "كلية العلوم الطبية المساندة", programs: ["علاج طبيعي", "تصوير طبي", "تكنولوجيا صيدلة"] }
   ],
   instructors: [
-    { name: "أ.د. صالح العطيوي", title: "عميد كلية تقنية المعلومات", rank: 1, link: "https://www.aut.edu.jo/home" },
+    { name: "أ.د. صالح العطيوي", title: "عميد كلية تقنية المعلومات", rank: 1, link: "" },
     { name: "أ.د. حسن الرشايدة", title: "عميد البحث العلمي / أستاذ مشارك", rank: 2, link: "https://www.aut.edu.jo/profile/167" },
     { name: "د. غيث رجب", title: "رئيس أقسام الحاسوب / أستاذ مساعد", rank: 3, link: "https://www.aut.edu.jo/profile/147" },
     { name: "أنس البدارين", title: "مدير القبول والتسجيل / أستاذ مشارك", rank: 4, link: "https://www.aut.edu.jo/profile/59" },
@@ -111,8 +111,13 @@ async function processMessage(userInput) {
       return `### 📍 موقع الجامعة\n- **العنوان:** ${kb.university.location}\n- **الهاتف:** ${kb.university.phones.join(' / ')}\n🌐 [الموقع الإلكتروني](${kb.university.web})`;
 
     case 'faculty':
-      const flist = kb.instructors.sort((a, b) => a.rank - b.rank).map(d => `**${d.name}**\n*${d.title}*\n🔗 [البروفايل](${d.link})\n***`).join('\n\n');
-      return `### 👨‍🏫 طاقم التدريس\n\n${flist}`;
+      const facultyHtml = kb.instructors.sort((a, b) => a.rank - b.rank).map(d => {
+        const cleanName = d.name.replace(/^(أ\.د\.|د\.|أ\.)\s+/, '');
+        const initial = cleanName[0] || '؟';
+        const linkHtml = d.link ? `<a href="${d.link}" target="_blank" class="faculty-link-btn" title="عرض الملف الشخصي"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a>` : '';
+        return `<div class="faculty-card"><div class="faculty-avatar">${initial}</div><div class="faculty-info"><span class="faculty-name">${d.name}</span><span class="faculty-title">${d.title}</span></div>${linkHtml}</div>`;
+      }).join('');
+      return `<h3 class="faculty-header">👨‍🏫 طاقم التدريس</h3><div class="faculty-container">${facultyHtml}</div>`;
 
     case 'registration':
       return `### 🔑 بوابة الطالب\n🌐 [edugate.aut.edu.jo](https://edugate.aut.edu.jo/)`;

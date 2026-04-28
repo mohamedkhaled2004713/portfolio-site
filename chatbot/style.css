@@ -485,3 +485,110 @@ textarea {
 .bubble a:hover {
     border-bottom-color: var(--primary-bright);
 }
+
+/* --- Faculty Card Premium UI --- */
+.faculty-header {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faculty-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    direction: rtl;
+}
+
+.faculty-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition-premium);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.faculty-card:hover {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: var(--primary);
+    transform: translateX(-5px);
+}
+
+.faculty-card::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.faculty-card:hover::after {
+    opacity: 1;
+}
+
+.faculty-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.faculty-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.faculty-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 2px;
+}
+
+.faculty-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.faculty-link-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-bright);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.faculty-link-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: transparent;
+    transform: scale(1.1);
+}
