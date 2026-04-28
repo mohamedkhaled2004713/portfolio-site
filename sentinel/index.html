@@ -3,23 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Sentinel-AI Live Demo</title>
-    <!-- Updated to a more recent and stable version of stlite -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.54.0/build/stlite.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.54.0/build/stlite.css" />
     <style>
       body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #0e1117; }
       #root { height: 100vh; }
       #loading {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         display: flex; flex-direction: column; justify-content: center; align-items: center;
-        background: #0e1117; color: #00d2ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #0e1117; color: #00d2ff; font-family: 'Segoe UI', sans-serif;
         z-index: 9999;
       }
       .spinner {
@@ -33,33 +26,27 @@
   <body>
     <div id="loading">
       <div class="spinner"></div>
-      <div id="status">Booting Sentinel-AI Core...</div>
-      <div style="font-size: 0.8rem; margin-top: 10px; color: #555;">Downloading Python runtime & AI libraries</div>
+      <div id="status">Starting Sentinel-AI Engine...</div>
     </div>
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.54.0/build/stlite.js"></script>
     <script>
       stlite.mount({
-        // Adding typing-extensions explicitly to resolve version conflicts
-        requirements: ["google-genai", "pandas", "plotly", "typing-extensions"],
+        // Switched to google-generativeai for better browser compatibility
+        requirements: ["google-generativeai", "pandas", "plotly"],
         entrypoint: "app.py",
         files: {
           "app.py": `
 import streamlit as st
-try:
-    from google import genai
-    from google.genai import types
-except ImportError:
-    st.error("AI Library is still initializing. Please wait a moment.")
-
+import google.generativeai as genai
 import pandas as pd
 import plotly.graph_objects as go
 import json
-import re
 import time
 
 st.set_page_config(page_title="Sentinel-AI", page_icon="🛡️", layout="wide")
 
+# Custom CSS
 st.markdown("""
 <style>
     .main { background-color: #0e1117; color: #e0e0e0; }
@@ -67,14 +54,12 @@ st.markdown("""
     div.stButton > button {
         background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
         color: white; border: none; padding: 0.6rem 2rem;
-        font-weight: bold; transition: all 0.3s ease; border-radius: 5px; width: 100%;
+        font-weight: bold; border-radius: 5px; width: 100%;
     }
     .agent-card {
         background: rgba(255, 255, 255, 0.05); border-left: 5px solid #00d2ff;
         padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0;
     }
-    .reviewer-card { border-left-color: #ff00ff; }
-    .decision-card { border-left-color: #ffcc00; }
     .title-text {
         background: linear-gradient(90deg, #00d2ff, #9d50bb);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
@@ -87,57 +72,56 @@ with st.sidebar:
     api_key = st.text_input("🔑 Gemini API Key", value="", type="password")
     demo_mode = st.toggle("🧪 Demo Mode (Offline)", value=True)
     st.divider()
-    st.info("System Status: " + ("ACTIVE" if (api_key or demo_mode) else "WAITING"))
+    st.info("Status: " + ("ACTIVE" if (api_key or demo_mode) else "WAITING"))
 
-def run_agent(name, prompt, data=None):
+def run_agent_logic(name, prompt, data=None):
     if demo_mode:
         time.sleep(1)
         if name == "ANALYZER":
-            score = 95 if data.get('amount', 0) > 5000 else 12
-            return json.dumps({"anomalies": "Analysis complete.", "risk_score": score, "confidence": "High"})
-        elif name == "FORENSICS":
-            return json.dumps({"attack_vectors": [], "technical_validation": "All clear."})
+            score = 95 if (data and data.get('amount', 0) > 5000) else 12
+            return {"anomalies": "High risk transfer." if score > 50 else "Safe.", "risk_score": score}
         elif name == "DECISION":
-            v = "FRAUD" if "95" in prompt else "SAFE"
-            return json.dumps({"verdict": v, "reason": "System analysis", "action": "Block" if v=="FRAUD" else "Approve"})
-    
-    if not api_key:
-        st.warning("Please enter API Key or use Demo Mode.")
-        return "{}"
+            return {"verdict": "FRAUD" if "95" in str(prompt) else "SAFE", "reason": "AI Analysis"}
+        return {}
 
-    # Real API call logic
-    client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(response_mime_type="application/json")
-    )
-    match = re.search(r'\\{.*\\}', response.text, re.DOTALL)
-    return match.group(0) if match else response.text
+    if not api_key:
+        st.warning("Enter API Key or use Demo Mode.")
+        return {}
+
+    try:
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content(prompt)
+        # Simple extraction for demo
+        import re
+        match = re.search(r'\\{.*\\}', response.text, re.DOTALL)
+        return json.loads(match.group(0)) if match else {"text": response.text}
+    except Exception as e:
+        return {"error": str(e)}
 
 st.markdown("<h1 class='title-text'>🛡️ SENTINEL-AI: THREAT HUB</h1>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 2])
 
 with col1:
     amount = st.number_input("Amount ($)", min_value=0.0, value=1250.0)
-    tx_type = st.selectbox("Type", ["Online Purchase", "Wire Transfer", "P2P"])
     analyze_btn = st.button("🚀 EXECUTE ANALYSIS")
 
 with col2:
-    st.markdown("### 📈 Risk Analysis")
+    st.markdown("### 📈 Risk Analytics")
     score = 0
     if analyze_btn:
-        res1 = run_agent("ANALYZER", "Analyze", {"amount": amount})
-        score = json.loads(res1).get('risk_score', 0)
+        res = run_agent_logic("ANALYZER", "Analyze", {"amount": amount})
+        score = res.get('risk_score', 0)
     
     fig = go.Figure(go.Indicator(mode="gauge+number", value=score, gauge={'axis': {'range': [0, 100]}, 'bar': {'color': "red" if score > 70 else "#00d2ff"}}))
-    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font={'color': "white"}, height=300, margin=dict(l=20, r=20, t=30, b=20))
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font={'color': "white"}, height=300)
     st.plotly_chart(fig, use_container_width=True)
 
 if analyze_btn:
     st.divider()
-    st.markdown("### 🧠 Collaborative Reasoning")
-    st.success("Analysis complete. Check indicators above.")
+    st.markdown("### 🧠 Agent Insights")
+    st.markdown("<div class='agent-card'><b>🕵️ ANALYZER AGENT:</b> Transaction analysis complete.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='agent-card' style='border-left-color:#ffcc00'><b>⚖️ FINAL VERDICT:</b> " + ("FRAUD DETECTED" if score > 70 else "SAFE") + "</div>", unsafe_allow_html=True)
 `
         }
       }).then(() => {
