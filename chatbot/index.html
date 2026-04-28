@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>مساعد AUT الذكي | IT College Assistant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- ── SIDEBAR ────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <img src="logo.png" style="width:100%; height:100%; object-fit:contain; border-radius:12px;"
+            onerror="this.style.display='none'" />
+        </div>
+        <div class="brand-text">
+          <h2>كلية تقنية المعلومات</h2>
+          <p>Aqaba University (AUT)</p>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="section-label">القائمة الرئيسية</div>
+        <a href="#" class="nav-link active">
+          <span class="icon">💬</span> مساعدك الذكي
+        </a>
+        <a href="https://aut.edu.jo" target="_blank" class="nav-link">
+          <span class="icon">🏛️</span> موقع الجامعة
+        </a>
+        <a href="https://edugate.aut.edu.jo/" target="_blank" class="nav-link">
+          <span class="icon">🔑</span> بوابة الطالب (Edugate)
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="section-label">تواصل معنا</div>
+        <a href="https://chat.whatsapp.com/GDbCWIxa2YqGYpm3lhvh2l" target="_blank" class="nav-link">
+          <span class="icon">📱</span> نادي الـ IT (واتساب)
+        </a>
+        <a href="mailto:info@aut.edu.jo" class="nav-link">
+          <span class="icon">✉️</span> البريد الرسمي
+        </a>
+      </div>
+
+      <div class="nav-section" style="margin-top:auto">
+        <div class="section-label">النظام</div>
+        <div class="nav-link" onclick="toggleTheme()" style="cursor:pointer">
+          <span class="icon">🌓</span> تبديل المظهر
+        </div>
+        <div class="nav-link" onclick="clearData()" style="cursor:pointer">
+          <span class="icon">🧹</span> مسح الذاكرة
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── MAIN VIEW ──────────────────────────────── -->
+    <main class="main-view">
+
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="view-title">
+          <h1 style="font-size:1.1rem; font-weight:700">المحادثة النشطة</h1>
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            متصل الآن
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div id="api-status"
+            style="font-size:0.7rem; color:var(--text-muted); display:flex; align-items:center; gap:5px">
+            <span id="api-indicator">🟢 AI Active</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Chat Window -->
+      <div class="chat-window" id="chat-window">
+        <!-- Welcome Section -->
+        <div class="welcome-hero" id="welcome-hero" style="text-align:center; padding: 60px 20px;">
+          <h2
+            style="font-size:2.4rem; margin-bottom:12px; background:linear-gradient(to right, #fff, var(--text-muted)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+            جامعة العقبة للتكنولوجيا 👋</h2>
+          <p style="color:var(--text-muted); font-size:1.1rem; max-width:550px; margin: 0 auto 40px;">مرحباً بك في
+            المساعد الذكي. يمكنني إجابتك عن تخصصات الكليات، شروط القبول، حساب المعدل، وأكثر من ذلك بكثير.</p>
+        </div>
+      </div>
+
+      <!-- Quick Grid -->
+      <div class="quick-grid" id="quick-grid">
+        <div class="grid-item" onclick="sendQuick('حساب المعدل')">📊 حساب المعدل</div>
+        <div class="grid-item" onclick="sendQuick('طاقم التدريس')">👨‍🏫 طاقم التدريس</div>
+        <div class="grid-item" onclick="sendQuick('من هو رئيس الجامعة؟')">🏛️ رئيس الجامعة</div>
+        <div class="grid-item" onclick="sendQuick('ما هي كليات الجامعة؟')">🎓 كليات الجامعة</div>
+        <div class="grid-item" onclick="sendQuick('بوابة الطالب')">🔑 بوابة الطالب</div>
+        <div class="grid-item" onclick="sendQuick('شروط القبول')">📜 شروط القبول</div>
+        <div class="grid-item" onclick="sendQuick('نادي الـ IT')">📱 نادي الـ IT</div>
+        <div class="grid-item" onclick="sendQuick('موقع الجامعة')">📍 موقع الجامعة</div>
+      </div>
+
+      <!-- Input Dock -->
+      <div class="input-dock">
+        <div class="input-container">
+          <textarea id="user-input" rows="1" placeholder="اكتب سؤالك هنا بخصوص الكلية..." dir="auto"></textarea>
+          <button class="send-button" id="send-btn" onclick="handleSend()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // ── Ultra-Premium UI Controller ──────────────────
+    let isProcessing = false;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Auto-focus input
+      document.getElementById('user-input').focus();
+
+      // Theme recovery
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+
+      // Input auto-resize
+      const input = document.getElementById('user-input');
+      input.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+      });
+
+      // Enter to send
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    function clearData() {
+      if (confirm('هل تريد مسح ذاكرة المحادثة؟')) {
+        localStorage.clear();
+        location.reload();
+      }
+    }
+
+    function sendQuick(text) {
+      document.getElementById('user-input').value = text;
+      handleSend();
+    }
+
+    async function handleSend() {
+      const input = document.getElementById('user-input');
+      const text = input.value.trim();
+      if (!text || isProcessing) return;
+
+      input.value = '';
+      input.style.height = 'auto';
+
+      const hero = document.getElementById('welcome-hero');
+      if (hero) hero.remove();
+
+      appendMessage(text, 'user');
+
+      isProcessing = true;
+      const tid = showTyping();
+
+      try {
+        const response = await window.ChatBot.processMessage(text);
+        removeTyping(tid);
+        appendMessage(response, 'bot');
+      } catch (err) {
+        removeTyping(tid);
+        appendMessage('⚠️ عذراً، حدث خطأ غير متوقع. يرجى المحاولة لاحقاً.', 'bot');
+      } finally {
+        isProcessing = false;
+      }
+    }
+
+    function appendMessage(text, side) {
+      const win = document.getElementById('chat-window');
+      const div = document.createElement('div');
+      div.className = `message ${side}`;
+
+      const content = typeof marked !== 'undefined' ? marked.parse(text) : text;
+      const avatar = side === 'bot' ? 'logo.png' : 'https://ui-avatars.com/api/?name=U&background=3B82F6&color=fff';
+
+      div.innerHTML = `
+        <div class="avatar"><img src="${avatar}" onerror="this.src='https://ui-avatars.com/api/?name=${side === 'bot' ? 'IT' : 'U'}&background=${side === 'bot' ? '0B1120' : '3B82F6'}&color=fff'"></div>
+        <div class="bubble">${content}</div>
+      `;
+
+      win.appendChild(div);
+      win.scrollTop = win.scrollHeight;
+    }
+
+    function showTyping() {
+      const win = document.getElementById('chat-window');
+      const id = 't-' + Date.now();
+      const div = document.createElement('div');
+      div.id = id;
+      div.className = 'message bot';
+      div.innerHTML = `
+        <div class="avatar"><img src="logo.png" onerror="this.style.display='none'"></div>
+        <div class="bubble" style="display:flex; gap:6px; padding:15px 25px">
+          <div class="t-dot"></div><div class="t-dot" style="animation-delay:0.2s"></div><div class="t-dot" style="animation-delay:0.4s"></div>
+        </div>
+      `;
+      win.appendChild(div);
+      win.scrollTop = win.scrollHeight;
+      return id;
+    }
+
+    function removeTyping(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    // ── Global GPA Helpers ────────────────────────────
+    function addGpaRow(btn) {
+      const card = btn.closest('.gpa-card');
+      const body = card.querySelector('tbody');
+      const tr = document.createElement('tr');
+      tr.className = 'gpa-row';
+      tr.innerHTML = `
+        <td><input type="text" class="gpa-input-styled" placeholder="المادة"></td>
+        <td><input type="number" class="gpa-input-styled grade" value="90"></td>
+        <td><input type="number" class="gpa-input-styled hours" value="3"></td>
+        <td><button style="background:none; border:none; color:#EF4444; cursor:pointer; font-size:1.2rem" onclick="this.parentElement.parentElement.remove()">×</button></td>
+      `;
+      body.appendChild(tr);
+    }
+
+    function calculateGPA(btn) {
+      const card = btn.closest('.gpa-card');
+      const gs = card.querySelectorAll('.grade');
+      const hs = card.querySelectorAll('.hours');
+
+      let p = 0, th = 0;
+      for (let i = 0; i < gs.length; i++) {
+        const g = parseFloat(gs[i].value) || 0, h = parseFloat(hs[i].value) || 0;
+        p += (g * h); th += h;
+      }
+
+      const res = card.querySelector('.gpa-result');
+      if (th === 0) { res.innerText = "يرجى إدخال البيانات"; res.style.display = 'block'; return; }
+
+      const gpa = (p / th).toFixed(2);
+      const type = card.querySelectorAll('.gpa-row').length <= 8 ? "الفصلي" : "التراكمي";
+
+      // Pools of Randomized Motivation
+      const highMot = [
+        "🌟 أداء أسطوري! أنت فخر لكلية تقنية المعلومات، واصل الصدارة.",
+        "🏆 القمة لا تليق إلا بك، استمر في هذا الإبداع المذهل!",
+        "🚀 أنت تمشي بسرعة الضوء نحو مستقبل مشرق، حافظ على هذا الإيقاع.",
+        "✨ ذكاء استثنائي وجهد جبار، أنت مثال يحتذى به لكل زملائك.",
+        "👑 ملك التخصص! استمر في إبهارنا بنتائجك الرائعة."
+      ];
+      const midMot = [
+        "💪 أداء رائع جداً! أنت على بعد خطوة واحدة من الامتياز، انطلق!",
+        "✨ خطواتك ثابتة وواثقة، استمر وستصل للقمة قريباً جداً.",
+        "💡 أداء مبشر بالخير، كلية IT تفتخر بطلاب مجتهدين أمثالك.",
+        "📈 منحنى نجاحك في صعود مستمر، لا تتوقف الآن!",
+        "🌟 أنت قريب جداً من الصدارة، لمسة تركيز واحدة وستصنع الفارق."
+      ];
+      const lowMot = [
+        "🚩 البدايات قد تكون صعبة، لكن العبرة دائماً بالخواتيم القوية.",
+        "💡 المعدل هو مجرد رقم حالي، وبإرادتك ستغير هذا الرقم الفصل القادم.",
+        "🚀 كل عثرة هي خطوة للأمام إذا تعلمت منها، ابدأ اليوم بتنظيم وقتك.",
+        "🔥 لا تستسلم، أعظم المبرمجين واجهوا تحديات في بدايتهم، أنت تستطيع!",
+        "📍 حان وقت التغيير! ابدأ بخطة دراسية جديدة وسترى نتائج تذهلك.",
+        "🎯 طريق النجاح يبدأ من هنا، رتب أولوياتك ونحن معك لندعمك."
+      ];
+
+      let motivation = "";
+      let tips = "";
+
+      if (gpa >= 90) {
+        motivation = highMot[Math.floor(Math.random() * highMot.length)];
+      } else if (gpa >= 75) {
+        motivation = midMot[Math.floor(Math.random() * midMot.length)];
+      } else {
+        motivation = lowMot[Math.floor(Math.random() * lowMot.length)];
+        tips = `
+          <div style="margin-top:15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; font-size:0.9em; text-align:right; border-right:4px solid #F59E0B">
+            <strong>🛠️ خطة إنقاذ المعدل:</strong><br>
+            - حلل أخطاء امتحاناتك السابقة واعرف نقاط الضعف.<br>
+            - راجع الدكتور في الساعات المكتبية لطلب المساعدة.<br>
+            - صاحب المتفوقين لرفع همتك (عدوى النجاح).<br>
+            - اقرأ الدرس قبل المحاضرة بـ 10 دقائق لزيادة استيعابك.
+          </div>
+        `;
+      }
+
+      res.innerHTML = `معدلك **${type}** المتوقع: <span style="color:var(--accent); font-size:1.6rem">${gpa}%</span><br><p style="margin-top:10px; font-style:italic; color:#fff">${motivation}</p>${tips}`;
+      res.style.display = 'block';
+    }
+
+    // Force all links to open in new tab
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a');
+      if (link) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+    }, true);
+  </script>
+
+  <style>
+    .t-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: t-bounce 1.4s infinite;
+    }
+
+    @keyframes t-bounce {
+
+      0%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+
+</body>
+
+</html>

@@ -1,0 +1,509 @@
+{
+  "university": {
+    "name_ar": "جامعة العقبة للتكنولوجيا",
+    "name_en": "Aqaba University of Technology",
+    "abbreviation": "AUT",
+    "founded": 2015,
+    "location_ar": "العقبة، الأردن",
+    "location_en": "Aqaba, Jordan",
+    "website": "https://aut.edu.jo",
+    "email": "info@aut.edu.jo",
+    "phone": "+962-3-209-0000",
+    "description_ar": "جامعة العقبة للتكنولوجيا هي مؤسسة تعليمية حكومية أردنية متخصصة في التكنولوجيا والعلوم التطبيقية، تأسست عام 2015 في مدينة العقبة.",
+    "description_en": "Aqaba University of Technology is a Jordanian public educational institution specializing in technology and applied sciences, established in 2015 in the city of Aqaba.",
+    "vision_ar": "أن تكون جامعة رائدة في مجال التكنولوجيا على المستوى الإقليمي والدولي.",
+    "vision_en": "To be a leading university in technology at the regional and international level.",
+    "mission_ar": "تقديم تعليم تكنولوجي متميز يلبي احتياجات سوق العمل ويسهم في التنمية المستدامة.",
+    "mission_en": "Providing distinguished technological education that meets labor market needs and contributes to sustainable development."
+  },
+  "admission": {
+    "requirements_ar": [
+      "شهادة الثانوية العامة أو ما يعادلها",
+      "الحصول على نسبة توجيهي لا تقل عن 60%",
+      "اجتياز اختبارات القبول المحددة",
+      "تقديم الوثائق المطلوبة: صورة الهوية، شهادة الثانوية، صور شخصية",
+      "دفع رسوم التقديم"
+    ],
+    "requirements_en": [
+      "High school diploma or equivalent",
+      "Minimum Tawjihi score of 60%",
+      "Pass specified admission tests",
+      "Submit required documents: ID copy, high school certificate, personal photos",
+      "Pay application fees"
+    ],
+    "process_ar": [
+      "1. زيارة الموقع الرسمي للجامعة",
+      "2. تعبئة نموذج التقديم الإلكتروني",
+      "3. رفع المستندات المطلوبة",
+      "4. دفع رسوم التقديم (20 دينار)",
+      "5. انتظار إشعار القبول",
+      "6. إتمام إجراءات التسجيل"
+    ],
+    "process_en": [
+      "1. Visit the official university website",
+      "2. Fill out the online application form",
+      "3. Upload required documents",
+      "4. Pay application fee (20 JD)",
+      "5. Wait for acceptance notification",
+      "6. Complete registration procedures"
+    ],
+    "deadlines": {
+      "first_semester": "15 أغسطس / August 15",
+      "second_semester": "15 يناير / January 15"
+    },
+    "fees_per_credit_hour": "35 JD / 35 دينار"
+  },
+  "registration": {
+    "process_ar": [
+      "1. تسجيل الدخول على بوابة الطالب",
+      "2. الاطلاع على الخطة الدراسية",
+      "3. اختيار المواد المتاحة للترم القادم",
+      "4. التأكد من اجتياز المتطلبات السابقة",
+      "5. تأكيد التسجيل ودفع الرسوم"
+    ],
+    "process_en": [
+      "1. Login to the student portal",
+      "2. Review your study plan",
+      "3. Select available courses for next semester",
+      "4. Ensure prerequisites are completed",
+      "5. Confirm registration and pay fees"
+    ],
+    "portal": "https://portal.aut.edu.jo",
+    "registration_period_ar": "أسبوعان قبل بداية الفصل الدراسي",
+    "registration_period_en": "Two weeks before the start of the semester",
+    "max_credit_hours": 18,
+    "min_credit_hours": 12,
+    "add_drop_period_ar": "أول أسبوعين من الفصل الدراسي",
+    "add_drop_period_en": "First two weeks of the semester"
+  },
+  "colleges": [
+    {
+      "id": "engineering",
+      "name_ar": "كلية الهندسة والتكنولوجيا",
+      "name_en": "College of Engineering and Technology",
+      "dean_ar": "أ.د. محمد الخالدي",
+      "dean_en": "Prof. Mohammed Al-Khalidi",
+      "departments": ["computer_engineering", "civil_engineering", "electrical_engineering", "mechanical_engineering"]
+    },
+    {
+      "id": "it",
+      "name_ar": "كلية تقنية المعلومات",
+      "name_en": "College of Information Technology",
+      "dean_ar": "أ.د. سارة العمري",
+      "dean_en": "Prof. Sara Al-Omari",
+      "departments": ["computer_science", "information_systems", "cybersecurity", "ai_data_science"]
+    },
+    {
+      "id": "business",
+      "name_ar": "كلية إدارة الأعمال التكنولوجية",
+      "name_en": "College of Technology Business Management",
+      "dean_ar": "أ.د. أحمد السالم",
+      "dean_en": "Prof. Ahmad Al-Salem",
+      "departments": ["business_tech", "ecommerce", "logistics"]
+    }
+  ],
+  "departments": {
+    "computer_science": {
+      "name_ar": "قسم علوم الحاسوب",
+      "name_en": "Computer Science Department",
+      "college": "it",
+      "head_ar": "د. نور الحسين",
+      "head_en": "Dr. Nour Al-Hussein",
+      "total_credit_hours": 132,
+      "study_years": 4
+    },
+    "computer_engineering": {
+      "name_ar": "قسم هندسة الحاسوب",
+      "name_en": "Computer Engineering Department",
+      "college": "engineering",
+      "head_ar": "د. خالد البطاينة",
+      "head_en": "Dr. Khalid Al-Batayneh",
+      "total_credit_hours": 136,
+      "study_years": 4
+    },
+    "ai_data_science": {
+      "name_ar": "قسم الذكاء الاصطناعي وعلم البيانات",
+      "name_en": "AI & Data Science Department",
+      "college": "it",
+      "head_ar": "د. ليلى الزعبي",
+      "head_en": "Dr. Layla Al-Zo'bi",
+      "total_credit_hours": 130,
+      "study_years": 4
+    },
+    "cybersecurity": {
+      "name_ar": "قسم الأمن السيبراني",
+      "name_en": "Cybersecurity Department",
+      "college": "it",
+      "head_ar": "د. رامي الشوبكي",
+      "head_en": "Dr. Rami Al-Shawabkeh",
+      "total_credit_hours": 128,
+      "study_years": 4
+    }
+  },
+  "courses": {
+    "CS101": {
+      "name_ar": "مقدمة في علوم الحاسوب",
+      "name_en": "Introduction to Computer Science",
+      "credit_hours": 3,
+      "prerequisites": [],
+      "year": 1,
+      "semester": 1,
+      "departments": ["computer_science", "ai_data_science"],
+      "instructor_id": "DR001"
+    },
+    "CS102": {
+      "name_ar": "برمجة I",
+      "name_en": "Programming I",
+      "credit_hours": 3,
+      "prerequisites": [],
+      "year": 1,
+      "semester": 1,
+      "departments": ["computer_science", "computer_engineering", "ai_data_science"],
+      "instructor_id": "DR002"
+    },
+    "CS201": {
+      "name_ar": "برمجة II",
+      "name_en": "Programming II",
+      "credit_hours": 3,
+      "prerequisites": ["CS102"],
+      "year": 1,
+      "semester": 2,
+      "departments": ["computer_science", "computer_engineering"],
+      "instructor_id": "DR002"
+    },
+    "CS202": {
+      "name_ar": "هياكل البيانات",
+      "name_en": "Data Structures",
+      "credit_hours": 3,
+      "prerequisites": ["CS102"],
+      "year": 2,
+      "semester": 1,
+      "departments": ["computer_science", "computer_engineering"],
+      "instructor_id": "DR003"
+    },
+    "CS301": {
+      "name_ar": "قواعد البيانات",
+      "name_en": "Database Systems",
+      "credit_hours": 3,
+      "prerequisites": ["CS202"],
+      "year": 2,
+      "semester": 2,
+      "departments": ["computer_science", "ai_data_science"],
+      "instructor_id": "DR004"
+    },
+    "CS302": {
+      "name_ar": "الخوارزميات وتحليل التعقيد",
+      "name_en": "Algorithms & Complexity",
+      "credit_hours": 3,
+      "prerequisites": ["CS202"],
+      "year": 2,
+      "semester": 2,
+      "departments": ["computer_science"],
+      "instructor_id": "DR003"
+    },
+    "CS401": {
+      "name_ar": "هندسة البرمجيات",
+      "name_en": "Software Engineering",
+      "credit_hours": 3,
+      "prerequisites": ["CS301"],
+      "year": 3,
+      "semester": 1,
+      "departments": ["computer_science"],
+      "instructor_id": "DR005"
+    },
+    "CS402": {
+      "name_ar": "شبكات الحاسوب",
+      "name_en": "Computer Networks",
+      "credit_hours": 3,
+      "prerequisites": ["CS202"],
+      "year": 3,
+      "semester": 1,
+      "departments": ["computer_science", "computer_engineering", "cybersecurity"],
+      "instructor_id": "DR006"
+    },
+    "AI101": {
+      "name_ar": "مقدمة في الذكاء الاصطناعي",
+      "name_en": "Introduction to AI",
+      "credit_hours": 3,
+      "prerequisites": ["CS202"],
+      "year": 2,
+      "semester": 2,
+      "departments": ["ai_data_science", "computer_science"],
+      "instructor_id": "DR007"
+    },
+    "AI201": {
+      "name_ar": "تعلم الآلة",
+      "name_en": "Machine Learning",
+      "credit_hours": 3,
+      "prerequisites": ["AI101", "MATH201"],
+      "year": 3,
+      "semester": 1,
+      "departments": ["ai_data_science"],
+      "instructor_id": "DR007"
+    },
+    "AI301": {
+      "name_ar": "الشبكات العصبية والتعلم العميق",
+      "name_en": "Neural Networks & Deep Learning",
+      "credit_hours": 3,
+      "prerequisites": ["AI201"],
+      "year": 3,
+      "semester": 2,
+      "departments": ["ai_data_science"],
+      "instructor_id": "DR007"
+    },
+    "SEC101": {
+      "name_ar": "مقدمة في الأمن السيبراني",
+      "name_en": "Introduction to Cybersecurity",
+      "credit_hours": 3,
+      "prerequisites": ["CS102"],
+      "year": 1,
+      "semester": 2,
+      "departments": ["cybersecurity"],
+      "instructor_id": "DR008"
+    },
+    "SEC201": {
+      "name_ar": "أمن الشبكات",
+      "name_en": "Network Security",
+      "credit_hours": 3,
+      "prerequisites": ["SEC101", "CS402"],
+      "year": 2,
+      "semester": 2,
+      "departments": ["cybersecurity"],
+      "instructor_id": "DR008"
+    },
+    "MATH101": {
+      "name_ar": "حساب التفاضل والتكامل I",
+      "name_en": "Calculus I",
+      "credit_hours": 3,
+      "prerequisites": [],
+      "year": 1,
+      "semester": 1,
+      "departments": ["computer_science", "computer_engineering", "ai_data_science"],
+      "instructor_id": "DR009"
+    },
+    "MATH201": {
+      "name_ar": "الإحصاء والاحتمالات",
+      "name_en": "Statistics & Probability",
+      "credit_hours": 3,
+      "prerequisites": ["MATH101"],
+      "year": 2,
+      "semester": 1,
+      "departments": ["computer_science", "ai_data_science"],
+      "instructor_id": "DR009"
+    },
+    "GRAD401": {
+      "name_ar": "مشروع التخرج I",
+      "name_en": "Graduation Project I",
+      "credit_hours": 3,
+      "prerequisites": ["CS401"],
+      "year": 4,
+      "semester": 1,
+      "departments": ["computer_science", "ai_data_science", "cybersecurity"],
+      "instructor_id": "DR005"
+    }
+  },
+  "instructors": {
+    "DR001": {
+      "name_ar": "د. أحمد محمود",
+      "name_en": "Dr. Ahmad Mahmoud",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "computer_science",
+      "email": "a.mahmoud@aut.edu.jo",
+      "office": "IT Building, Room 205",
+      "office_hours_ar": "الأحد والثلاثاء 10-12 ظهراً",
+      "office_hours_en": "Sunday & Tuesday 10AM-12PM",
+      "courses": ["CS101"],
+      "specialization_ar": "قواعد البيانات وأنظمة المعلومات",
+      "specialization_en": "Database Systems & Information Systems"
+    },
+    "DR002": {
+      "name_ar": "د. منى العلي",
+      "name_en": "Dr. Mona Al-Ali",
+      "title_ar": "أستاذ مشارك",
+      "title_en": "Associate Professor",
+      "department": "computer_science",
+      "email": "m.alali@aut.edu.jo",
+      "office": "IT Building, Room 210",
+      "office_hours_ar": "الاثنين والأربعاء 9-11 صباحاً",
+      "office_hours_en": "Monday & Wednesday 9-11AM",
+      "courses": ["CS102", "CS201"],
+      "specialization_ar": "هندسة البرمجيات والبرمجة الكائنية",
+      "specialization_en": "Software Engineering & OOP"
+    },
+    "DR003": {
+      "name_ar": "د. سامر الرشيد",
+      "name_en": "Dr. Samer Al-Rashid",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "computer_science",
+      "email": "s.alrashid@aut.edu.jo",
+      "office": "IT Building, Room 215",
+      "office_hours_ar": "الثلاثاء والخميس 1-3 مساءً",
+      "office_hours_en": "Tuesday & Thursday 1-3PM",
+      "courses": ["CS202", "CS302"],
+      "specialization_ar": "الخوارزميات وهياكل البيانات",
+      "specialization_en": "Algorithms & Data Structures"
+    },
+    "DR004": {
+      "name_ar": "د. هند الزبيدي",
+      "name_en": "Dr. Hind Al-Zubaidi",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "computer_science",
+      "email": "h.alzubaidi@aut.edu.jo",
+      "office": "IT Building, Room 220",
+      "office_hours_ar": "الأحد والاثنين 11-1 ظهراً",
+      "office_hours_en": "Sunday & Monday 11AM-1PM",
+      "courses": ["CS301"],
+      "specialization_ar": "قواعد البيانات والبيانات الضخمة",
+      "specialization_en": "Database Systems & Big Data"
+    },
+    "DR005": {
+      "name_ar": "أ.د. فيصل النعيمي",
+      "name_en": "Prof. Faisal Al-Nuaimi",
+      "title_ar": "أستاذ دكتور",
+      "title_en": "Professor",
+      "department": "computer_science",
+      "email": "f.alnuaimi@aut.edu.jo",
+      "office": "IT Building, Room 301",
+      "office_hours_ar": "الأحد والثلاثاء والخميس 10-12 ظهراً",
+      "office_hours_en": "Sun, Tue & Thu 10AM-12PM",
+      "courses": ["CS401", "GRAD401"],
+      "specialization_ar": "هندسة البرمجيات وإدارة المشاريع",
+      "specialization_en": "Software Engineering & Project Management"
+    },
+    "DR006": {
+      "name_ar": "د. عمر الحموري",
+      "name_en": "Dr. Omar Al-Hamouri",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "computer_science",
+      "email": "o.alhamouri@aut.edu.jo",
+      "office": "Engineering Building, Room 115",
+      "office_hours_ar": "الاثنين والأربعاء 2-4 مساءً",
+      "office_hours_en": "Monday & Wednesday 2-4PM",
+      "courses": ["CS402"],
+      "specialization_ar": "شبكات الحاسوب وبروتوكولات الاتصال",
+      "specialization_en": "Computer Networks & Communication Protocols"
+    },
+    "DR007": {
+      "name_ar": "د. ليلى الزعبي",
+      "name_en": "Dr. Layla Al-Zo'bi",
+      "title_ar": "أستاذ مشارك",
+      "title_en": "Associate Professor",
+      "department": "ai_data_science",
+      "email": "l.alzobi@aut.edu.jo",
+      "office": "IT Building, Room 310",
+      "office_hours_ar": "الأحد والثلاثاء 9-11 صباحاً",
+      "office_hours_en": "Sunday & Tuesday 9-11AM",
+      "courses": ["AI101", "AI201", "AI301"],
+      "specialization_ar": "الذكاء الاصطناعي والتعلم الآلي",
+      "specialization_en": "Artificial Intelligence & Machine Learning"
+    },
+    "DR008": {
+      "name_ar": "د. رامي الشوبكي",
+      "name_en": "Dr. Rami Al-Shawabkeh",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "cybersecurity",
+      "email": "r.alshawabkeh@aut.edu.jo",
+      "office": "IT Building, Room 320",
+      "office_hours_ar": "الاثنين والأربعاء والخميس 11-1 ظهراً",
+      "office_hours_en": "Mon, Wed & Thu 11AM-1PM",
+      "courses": ["SEC101", "SEC201"],
+      "specialization_ar": "الأمن السيبراني والتشفير",
+      "specialization_en": "Cybersecurity & Cryptography"
+    },
+    "DR009": {
+      "name_ar": "د. إيمان الخوالدة",
+      "name_en": "Dr. Iman Al-Khawaldeh",
+      "title_ar": "أستاذ مساعد",
+      "title_en": "Assistant Professor",
+      "department": "computer_science",
+      "email": "i.alkhawaldeh@aut.edu.jo",
+      "office": "Science Building, Room 105",
+      "office_hours_ar": "الأحد والثلاثاء 1-3 مساءً",
+      "office_hours_en": "Sunday & Tuesday 1-3PM",
+      "courses": ["MATH101", "MATH201"],
+      "specialization_ar": "الرياضيات التطبيقية والإحصاء",
+      "specialization_en": "Applied Mathematics & Statistics"
+    }
+  },
+  "study_plans": {
+    "computer_science": {
+      "year1_sem1": ["CS101", "CS102", "MATH101"],
+      "year1_sem2": ["CS201", "SEC101", "MATH201"],
+      "year2_sem1": ["CS202", "MATH201", "AI101"],
+      "year2_sem2": ["CS301", "CS302", "AI101"],
+      "year3_sem1": ["CS401", "CS402", "AI201"],
+      "year3_sem2": ["AI301", "CS302"],
+      "year4_sem1": ["GRAD401"],
+      "year4_sem2": ["GRAD401"]
+    },
+    "ai_data_science": {
+      "year1_sem1": ["CS101", "CS102", "MATH101"],
+      "year1_sem2": ["CS201", "MATH201"],
+      "year2_sem1": ["CS202", "AI101"],
+      "year2_sem2": ["CS301", "AI101", "MATH201"],
+      "year3_sem1": ["AI201", "CS402"],
+      "year3_sem2": ["AI301"],
+      "year4_sem1": ["GRAD401"],
+      "year4_sem2": ["GRAD401"]
+    },
+    "cybersecurity": {
+      "year1_sem1": ["CS101", "CS102", "MATH101"],
+      "year1_sem2": ["CS201", "SEC101"],
+      "year2_sem1": ["CS202", "CS402"],
+      "year2_sem2": ["SEC201"],
+      "year3_sem1": ["CS401", "AI101"],
+      "year3_sem2": ["AI301"],
+      "year4_sem1": ["GRAD401"],
+      "year4_sem2": ["GRAD401"]
+    }
+  },
+  "facilities": {
+    "library": {
+      "name_ar": "المكتبة المركزية",
+      "name_en": "Central Library",
+      "hours_ar": "الأحد-الخميس 8 صباحاً - 8 مساءً",
+      "hours_en": "Sun-Thu 8AM - 8PM",
+      "location_ar": "المبنى الرئيسي، الطابق الأول",
+      "location_en": "Main Building, First Floor"
+    },
+    "labs": {
+      "name_ar": "مختبرات الحاسوب",
+      "name_en": "Computer Labs",
+      "count": 8,
+      "capacity": 30,
+      "hours_ar": "الأحد-الخميس 8 صباحاً - 6 مساءً",
+      "hours_en": "Sun-Thu 8AM - 6PM"
+    },
+    "cafeteria": {
+      "name_ar": "الكافيتيريا",
+      "name_en": "Cafeteria",
+      "hours_ar": "الأحد-الخميس 7:30 صباحاً - 5 مساءً",
+      "hours_en": "Sun-Thu 7:30AM - 5PM"
+    }
+  },
+  "academic_calendar": {
+    "first_semester": {
+      "start_ar": "أول سبتمبر",
+      "start_en": "September 1st",
+      "end_ar": "نهاية يناير",
+      "end_en": "End of January"
+    },
+    "second_semester": {
+      "start_ar": "أول فبراير",
+      "start_en": "February 1st",
+      "end_ar": "نهاية يونيو",
+      "end_en": "End of June"
+    },
+    "summer_semester": {
+      "start_ar": "أول يوليو",
+      "start_en": "July 1st",
+      "end_ar": "نهاية أغسطس",
+      "end_en": "End of August"
+    }
+  }
+}
