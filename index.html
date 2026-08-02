@@ -41,23 +41,45 @@
         </div>
     </nav>
 
-    <!-- ===================== HERO BANNER (Full-Width Profile Photo) ===================== -->
-    <header class="hero-banner" id="home">
+    <!-- ===================== HERO BANNER (Centered Profile & Welcoming Phrase) ===================== -->
+    <header class="hero-banner hero-centered" id="home">
         <div class="hero-banner-overlay"></div>
-        <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-banner-img">
-        <div class="hero-banner-content">
-            <div class="hero-badge">AI SPECIALIST</div>
-            <h1 class="hero-title">
-                <span class="line line-1">Mohamed</span>
-                <span class="line line-2">Milege</span>
-            </h1>
-            <p class="hero-tagline">Data Analyst <span class="accent-dot">•</span> AI Specialist <span class="accent-dot">•</span> Future Innovator</p>
-            <div class="hero-buttons">
-                <a href="Mohamed_Khaled_CV_Master_Complete.pdf" target="_blank" class="btn primary-btn" style="background: linear-gradient(135deg, #8b5cf6, #d300ff); border: none; margin-right: 10px;">Download CV <i class="fas fa-file-pdf"></i></a>
-                <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
-                <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+
+        <div class="hero-centered-wrapper">
+            <!-- Welcoming Banner Badge -->
+            <div class="welcome-badge-pill reveal-text">
+                <span class="welcome-sparkle"><i class="fas fa-[#00f0ff] fa-sparkles"></i> ✨</span>
+                <span>Welcome to My AI Portfolio</span>
+            </div>
+
+            <!-- Centered Profile Avatar -->
+            <div class="hero-avatar-container tilt-card reveal-text">
+                <div class="avatar-glow-ring"></div>
+                <div class="avatar-glow-ring ring-secondary"></div>
+                <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-avatar-img">
+            </div>
+
+            <!-- Hero Text Content -->
+            <div class="hero-centered-content reveal-text">
+                <h1 class="hero-title centered-title">
+                    <span class="line line-1">Mohamed</span>
+                    <span class="line line-2">Milege</span>
+                </h1>
+
+                <p class="hero-welcome-phrase">
+                    Transforming Raw Data into <span class="accent">Intelligent AI Solutions</span> & Neural Architecture
+                </p>
+
+                <p class="hero-tagline">Data Analyst <span class="accent-dot">•</span> AI Specialist <span class="accent-dot">•</span> Future Innovator</p>
+
+                <div class="hero-buttons centered-buttons">
+                    <a href="Mohamed_Khaled_CV_Master_Complete.pdf" target="_blank" class="btn primary-btn cv-btn">Download CV <i class="fas fa-file-pdf"></i></a>
+                    <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
+                    <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
+
         <div class="scroll-indicator">
             <div class="mouse">
                 <div class="wheel"></div>
@@ -69,21 +91,31 @@
     <!-- ===================== ROBOT SECTION ===================== -->
     <section class="robot-section" id="robot-reveal">
         <div class="section-header">
-            <h2 class="reveal-text">The <span class="accent">AI</span> Behind the Vision</h2>
-            <p class="section-subtitle reveal-text">Hover to reveal the future</p>
+            <h2 class="reveal-text">The <span class="accent">AI & Neural Intelligence</span> Engine</h2>
+            <p class="section-subtitle reveal-text">Scroll & hover to interact with the Cybernetic AI Core</p>
         </div>
         <div class="robot-container reveal-text">
-            <div class="robot-card">
-                <!-- Animated ring -->
-                <div class="rotating-ring"></div>
-                <div class="rotating-ring ring-2"></div>
+            <div class="robot-card" id="interactive-robot-card">
+                <!-- Laser scanner beam -->
+                <div class="hud-laser-scanner"></div>
+                <!-- Rotating HUD rings -->
+                <div class="rotating-ring" id="hud-ring-1"></div>
+                <div class="rotating-ring ring-2" id="hud-ring-2"></div>
+                <div class="rotating-ring ring-3" id="hud-ring-3"></div>
                 <!-- The image -->
                 <div class="robot-image-wrapper">
                     <div class="robot-placeholder">
                         <i class="fas fa-robot"></i>
-                        <span>Hover Me</span>
+                        <span>Scroll & Hover Me</span>
                     </div>
-                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img">
+                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img" id="scroll-robot-img">
+                </div>
+                <!-- Floating HUD Data Badges -->
+                <div class="hud-data-badge hud-badge-top-left">
+                    <i class="fas fa-microchip"></i> Neural Core: <span class="accent">ACTIVE</span>
+                </div>
+                <div class="hud-data-badge hud-badge-bottom-right">
+                    <i class="fas fa-brain"></i> Accuracy: <span class="accent">99.8%</span>
                 </div>
                 <!-- Floating particles around robot -->
                 <div class="float-particle fp-1"></div>
