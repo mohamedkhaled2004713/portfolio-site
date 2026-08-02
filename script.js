@@ -343,38 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initSmoothScroll();
     initTiltCards();
-    initRobotScrollAnimation();
 });
-
-// ============ ROBOT SCROLL ANIMATION ============
-function initRobotScrollAnimation() {
-    const robotSection = document.getElementById('robot-reveal');
-    const ring1 = document.getElementById('hud-ring-1');
-    const ring2 = document.getElementById('hud-ring-2');
-    const ring3 = document.getElementById('hud-ring-3');
-    const robotImg = document.getElementById('scroll-robot-img');
-
-    if (!robotSection) return;
-
-    window.addEventListener('scroll', () => {
-        const rect = robotSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Calculate progress when section is in viewport (0 to 1)
-        if (rect.top <= windowHeight && rect.bottom >= 0) {
-            const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-            const rotationDegree = progress * 360;
-
-            if (ring1) ring1.style.transform = `rotate(${rotationDegree * 1.5}deg)`;
-            if (ring2) ring2.style.transform = `rotate(-${rotationDegree * 2}deg)`;
-            if (ring3) ring3.style.transform = `rotate(${rotationDegree}deg)`;
-            if (robotImg) {
-                const scaleVal = 1 + Math.sin(progress * Math.PI) * 0.08;
-                robotImg.style.transform = `scale(${scaleVal})`;
-            }
-        }
-    }, { passive: true });
-}
 
 // ============ FORM SUBMIT HANDLER ============
 document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
