@@ -206,7 +206,7 @@
             </div>
         </div>
         <div class="cert-download reveal-text">
-            <a href="assets/certificates.pdf" target="_blank" class="btn primary-btn">
+            <a href="شهادات.pdf" target="_blank" class="btn primary-btn">
                 <i class="fas fa-file-pdf"></i> View Official Certificates
             </a>
         </div>
@@ -811,27 +811,68 @@
         }
 
         function getChatResponse(input) {
-            const text = input.toLowerCase();
+            const text = input.toLowerCase().trim();
             
-            if (text.includes('rag') || text.includes('retrieval') || text.includes('hybrid')) {
-                return 'The Cognitive Hybrid RAG System is a production-ready QA application. It combines vector embeddings (ChromaDB) and multilingual lexical search (TF-IDF), featuring Cross-Encoder reranking, Multi-Query expansion, and automated 6-metric output evaluation. Try the Live Demo!';
-            } else if (text.includes('sentinel') || text.includes('system') || text.includes('cybersecurity')) {
-                return 'Sentinel-AI is a multi-agent cybersecurity system with three specialized agents: Analyzer (detects anomalies), Forensics (traces threats), and Decision (issues verdicts). It analyzes transactions in real-time to prevent fraud and detect security threats.';
-            } else if (text.includes('smart glass') || text.includes('glasses')) {
-                return 'Smart Glasses AI is an AI-powered wearable device that helps visually impaired people. It uses computer vision, OCR, face recognition, and voice AI to provide real-time assistance for daily activities.';
-            } else if (text.includes('pixel') || text.includes('pixelforge') || text.includes('filter') || text.includes('image')) {
-                return 'PixelForge is a real-time image filtering web app with 20+ filters, 8 presets, stack filter mode, and multi-format export. Built with pure HTML5 Canvas API.';
-            } else if (text.includes('aut') || text.includes('university') || text.includes('chatbot')) {
-                return 'The AUT Smart Chatbot is an intelligent assistant for Aqaba University students. It handles registration queries, calculates GPA with motivational feedback, and provides a faculty directory. Built with Gemini 2.0 Flash and custom NLP.';
-            } else if (text.includes('project')) {
-                return 'I have five main projects: Cognitive Hybrid RAG System (knowledge retrieval), Sentinel-AI (cybersecurity), Smart Glasses AI (assistive wearable), PixelForge (image filters), and the AUT Smart Chatbot (university assistant). All are available on my GitHub!';
-            } else if (text.includes('contact') || text.includes('email') || text.includes('message')) {
-                return 'You can reach me via the contact form above, email me at elmilege0@gmail.com, or call 01021118342. I respond quickly to all inquiries!';
-            } else if (text.includes('hello') || text.includes('hi')) {
-                return 'Hi there! Welcome to my portfolio. Feel free to ask me about my projects, experience, or how to get in touch!';
-            } else {
-                return 'I can help you with questions about Cognitive Hybrid RAG, Sentinel-AI, Smart Glasses, PixelForge, the AUT Chatbot, or how to contact me. What would you like to know?';
+            // Define Arabic and English keyword matchers
+            const match = (keywords) => keywords.some(keyword => text.includes(keyword));
+
+            // Greeting
+            if (match(['hello', 'hi', 'hey', 'مرحبا', 'اهلا', 'أهلا', 'السلام عليكم'])) {
+                return 'Hi there! I am Mohamed Milege\'s virtual assistant. I can tell you about his skills, projects, certifications, or how to contact him. What would you like to know?<br>أهلاً بك! أنا المساعد الافتراضي لمحمد مليجي. يمكنني إخبارك عن مهاراته، مشاريعه، شهاداته، أو كيفية التواصل معه.';
             }
+            
+            // About Mohamed
+            if (match(['who are you', 'about you', 'who is mohamed', 'من أنت', 'عن محمد', 'مين محمد', 'من هو'])) {
+                return 'Mohamed Milege is an AI Specialist and Data Analyst studying at Aqaba University of Technology. He is passionate about Machine Learning, Computer Vision, and building smart solutions.<br>محمد مليجي هو متخصص في الذكاء الاصطناعي ومحلل بيانات يدرس في جامعة العقبة للتكنولوجيا، شغوف بتعلم الآلة ورؤية الحاسوب.';
+            }
+
+            // Skills
+            if (match(['skills', 'programming', 'languages', 'مهارات', 'مبرمج', 'لغات البرمجة'])) {
+                return 'Mohamed specializes in Python, Artificial Intelligence, Machine Learning, Computer Vision, and Data Handling. He also possesses strong analytical and problem-solving skills.';
+            }
+
+            // Projects General
+            if (match(['project', 'portfolio', 'work', 'مشاريع', 'اعمال', 'أعمال', 'شغل'])) {
+                return 'Mohamed has 5 main projects: <b>Sentinel-AI</b> (Cybersecurity), <b>Smart Glasses</b> (for visually impaired), <b>PixelForge</b> (Image Processing), <b>AUT Smart Chatbot</b>, and a <b>Cognitive Hybrid RAG System</b>. Ask me about any of them!';
+            }
+
+            // Sentinel-AI
+            if (match(['sentinel', 'cybersecurity', 'fraud', 'امن سيبراني', 'أمن سيبراني'])) {
+                return '<b>Sentinel-AI</b> is a multi-agent cybersecurity system with three specialized agents: Analyzer, Forensics, and Decision. It analyzes transactions in real-time to prevent fraud.';
+            }
+
+            // Smart Glasses
+            if (match(['smart glass', 'glasses', 'wearable', 'نظارة', 'نظارات', 'مكفوفين'])) {
+                return '<b>Smart Glasses AI</b> is an AI-powered wearable for the visually impaired. It uses YOLOv8 and Gemini for object detection, OCR text reading, face recognition, and voice commands in Arabic.';
+            }
+
+            // PixelForge
+            if (match(['pixel', 'pixelforge', 'filter', 'image', 'صور', 'تعديل', 'فلاتر'])) {
+                return '<b>PixelForge</b> is a real-time image filtering web app built with pure HTML5 Canvas. It features over 20 filters, 8 cinematic presets, and multi-format export capabilities.';
+            }
+
+            // AUT Chatbot
+            if (match(['aut', 'university', 'chatbot', 'جامعة', 'عقبة', 'شات بوت'])) {
+                return '<b>AUT Smart Chatbot</b> is an intelligent assistant for Aqaba University students. Built with Gemini 2.0 Flash, it calculates GPA, provides faculty info, and uses a custom bilingual NLP pipeline.';
+            }
+
+            // RAG System
+            if (match(['rag', 'retrieval', 'hybrid', 'استرجاع', 'بحث'])) {
+                return '<b>Cognitive Hybrid RAG</b> is a QA application combining ChromaDB vector embeddings and TF-IDF lexical search. It uses Cross-Encoder reranking for highly accurate information retrieval.';
+            }
+
+            // Certifications
+            if (match(['certificate', 'training', 'iso', 'شهادات', 'تدريب'])) {
+                return 'Mohamed holds several certifications, including an ISO 21001 AI Training certificate, AI Applications from The British University in Egypt, and Python & AI courses. You can download his full certificates from the <b>Certificates</b> section.';
+            }
+
+            // Contact
+            if (match(['contact', 'email', 'phone', 'number', 'تواصل', 'رقم', 'ايميل', 'إيميل'])) {
+                return 'You can contact Mohamed via email at <b>elmilege0@gmail.com</b>, call him at <b>01021118342</b>, or use the contact form at the bottom of the page. He is located in Cairo, Egypt.';
+            }
+
+            // Default / Fallback
+            return 'I am not sure I understand. I can answer questions about Mohamed\'s <b>Projects</b> (like Smart Glasses or Sentinel-AI), <b>Skills</b>, <b>Certifications</b>, or <b>Contact info</b>. Try asking in Arabic or English!<br>عذراً، لم أفهم سؤالك. يمكنني الإجابة عن مشاريع محمد، مهاراته، شهاداته أو كيفية التواصل معه!';
         }
     </script>
 </body>
