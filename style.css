@@ -2149,19 +2149,22 @@ body:hover .mouse-glow {
 }
 
 .social-icon.instagram {
-    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
     box-shadow: 0 0 15px rgba(220, 39, 67, 0.3);
+    color: #fff !important;
 }
 
 .social-icon.linkedin {
-    background: linear-gradient(135deg, #0077b5, #00a0dc);
+    background: linear-gradient(135deg, #0077b5, #00a0dc) !important;
     box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
+    color: #fff !important;
 }
 
 .social-icon.github {
-    background: linear-gradient(135deg, #24292e, #444d56);
+    background: linear-gradient(135deg, #24292e, #444d56) !important;
     border-color: rgba(255,255,255,0.15);
     box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    color: #fff !important;
 }
 
 .social-icon:hover {
