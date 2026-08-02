@@ -1,566 +1,906 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full w-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Milege - Data Analyst & AI Specialist</title>
-    <meta name="description" content="Mohamed Milege — Data Analyst & AI Specialist. High-end portfolio in Artificial Intelligence, RAG systems, and Computer Vision.">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/d08bafd725a4cfc309efb5a88e0b63a5?family=basis33" rel="stylesheet">
-
-    <!-- FontAwesome & Lucide Icons -->
+    <title>Mohamed Milege | AI Portfolio</title>
+    <meta name="description" content="Mohamed Milege — Data Analyst & AI Specialist. Explore my portfolio, certifications, and projects in Artificial Intelligence.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        pixel: ['basis33', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        @font-face {
-            font-family: 'basis33';
-            src: url('https://db.onlinewebfonts.com/t/d08bafd725a4cfc309efb5a88e0b63a5.woff2') format('woff2'),
-                 url('https://db.onlinewebfonts.com/t/d08bafd725a4cfc309efb5a88e0b63a5.woff') format('woff');
-            font-display: swap;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .font-pixel {
-            font-family: 'basis33', monospace;
-        }
-
-        /* Custom Drawer Scrollbar */
-        .drawer-content::-webkit-scrollbar {
-            width: 5px;
-        }
-        .drawer-content::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.2);
-        }
-        .drawer-content::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
+    <!-- Particle Canvas Background -->
+    <canvas id="particles-canvas"></canvas>
 
-<body class="h-screen w-full overflow-hidden bg-black text-white relative select-none">
+    <!-- Mouse Glow Follower -->
+    <div class="mouse-glow" id="mouse-glow"></div>
 
-    <!-- BACKGROUND VIDEO -->
-    <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        class="absolute inset-0 h-full w-full object-cover lg:scale-[1.2] transition-transform duration-1000 z-0 opacity-80"
-    >
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4" type="video/mp4">
-    </video>
+    <!-- Background Orbs with parallax -->
+    <div class="bg-orb orb-1" data-parallax="0.02"></div>
+    <div class="bg-orb orb-2" data-parallax="-0.03"></div>
+    <div class="bg-orb orb-3" data-parallax="0.015"></div>
 
-    <!-- CONTENT OVERLAY WRAPPER -->
-    <div class="relative z-10 flex h-full flex-col px-5 sm:px-6 md:px-10 lg:px-14">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">M.Milege<span>.AI</span></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#sentinel">Sentinel-AI</a></li>
+            <li><a href="#smart-glasses">Smart Glasses</a></li>
+            <li><a href="#pixelforge">PixelForge</a></li>
+            <li><a href="#aut-chatbot">AUT Chatbot</a></li>
+            <li><a href="#rag-system">RAG System</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
 
-        <!-- 1. NAVBAR -->
-        <nav class="flex items-center justify-between py-6">
-            <!-- Left: Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256" fill="none" class="transition-transform group-hover:rotate-12">
-                    <path d="M 160 88 L 194 34 L 216 0 L 256 0 L 256 40 L 221.5 93.5 L 200 128 L 256 128 L 256 256 L 96 256 L 96 168 L 64.246 220 L 40 256 L 0 256 L 0 216 L 34 162 L 56 128 L 0 128 L 0 0 L 160 0 Z" fill="white" />
-                </svg>
-                <span class="font-pixel text-lg tracking-widest uppercase hidden sm:inline-block text-white/90">M.MILEGE</span>
+    <!-- ===================== HERO BANNER (Full-Width Profile Photo) ===================== -->
+    <header class="hero-banner" id="home">
+        <div class="hero-banner-overlay"></div>
+        <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-banner-img">
+        <div class="hero-banner-content">
+            <div class="hero-badge">AI SPECIALIST</div>
+            <h1 class="hero-title">
+                <span class="line line-1">Mohamed</span>
+                <span class="line line-2">Milege</span>
+            </h1>
+            <p class="hero-tagline">Data Analyst <span class="accent-dot">•</span> AI Specialist <span class="accent-dot">•</span> Future Innovator</p>
+            <div class="hero-buttons">
+                <a href="Mohamed_Khaled_CV_Master_Complete.pdf" target="_blank" class="btn primary-btn" style="background: linear-gradient(135deg, #8b5cf6, #d300ff); border: none; margin-right: 10px;">Download CV <i class="fas fa-file-pdf"></i></a>
+                <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
+                <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </header>
+
+    <!-- ===================== ROBOT SECTION ===================== -->
+    <section class="robot-section" id="robot-reveal">
+        <div class="section-header">
+            <h2 class="reveal-text">The <span class="accent">AI</span> Behind the Vision</h2>
+            <p class="section-subtitle reveal-text">Hover to reveal the future</p>
+        </div>
+        <div class="robot-container reveal-text">
+            <div class="robot-card">
+                <!-- Animated ring -->
+                <div class="rotating-ring"></div>
+                <div class="rotating-ring ring-2"></div>
+                <!-- The image -->
+                <div class="robot-image-wrapper">
+                    <div class="robot-placeholder">
+                        <i class="fas fa-robot"></i>
+                        <span>Hover Me</span>
+                    </div>
+                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img">
+                </div>
+                <!-- Floating particles around robot -->
+                <div class="float-particle fp-1"></div>
+                <div class="float-particle fp-2"></div>
+                <div class="float-particle fp-3"></div>
+                <div class="float-particle fp-4"></div>
+                <div class="float-particle fp-5"></div>
+                <div class="float-particle fp-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="about-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">About <span class="accent">Me</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal-text">
+                <p>A highly motivated Artificial Intelligence student at Aqaba University of Technology with a strong technical foundation in Data Analysis and Machine Learning.</p>
+                <p>Proven expertise in Python programming and AI applications through intensive certified training programs. Skilled in navigating international AI standards (ISO 21001) and committed to delivering data-driven insights in professional environments.</p>
+            </div>
+            <div class="about-stats reveal-text">
+                <div class="stat-box tilt-card">
+                    <h3 class="counter" data-target="4">0</h3>
+                    <p>Years of Study</p>
+                </div>
+                <div class="stat-box tilt-card">
+                    <h3>5+</h3>
+                    <p>Certifications</p>
+                </div>
+                <div class="stat-box tilt-card">
+                    <h3>ISO</h3>
+                    <p>21001 Certified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SKILLS SECTION ===================== -->
+    <section id="skills" class="skills-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">My <span class="accent">Skills</span></h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Programming</span>
+                    <span class="tag" data-delay="1">Artificial Intelligence</span>
+                    <span class="tag" data-delay="2">Data Handling</span>
+                    <span class="tag" data-delay="3">Standards & Compliance</span>
+                    <span class="tag" data-delay="4">Machine Learning</span>
+                    <span class="tag" data-delay="5">Computer Vision</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag" data-delay="0">Leadership</span>
+                    <span class="tag" data-delay="1">Analytical Thinking</span>
+                    <span class="tag" data-delay="2">Resilience</span>
+                    <span class="tag" data-delay="3">Problem Solving</span>
+                </div>
+            </div>
+            <div class="skill-category reveal-text">
+                <h3><i class="fas fa-language"></i> Languages</h3>
+                <div class="skill-tags">
+                    <span class="tag language-tag" data-delay="0">English</span>
+                    <span class="tag language-tag" data-delay="1">Arabic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CERTIFICATES SECTION ===================== -->
+    <section id="certificates" class="certificates-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Training & <span class="accent">Certifications</span></h2>
+        </div>
+        <div class="cert-list">
+            <div class="cert-item reveal-text">
+                <div class="cert-number">01</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>ISO Artificial Intelligence Training</h4>
+                    <p>MediX International Accredited Institution</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">02</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Applications of Artificial Intelligence (15 Hours)</h4>
+                    <p>The British University in Egypt (SCE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">03</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Artificial Intelligence Training</h4>
+                    <p>Telecom Egypt (WE)</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">04</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Python &amp; AI Course (36 Hours)</h4>
+                    <p>Black Horse Courses - Grade: Excellent</p>
+                </div>
+            </div>
+            <div class="cert-item reveal-text">
+                <div class="cert-number">05</div>
+                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-details">
+                    <h4>Integrated English Program (94%)</h4>
+                    <p>Egyptian Foundation for Information Technology</p>
+                </div>
+            </div>
+        </div>
+        <div class="cert-download reveal-text">
+            <a href="certificates.pdf" target="_blank" class="btn primary-btn">
+                <i class="fas fa-file-pdf"></i> View Official Certificates
             </a>
+        </div>
+    </section>
 
-            <!-- Right Desktop Nav (md+) -->
-            <div class="hidden md:flex items-center gap-8 text-sm tracking-wide">
-                <button onclick="openDrawer('about')" class="hover:opacity-70 transition-opacity uppercase font-medium">ABOUT</button>
-                <button onclick="openDrawer('projects')" class="hover:opacity-70 transition-opacity uppercase font-medium">PROJECTS</button>
-                <button onclick="openDrawer('skills')" class="hover:opacity-70 transition-opacity uppercase font-medium">SKILLS</button>
-                <button onclick="openDrawer('certificates')" class="hover:opacity-70 transition-opacity uppercase font-medium">CERTIFICATES</button>
-                <button onclick="openDrawer('chatbot')" class="hover:opacity-70 transition-opacity uppercase font-medium text-blue-400">AI CHATBOT</button>
-                <button onclick="openDrawer('contact')" class="hover:opacity-70 transition-opacity uppercase font-medium">CONTACT</button>
-            </div>
-
-            <!-- Right Mobile Hamburger (<md) -->
-            <button onclick="toggleMobileMenu(true)" class="md:hidden p-2 hover:opacity-70 focus:outline-none" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-                </svg>
-            </button>
-        </nav>
-
-        <!-- 2. FOUR-COLUMN META GRID -->
-        <div class="mt-2 sm:mt-4 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            <!-- COL 1 -->
-            <div>
-                <h2 class="text-lg md:text-xl tracking-wide leading-tight">
-                    <div class="font-normal">MOHAMED</div>
-                    <div class="font-pixel text-2xl md:text-3xl text-white">MILEGE</div>
-                </h2>
-                <div class="text-[10px] text-white/50 mt-2 sm:mt-3">*</div>
-                <p class="font-pixel mt-1 text-xs text-white/60 leading-relaxed">
-                    Mohamed Milege is my<br>
-                    personal brand - focused on<br>
-                    "cooking up AI ideas"<br>
-                    & data solutions
-                </p>
-            </div>
-
-            <!-- COL 2 -->
-            <div class="text-right lg:text-left">
-                <h2 class="text-lg md:text-xl tracking-wide leading-tight">
-                    <div class="font-normal">DATA ANALYST &</div>
-                    <div class="font-pixel text-2xl md:text-3xl text-blue-400">AI SPECIALIST</div>
-                </h2>
-            </div>
-
-            <!-- COL 3 -->
-            <div class="col-span-2 lg:col-span-1">
-                <div class="font-pixel text-base tracking-widest text-white/50 uppercase mb-2 sm:mb-3">What I Do</div>
-                <p class="text-sm text-white/90 leading-relaxed max-w-[240px]">
-                    I create the top 1% of AI models, RAG search systems & data analytics pipelines
-                </p>
-            </div>
-
-            <!-- COL 4 -->
-            <div class="col-span-2 lg:col-span-1 text-left lg:text-left">
-                <div class="font-pixel text-base tracking-widest text-white/50 uppercase mb-2 sm:mb-3">Services</div>
-                <ul class="text-sm text-white/90 leading-relaxed space-y-0.5">
-                    <li>• Data Analytics & BI</li>
-                    <li>• RAG & Hybrid Vector Search</li>
-                    <li>• Computer Vision & OCR</li>
-                    <li>• Intelligent NLP Chatbots</li>
-                    <li>• 3D & Python Web AI</li>
-                    <li>• AI Model Fine-tuning</li>
-                </ul>
+    <!-- ===================== SENTINEL-AI SECTION ===================== -->
+    <section id="sentinel" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/sentinel_hero.png" alt="Sentinel-AI System" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-shield"></i> CYBERSECURITY SYSTEM</div>
+                <h2 class="sg-title">Sentinel-<span class="accent">AI</span></h2>
+                <p class="sg-subtitle">Multi-Agent Fraud Detection & Cybersecurity Hub</p>
             </div>
         </div>
 
-        <!-- 3. FLEX SPACER -->
-        <div class="flex-1"></div>
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>Sentinel-AI is an intelligent <strong>multi-agent system</strong> designed to analyze transactions, detect threats, and make real-time security decisions. It combines three specialized AI agents working in harmony to provide comprehensive fraud detection and cybersecurity analysis.</p>
+        </div>
 
-        <!-- 4. BOTTOM SECTION -->
-        <div class="pb-4 sm:pb-6">
-            <!-- ROW A -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-end">
-                <!-- LEFT: Hero Headline -->
-                <div>
-                    <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] tracking-wide uppercase font-normal text-white" style="line-height: 0.85;">
-                        I BRING THE<br>
-                        <span class="font-pixel font-normal text-[1.2em] inline-block leading-none align-baseline text-blue-400">UNEXPECTED</span> TO<br>
-                        DATA & AI<br>
-                        <span class="font-pixel font-normal text-[1.2em] inline-block leading-none align-baseline text-purple-400">EXPERIENCES</span>
-                    </h1>
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-brain"></i> Core Agents</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <h4>Analyzer Agent</h4>
+                    <p>Reads transaction data and measures anomaly scores with rapid precision. Detects unusual patterns and calculates risk indicators in real-time.</p>
                 </div>
-
-                <!-- RIGHT: Showreel / CV & Awards -->
-                <div class="flex flex-col gap-4 sm:gap-5 justify-end lg:items-end">
-                    <!-- CV / Showreel Button -->
-                    <div class="flex items-center gap-3">
-                        <a 
-                            href="Mohamed_Khaled_CV_Master_Complete.pdf" 
-                            target="_blank" 
-                            class="flex items-center gap-3 border border-white/30 px-6 py-3 backdrop-blur-sm bg-white/5 hover:bg-white/15 transition-all rounded-none group"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
-                            <span class="text-sm tracking-wider font-semibold group-hover:text-blue-300">DOWNLOAD CV</span>
-                        </a>
-
-                        <button 
-                            onclick="openDrawer('chatbot')" 
-                            class="flex items-center gap-2 border border-blue-500/40 px-5 py-3 backdrop-blur-sm bg-blue-600/20 hover:bg-blue-600/40 transition-all text-sm tracking-wider font-semibold text-blue-300"
-                        >
-                            <i class="fas fa-robot"></i>
-                            <span>ASK AI</span>
-                        </button>
-                    </div>
-
-                    <!-- Awards / Stats Row -->
-                    <div class="flex flex-wrap items-stretch gap-2 sm:gap-3 text-sm text-white/80">
-                        <div class="bg-[#0B0B0B] border border-white/10 px-3 sm:px-4 py-2 flex items-center gap-2">
-                            <span class="font-bold text-sm sm:text-base tracking-tight text-white">ISO 21001</span>
-                            <span class="text-white/50 text-xs">x1</span>
-                        </div>
-                        <div class="bg-[#0B0B0B] border border-white/10 px-3 sm:px-4 py-2 flex items-center gap-2">
-                            <span class="font-bold text-lg sm:text-xl text-blue-400">AI</span>
-                            <span class="text-white/50 text-xs">x5</span>
-                        </div>
-                        <div class="bg-[#0B0B0B] border border-white/10 px-3 sm:px-4 py-2 flex items-center gap-2">
-                            <span class="font-bold text-[10px] sm:text-xs tracking-tight text-purple-400">PROJECTS</span>
-                            <span class="text-white/50 text-xs">x5</span>
-                        </div>
-                    </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-search"></i></div>
+                    <h4>Forensics Agent</h4>
+                    <p>Traces technical paths and analyzes exploitation indicators. Investigates transaction routes and identifies suspicious behavioral patterns.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h4>Decision Agent</h4>
+                    <p>Issues final verdict: SAFE, SUSPICIOUS, or FRAUD. Provides recommendations and confidence scores based on all agent analyses.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Real-Time Processing</h4>
+                    <p>Analyzes transactions instantly with sub-second latency. Provides immediate alerts and actionable insights for security teams.</p>
                 </div>
             </div>
+        </div>
 
-            <!-- ROW B: Footer Strip -->
-            <div class="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 pt-4 border-t border-white/10">
-                <div class="text-xs text-white/60">
-                    Open to freelance, contract or full-time. 
-                    <a href="mailto:mohamedkhaled2004713@gmail.com" class="text-red-500 hover:text-red-400 transition-colors ml-1 font-medium">
-                        Schedule a call &rarr;
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-chart-line"></i> Streamlit</span>
+                <span class="sg-tech-tag"><i class="fas fa-shield"></i> Cybersecurity</span>
+                <span class="sg-tech-tag"><i class="fas fa-database"></i> Data Analysis</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Multi-Agent</span>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== SMART GLASSES — DEDICATED SHOWCASE ===================== -->
+    <section id="smart-glasses" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/smart_glasses_hero.png" alt="Smart Glasses AI Project" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge"><i class="fas fa-graduation-cap"></i> GRADUATION PROJECT</div>
+                <h2 class="sg-title">Smart <span class="accent">Glasses</span></h2>
+                <p class="sg-subtitle">AI-Powered Wearable for the Visually Impaired</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>An innovative wearable AI device that transforms how visually impaired individuals interact with the world. By integrating real-time <strong>Computer Vision</strong>, <strong>OCR</strong>, <strong>Face Recognition</strong>, and <strong>Voice AI</strong> into a single Python-powered system, the Smart Glasses provide essential auditory feedback — from reading text aloud to recognizing faces and detecting obstacles — making daily life safer and more accessible.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-bolt"></i> Core Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-eye"></i></div>
+                    <h4>Object Detection</h4>
+                    <p>Real-time YOLOv8 object detection with directional audio feedback — tells user what's on their left, right, or ahead.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>OCR Text Reading</h4>
+                    <p>Reads any text in front of the camera powered by Gemini AI — from documents to street signs and product labels.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h4>Face Recognition</h4>
+                    <p>Learns and remembers faces. Announces known people by name with 25-frame training for high accuracy.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h4>Safety Mode</h4>
+                    <p>Continuous obstacle monitoring with proximity warnings — alerts the user when objects get dangerously close.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-coins"></i></div>
+                    <h4>Currency Recognition</h4>
+                    <p>Identifies banknotes and their value using AI vision — helping users handle money independently.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-sos"></i></div>
+                    <h4>Emergency SOS</h4>
+                    <p>Voice-activated distress signal that sends email with GPS location to emergency contacts instantly.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-microphone"></i></div>
+                    <h4>Voice Control</h4>
+                    <p>Full Arabic voice command system — switch modes, save faces, ask time, and trigger features hands-free.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon"><i class="fas fa-battery-half"></i></div>
+                    <h4>Battery Saver Mode</h4>
+                    <p>Intelligent power management that disables heavy AI tasks to extend battery life when needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="sg-gallery">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-images"></i> How It Works</h3>
+            <div class="sg-gallery-grid">
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_detection.png" alt="Object Detection View">
+                    <div class="sg-gallery-label">Object Detection & Scene Analysis</div>
+                </div>
+                <div class="sg-gallery-item reveal-text">
+                    <img src="assets/glasses_ocr.png" alt="OCR Text Reading">
+                    <div class="sg-gallery-label">OCR & Text Reading</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> YOLOv8</span>
+                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Gemini AI</span>
+                <span class="sg-tech-tag"><i class="fas fa-camera"></i> OpenCV</span>
+                <span class="sg-tech-tag"><i class="fas fa-comment-dots"></i> gTTS</span>
+                <span class="sg-tech-tag"><i class="fas fa-microphone-alt"></i> SpeechRecognition</span>
+                <span class="sg-tech-tag"><i class="fas fa-text-width"></i> Tesseract OCR</span>
+                <span class="sg-tech-tag"><i class="fas fa-map-marker-alt"></i> Geolocation API</span>
+            </div>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="sg-cta reveal-text">
+            <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn primary-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== PIXELFORGE SECTION ===================== -->
+    <section id="pixelforge" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/pixelforge_hero.png" alt="PixelForge Image Filter App" class="sg-hero-img">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3)); border-color: rgba(139,92,246,0.5);"><i class="fas fa-magic"></i> IMAGE PROCESSING APP</div>
+                <h2 class="sg-title">Pixel<span class="accent">Forge</span></h2>
+                <p class="sg-subtitle">Real-Time Image Filtering & Processing Studio</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>PixelForge is a powerful, professional <strong>real-time image filtering web application</strong> built with pure HTML5, CSS3, and Vanilla JavaScript using the Canvas API. It delivers pixel-level image manipulation with zero dependencies — drag, drop, filter, and export in seconds.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-sliders-h"></i> Core Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);"><i class="fas fa-upload"></i></div>
+                    <h4>Smart Upload</h4>
+                    <p>Drag & Drop, file browser, or paste directly from clipboard (Ctrl+V). Supports JPG, PNG, WEBP & GIF up to 20MB.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0e7490, #06b6d4);"><i class="fas fa-palette"></i></div>
+                    <h4>20+ Filters</h4>
+                    <p>Grayscale, Edge Detection, Blur, Sepia, Invert, Emboss, Sharpen, Vintage, Cartoon, Oil Paint and many more effects.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-layer-group"></i></div>
+                    <h4>Stack Filters</h4>
+                    <p>Enable Stack Mode to combine multiple filters simultaneously for unique, creative effects.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);"><i class="fas fa-th-large"></i></div>
+                    <h4>8 One-Click Presets</h4>
+                    <p>Cinematic, Noir, Dreamy, Retro, Comic, Ghost, Cyberpunk & Watercolor — instant professional looks.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0891b2, #0e7490);"><i class="fas fa-columns"></i></div>
+                    <h4>3 View Modes</h4>
+                    <p>Preview, Side-by-Side Compare, and interactive Split Slider — see your edits with full context.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);"><i class="fas fa-chart-bar"></i></div>
+                    <h4>Live Histogram</h4>
+                    <p>Real-time RGB histogram displayed during filtering. Brightness, Contrast, Blur & Intensity controls.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"><i class="fas fa-download"></i></div>
+                    <h4>Multi-Format Export</h4>
+                    <p>Export in PNG (lossless), JPEG (adjustable quality), or WebP (modern format) with one click.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #06b6d4);"><i class="fas fa-tachometer-alt"></i></div>
+                    <h4>Zero Dependencies</h4>
+                    <p>Runs entirely in the browser — no server, no libraries, no install. Just open index.html and start creating.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="sg-tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="sg-tech-tag"><i class="fab fa-js"></i> Vanilla JS</span>
+                <span class="sg-tech-tag"><i class="fas fa-paint-brush"></i> Canvas API</span>
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python (OpenCV)</span>
+                <span class="sg-tech-tag"><i class="fas fa-image"></i> Image Processing</span>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="sg-cta reveal-text">
+            <a href="pixelforge/index.html" target="_blank" class="btn primary-btn">
+                <i class="fas fa-external-link-alt"></i> Try Live Demo
+            </a>
+            <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn ghost-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+    <!-- ===================== AUT SMART CHATBOT SECTION ===================== -->
+    <section id="aut-chatbot" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/chatbot_fullpage.png" alt="AUT Chatbot Interface" class="sg-hero-img" style="filter: brightness(0.8);">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(37,99,235,0.3)); border-color: rgba(59,130,246,0.5);"><i class="fas fa-robot"></i> AI CONVERSATIONAL AGENT</div>
+                <h2 class="sg-title">AUT Smart <span class="accent">Chatbot</span></h2>
+                <p class="sg-subtitle">Intelligent Assistant for Aqaba University of Technology</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>A specialized <strong>AI-powered conversational agent</strong> designed for Aqaba University of Technology (AUT). Built with Gemini 2.0 Flash, it features a custom NLP pipeline for Arabic/English normalization, intent classification, and real-time knowledge retrieval from university-specific databases.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-microchip"></i> Key Capabilities</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);"><i class="fas fa-calculator"></i></div>
+                    <h4>GPA Calculator</h4>
+                    <p>Interactive tool for students to calculate Semester and Cumulative GPA with personalized motivational feedback.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #1e40af, #2563eb);"><i class="fas fa-user-tie"></i></div>
+                    <h4>Faculty Directory</h4>
+                    <p>Instant access to instructor profiles, office hours, and contact details for all university departments.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #1e3a8a, #1e40af);"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Admission Guide</h4>
+                    <p>Real-time answers on registration requirements, fees, and procedures for local and international students.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);"><i class="fas fa-language"></i></div>
+                    <h4>Bilingual NLP</h4>
+                    <p>Advanced Arabic text normalization and intent detection pipeline for high-accuracy understanding of student queries.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini 2.0 Flash</span>
+                <span class="sg-tech-tag"><i class="fab fa-html5"></i> HTML5/CSS3</span>
+                <span class="sg-tech-tag"><i class="fas fa-database"></i> JSON Knowledge Base</span>
+                <span class="sg-tech-tag"><i class="fas fa-terminal"></i> NLP Pipeline</span>
+                <span class="sg-tech-tag"><i class="fas fa-mobile-alt"></i> Responsive UI</span>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="sg-cta reveal-text">
+            <a href="chatbot/index.html" target="_blank" class="btn primary-btn">
+                <i class="fas fa-external-link-alt"></i> Try Live Demo
+            </a>
+            <a href="https://github.com/mohamedkhaled2004713/chatbot-for-aqaba-universty" target="_blank" class="btn ghost-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== COGNITIVE HYBRID RAG SYSTEM SECTION ===================== -->
+    <section id="rag-system" class="sg-showcase">
+        <!-- Hero Image -->
+        <div class="sg-hero reveal-text">
+            <img src="assets/rag_system_hero.png" alt="Cognitive Hybrid RAG System Interface" class="sg-hero-img" style="filter: brightness(0.85);">
+            <div class="sg-hero-overlay"></div>
+            <div class="sg-hero-content">
+                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(99,102,241,0.3)); border-color: rgba(139,92,246,0.5);"><i class="fas fa-brain"></i> COGNITIVE RETRIEVAL ENGINE</div>
+                <h2 class="sg-title">Cognitive Hybrid <span class="accent">RAG</span></h2>
+                <p class="sg-subtitle">Production-Ready Hybrid Lexical & Semantic Retrieval System</p>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="sg-description glass-panel reveal-text">
+            <p>A production-ready, highly advanced **Retrieval-Augmented Generation (RAG)** application. It features bilingual English/Arabic preprocessing, hybrid scoring (Vector cosine similarity + TF-IDF lexical search), LLM query expansion, Cross-Encoder reranking, and an automated 6-metric response evaluator — delivering highly precise, hallucination-free answers.</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="sg-features">
+            <h3 class="sg-section-title reveal-text"><i class="fas fa-cogs"></i> System Features</h3>
+            <div class="sg-features-grid">
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);"><i class="fas fa-layer-group"></i></div>
+                    <h4>Hybrid Scoring</h4>
+                    <p>Fuses Vector Search (cosine similarity) and lexical search (TF-IDF) using a weighted linear combination formula.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #8b5cf6);"><i class="fas fa-random"></i></div>
+                    <h4>Multi-Query Expansion</h4>
+                    <p>Uses Gemini to formulate alternative queries, boosting document retrieval recall for complex questions.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #6366f1, #06b6d4);"><i class="fas fa-sort-amount-down"></i></div>
+                    <h4>Cross-Encoder Reranking</h4>
+                    <p>Uses sentence-transformers to rerank chunks based on relevance, filtering noise and highlighting key passages.</p>
+                </div>
+                <div class="sg-feature-card tilt-card reveal-text">
+                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"><i class="fas fa-chart-line"></i></div>
+                    <h4>6-Metric Evaluator</h4>
+                    <p>Scores outputs on Context Relevance, Faithfulness, Precision, Recall, Answer Relevancy, and Retrieval Accuracy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sg-techstack glass-panel reveal-text">
+            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+            <div class="sg-tech-tags">
+                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="sg-tech-tag"><i class="fas fa-database"></i> ChromaDB</span>
+                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini API</span>
+                <span class="sg-tech-tag"><i class="fas fa-sliders-h"></i> Streamlit</span>
+                <span class="sg-tech-tag"><i class="fas fa-chart-bar"></i> Plotly</span>
+                <span class="sg-tech-tag"><i class="fas fa-code"></i> LangChain</span>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="sg-cta reveal-text">
+            <a href="rag-system/index.html" target="_blank" class="btn primary-btn">
+                <i class="fas fa-external-link-alt"></i> Try Live Demo
+            </a>
+            <a href="https://github.com/mohamedkhaled2004713/rag-system.git" target="_blank" class="btn ghost-btn">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <section id="projects" class="projects-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Featured <span class="accent">Projects</span></h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-shield"></i></div>
+                <h3>Sentinel-AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> Python • Gemini • Streamlit</p>
+                <p class="project-desc">Multi-Agent Cybersecurity & Fraud Detection Hub. Real-time transaction analysis with specialized AI agents for comprehensive threat detection.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
                     </a>
                 </div>
-                <div class="text-xs text-white/60 sm:text-right">
-                    5 AI cases &bull; 5+ certs &bull; Cairo, Egypt
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon"><i class="fas fa-glasses"></i></div>
+                <h3>Smart Glasses AI</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> YOLOv8 • OpenCV • Gemini</p>
+                <p class="project-desc">AI-Powered Wearable for the Visually Impaired. Computer Vision, OCR, Face Recognition, and Voice AI integrated into one assistive device.</p>
+                <div class="project-actions">
+                    <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-magic"></i></div>
+                <h3>PixelForge</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> HTML5 • Canvas API • Vanilla JS</p>
+                <p class="project-desc">Real-Time Image Filtering Studio. 20+ filters, 8 presets, live histogram, stack mode, and multi-format export — all in the browser with zero dependencies.</p>
+                <div class="project-actions">
+                    <a href="pixelforge/index.html" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn btn-sm ghost-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);"><i class="fas fa-robot"></i></div>
+                <h3>AUT Smart Chatbot</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> Vanilla JS • Gemini • NLP</p>
+                <p class="project-desc">Intelligent conversational agent for Aqaba University. Features bilingual NLP, GPA calculator, and real-time university database integration.</p>
+                <div class="project-actions">
+                    <a href="chatbot/index.html" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/mohamedkhaled2004713/chatbot-for-aqaba-universty" target="_blank" class="btn btn-sm ghost-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card tilt-card reveal-text">
+                <div class="project-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);"><i class="fas fa-brain"></i></div>
+                <h3>Hybrid RAG System</h3>
+                <p class="project-tech"><i class="fas fa-code"></i> ChromaDB • Gemini • Python</p>
+                <p class="project-desc">Production-grade Retrieval-Augmented Generation. Features multilingual TF-IDF + vector hybrid search, Cross-Encoder reranking, and 6-metric confidence evaluation.</p>
+                <div class="project-actions">
+                    <a href="rag-system/index.html" target="_blank" class="btn btn-sm primary-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/mohamedkhaled2004713/rag-system.git" target="_blank" class="btn btn-sm ghost-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
         </div>
+    </section>
 
-    </div>
-
-    <!-- MOBILE FULLSCREEN MENU -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-        <!-- Menu Header -->
-        <div class="flex items-center justify-between px-6 py-6 border-b border-white/10">
-            <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256" fill="none">
-                    <path d="M 160 88 L 194 34 L 216 0 L 256 0 L 256 40 L 221.5 93.5 L 200 128 L 256 128 L 256 256 L 96 256 L 96 168 L 64.246 220 L 40 256 L 0 256 L 0 216 L 34 162 L 56 128 L 0 128 L 0 0 L 160 0 Z" fill="white" />
-                </svg>
-                <span class="font-pixel text-lg tracking-widest uppercase">M.MILEGE</span>
-            </div>
-            <button onclick="toggleMobileMenu(false)" class="p-2 hover:opacity-70 text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+    <!-- ===================== CONTACT SECTION ===================== -->
+    <section id="contact" class="contact-section glass-panel">
+        <div class="section-header">
+            <h2 class="reveal-text">Get In <span class="accent">Touch</span></h2>
         </div>
-
-        <!-- Menu Links -->
-        <div class="flex flex-col items-center justify-center flex-1 gap-8">
-            <button onclick="mobileNavClick('about')" class="mobile-link text-2xl tracking-widest uppercase hover:text-blue-400 transition-colors">ABOUT</button>
-            <button onclick="mobileNavClick('projects')" class="mobile-link text-2xl tracking-widest uppercase hover:text-blue-400 transition-colors">PROJECTS</button>
-            <button onclick="mobileNavClick('skills')" class="mobile-link text-2xl tracking-widest uppercase hover:text-blue-400 transition-colors">SKILLS</button>
-            <button onclick="mobileNavClick('certificates')" class="mobile-link text-2xl tracking-widest uppercase hover:text-blue-400 transition-colors">CERTIFICATES</button>
-            <button onclick="mobileNavClick('chatbot')" class="mobile-link text-2xl tracking-widest uppercase text-blue-400">AI CHATBOT</button>
-            <button onclick="mobileNavClick('contact')" class="mobile-link text-2xl tracking-widest uppercase hover:text-blue-400 transition-colors">CONTACT</button>
-        </div>
-    </div>
-
-    <!-- SLIDE-OVER DRAWER OVERLAY -->
-    <div id="drawer-backdrop" onclick="closeDrawer()" class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-    <!-- SLIDE-OVER DRAWER CONTAINER -->
-    <div id="drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[500px] lg:w-[600px] bg-[#0A0A0F] border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
-        
-        <!-- Drawer Header -->
-        <div class="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-black/40">
-            <h3 id="drawer-title" class="font-pixel text-xl tracking-widest uppercase text-blue-400">DETAIL</h3>
-            <button onclick="closeDrawer()" class="p-2 hover:opacity-70 text-white/70 hover:text-white transition-colors">
-                <i class="fas fa-times text-lg"></i>
-            </button>
-        </div>
-
-        <!-- Drawer Body -->
-        <div id="drawer-body" class="drawer-content flex-1 overflow-y-auto p-6 space-y-6">
-            <!-- Dynamic Content Injected Here -->
-        </div>
-    </div>
-
-    <!-- INLINE SCRIPT FOR DRAWERS & CHATBOT -->
-    <script>
-        function toggleMobileMenu(open) {
-            const menu = document.getElementById('mobile-menu');
-            const links = menu.querySelectorAll('.mobile-link');
-            
-            if (open) {
-                menu.classList.remove('opacity-0', 'pointer-events-none');
-                menu.classList.add('opacity-100', 'pointer-events-auto');
-                links.forEach((link, i) => {
-                    link.style.transitionDelay = `${100 + i * 60}ms`;
-                    link.style.opacity = '1';
-                    link.style.transform = 'translateY(0)';
-                });
-            } else {
-                menu.classList.remove('opacity-100', 'pointer-events-auto');
-                menu.classList.add('opacity-0', 'pointer-events-none');
-                links.forEach((link) => {
-                    link.style.transitionDelay = '0ms';
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateY(16px)';
-                });
-            }
-        }
-
-        function mobileNavClick(section) {
-            toggleMobileMenu(false);
-            setTimeout(() => { openDrawer(section); }, 300);
-        }
-
-        function openDrawer(section) {
-            const drawer = document.getElementById('drawer');
-            const backdrop = document.getElementById('drawer-backdrop');
-            const title = document.getElementById('drawer-title');
-            const body = document.getElementById('drawer-body');
-
-            title.innerText = section.toUpperCase();
-            body.innerHTML = getDrawerContent(section);
-
-            backdrop.classList.remove('opacity-0', 'pointer-events-none');
-            backdrop.classList.add('opacity-100', 'pointer-events-auto');
-            drawer.classList.remove('translate-x-full');
-
-            if (section === 'chatbot') {
-                setTimeout(() => {
-                    const input = document.getElementById('drawer-chat-input');
-                    if (input) input.focus();
-                }, 400);
-            }
-        }
-
-        function closeDrawer() {
-            const drawer = document.getElementById('drawer');
-            const backdrop = document.getElementById('drawer-backdrop');
-            
-            drawer.classList.add('translate-x-full');
-            backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-            backdrop.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        function getDrawerContent(section) {
-            switch (section) {
-                case 'about':
-                    return `
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <img src="assets/profile.jpg" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500/50 shadow-lg">
-                                <div>
-                                    <h4 class="text-xl font-bold text-white">Mohamed Milege</h4>
-                                    <p class="text-sm text-blue-400 font-medium">Data Analyst & AI Specialist</p>
-                                    <p class="text-xs text-white/50 mt-1"><i class="fas fa-map-marker-alt text-blue-400"></i> Cairo, Egypt</p>
-                                </div>
-                            </div>
-                            <p class="text-sm text-white/80 leading-relaxed">
-                                Passionate AI & Data Specialist with 4+ years of academic and practical experience in building intelligent systems, hybrid vector search pipelines, and computer vision models.
-                            </p>
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                                    <div class="text-2xl font-bold text-blue-400 font-pixel">4+</div>
-                                    <div class="text-xs text-white/60 mt-1">Years of Study</div>
-                                </div>
-                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                                    <div class="text-2xl font-bold text-purple-400 font-pixel">5</div>
-                                    <div class="text-xs text-white/60 mt-1">Core Projects</div>
-                                </div>
-                            </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <!-- Contact Form via Formspree -->
+                <form action="https://formspree.io/f/xjgjydrg" method="POST" class="contact-form reveal-text">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                
+                <!-- Quick Contact Info -->
+                <div class="direct-contact">
+                    <h3>Or reach me directly:</h3>
+                    <a href="mailto:mohamedkhaled2004713@gmail.com" class="contact-card reveal-text">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">mohamedkhaled2004713@gmail.com</span>
                         </div>
-                    `;
-                case 'projects':
-                    return `
-                        <div class="space-y-4">
-                            <div class="bg-white/5 p-5 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">AI Security & Vision</span>
-                                <h4 class="text-lg font-bold text-white mt-1">Sentinel-AI</h4>
-                                <p class="text-xs text-white/70 mt-2 leading-relaxed">Intelligent security surveillance system leveraging YOLOv10 object detection and real-time threat analysis.</p>
-                            </div>
-                            <div class="bg-white/5 p-5 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                <span class="text-xs font-semibold text-purple-400 uppercase tracking-wider">Assistive Tech & OCR</span>
-                                <h4 class="text-lg font-bold text-white mt-1">Smart Glasses for Visually Impaired</h4>
-                                <p class="text-xs text-white/70 mt-2 leading-relaxed">Wearable AI glasses with real-time text recognition, obstacle detection, and audio feedback for visually impaired users.</p>
-                            </div>
-                            <div class="bg-white/5 p-5 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">Hybrid RAG & Vector Search</span>
-                                <h4 class="text-lg font-bold text-white mt-1">Cognitive Hybrid RAG System</h4>
-                                <p class="text-xs text-white/70 mt-2 leading-relaxed">QA system integrating ChromaDB vector embeddings with TF-IDF lexical search and Cross-Encoder reranking.</p>
-                            </div>
-                            <div class="bg-white/5 p-5 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Canvas Image Processing</span>
-                                <h4 class="text-lg font-bold text-white mt-1">PixelForge Engine</h4>
-                                <p class="text-xs text-white/70 mt-2 leading-relaxed">Web image filtering application built with HTML5 Canvas featuring 20+ real-time filters and cinematic presets.</p>
-                            </div>
-                            <div class="bg-white/5 p-5 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">NLP & University Chatbot</span>
-                                <h4 class="text-lg font-bold text-white mt-1">AUT Smart Chatbot</h4>
-                                <p class="text-xs text-white/70 mt-2 leading-relaxed">Aqaba University chatbot powered by Gemini Flash 2.0 with custom GPA calculation and bilingual NLP pipeline.</p>
-                            </div>
+                    </a>
+                    <a href="tel:01021118342" class="contact-card reveal-text">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">01021118342</span>
                         </div>
-                    `;
-                case 'skills':
-                    return `
-                        <div class="space-y-5">
-                            <div>
-                                <h4 class="text-xs font-pixel text-blue-400 uppercase tracking-widest mb-3">AI & Machine Learning</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Python</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">PyTorch</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">YOLOv10</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">OpenCV</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Tesseract OCR</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-pixel text-purple-400 uppercase tracking-widest mb-3">Data Analytics & NLP</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Pandas / NumPy</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">ChromaDB</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">TF-IDF & Embeddings</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Cross-Encoder Reranking</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-pixel text-cyan-400 uppercase tracking-widest mb-3">Web & Deployment</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Flask / FastAPI</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">HTML5 Canvas / JS</span>
-                                    <span class="bg-white/10 px-3 py-1.5 rounded-full text-xs text-white font-medium">Git & GitHub</span>
-                                </div>
-                            </div>
+                    </a>
+                    <div class="contact-card reveal-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">Cairo, Egypt</span>
                         </div>
-                    `;
-                case 'certificates':
-                    return `
-                        <div class="space-y-4">
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center justify-between">
-                                <div>
-                                    <h4 class="text-sm font-bold text-white">ISO 21001 AI Training</h4>
-                                    <p class="text-xs text-white/60">Certified AI Specialist</p>
-                                </div>
-                                <i class="fas fa-award text-blue-400 text-xl"></i>
-                            </div>
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center justify-between">
-                                <div>
-                                    <h4 class="text-sm font-bold text-white">British University AI Applications</h4>
-                                    <p class="text-xs text-white/60">Advanced Machine Learning</p>
-                                </div>
-                                <i class="fas fa-certificate text-purple-400 text-xl"></i>
-                            </div>
-                            <div class="text-center pt-4">
-                                <a href="certificates.pdf" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg text-xs font-bold tracking-wider uppercase transition-colors">
-                                    <i class="fas fa-file-pdf"></i> View Official Certificates PDF
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                case 'contact':
-                    return `
-                        <div class="space-y-6">
-                            <div class="space-y-3">
-                                <a href="mailto:mohamedkhaled2004713@gmail.com" class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                    <i class="fas fa-envelope text-blue-400 text-lg"></i>
-                                    <div>
-                                        <div class="text-xs text-white/50 uppercase">Email</div>
-                                        <div class="text-sm font-semibold text-white">mohamedkhaled2004713@gmail.com</div>
-                                    </div>
-                                </a>
-                                <a href="tel:01021118342" class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors">
-                                    <i class="fas fa-phone text-blue-400 text-lg"></i>
-                                    <div>
-                                        <div class="text-xs text-white/50 uppercase">Phone</div>
-                                        <div class="text-sm font-semibold text-white">01021118342</div>
-                                    </div>
-                                </a>
-                            </div>
+                    </div>
 
-                            <div class="pt-4 border-t border-white/10">
-                                <div class="text-xs font-pixel text-white/50 uppercase tracking-widest mb-3">Social Profiles</div>
-                                <div class="flex gap-3">
-                                    <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" class="w-12 h-12 rounded-xl bg-pink-600/30 border border-pink-500/40 flex items-center justify-center text-pink-400 text-lg hover:scale-110 transition-transform">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" class="w-12 h-12 rounded-xl bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-blue-400 text-lg hover:scale-110 transition-transform">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="https://github.com/mohamedkhaled2004713" target="_blank" class="w-12 h-12 rounded-xl bg-gray-600/30 border border-gray-500/40 flex items-center justify-center text-white text-lg hover:scale-110 transition-transform">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
+                    <!-- Social Media Links -->
+                    <div class="social-links reveal-text">
+                        <h3>Follow Me</h3>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" class="social-icon instagram" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/mohamedkhaled2004713" target="_blank" class="social-icon github" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
-                    `;
-                case 'chatbot':
-                    return `
-                        <div class="flex flex-col h-[480px]">
-                            <div id="drawer-chat-messages" class="flex-1 overflow-y-auto space-y-3 p-2 text-xs">
-                                <div class="bg-blue-600/20 border border-blue-500/30 text-white p-3 rounded-xl max-w-[88%] leading-relaxed">
-                                    Hello! I am Mohamed Milege's AI Assistant. Ask me anything about his projects, skills, certificates, or contact details! 👋
-                                </div>
-                            </div>
-                            <form onsubmit="handleDrawerChat(event)" class="mt-3 flex gap-2 pt-3 border-t border-white/10">
-                                <input id="drawer-chat-input" type="text" placeholder="Ask about Mohamed..." class="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
-                                <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-xs font-bold"><i class="fas fa-paper-plane"></i></button>
-                            </form>
-                        </div>
-                    `;
-                default:
-                    return '';
-            }
-        }
-
-        function handleDrawerChat(e) {
-            e.preventDefault();
-            const input = document.getElementById('drawer-chat-input');
-            const messages = document.getElementById('drawer-chat-messages');
-            const query = input.value.trim();
-            if (!query) return;
-
-            messages.innerHTML += `
-                <div class="flex justify-end">
-                    <div class="bg-blue-600 text-white p-3 rounded-xl max-w-[85%] leading-relaxed">
-                        ${query}
                     </div>
                 </div>
-            `;
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CHATBOT ===================== -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with me">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i> Assistant
+                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message assistant">
+                    <div class="message-content">
+                        Hi! Ask me about Sentinel-AI, Smart Glasses, my projects, or how to contact me.
+                        <br><br>
+                        <a href="chatbot/index.html" target="_blank" class="btn btn-sm primary-btn" style="padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; display: inline-flex;">
+                            <i class="fas fa-robot"></i> Try University Chatbot
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/mohamedkhaled2004713" target="_blank" class="social-icon github" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p>&copy; 2026 Mohamed Milege. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and AI.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Chatbot Functions
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbot-window');
+            chatWindow.classList.toggle('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesDiv = document.getElementById('chatbot-messages');
+            
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="message-content">${message}</div>`;
+            messagesDiv.appendChild(userMsg);
+
+            // Get response
+            const response = getChatResponse(message);
+            
+            setTimeout(() => {
+                const assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                assistantMsg.innerHTML = `<div class="message-content">${response}</div>`;
+                messagesDiv.appendChild(assistantMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 500);
 
             input.value = '';
-            messages.scrollTop = messages.scrollHeight;
-
-            setTimeout(() => {
-                const response = getChatResponse(query);
-                messages.innerHTML += `
-                    <div class="bg-white/10 border border-white/15 text-white p-3 rounded-xl max-w-[88%] leading-relaxed">
-                        ${response}
-                    </div>
-                `;
-                messages.scrollTop = messages.scrollHeight;
-            }, 500);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
-        function getChatResponse(userQuery) {
-            const query = userQuery.toLowerCase();
-            const match = (keywords) => keywords.some(k => query.includes(k));
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
 
-            if (match(['hi', 'hello', 'hey', 'مرحبا', 'أهلا', 'سلام', 'ازيك', 'مين'])) {
-                return 'Hello! I am Mohamed Milege\'s Portfolio AI. I can tell you about Mohamed\'s AI Projects, Data Skills, Certifications, or how to Contact him!';
+        function getChatResponse(input) {
+            const text = input.toLowerCase().trim();
+            
+            // Define Arabic and English keyword matchers
+            const match = (keywords) => keywords.some(keyword => text.includes(keyword));
+
+            // Greeting
+            if (match(['hello', 'hi', 'hey', 'مرحبا', 'اهلا', 'أهلا', 'السلام عليكم'])) {
+                return 'Hi there! I am Mohamed Milege\'s virtual assistant. I can tell you about his skills, projects, certifications, or how to contact him. What would you like to know?<br>أهلاً بك! أنا المساعد الافتراضي لمحمد مليجي. يمكنني إخبارك عن مهاراته، مشاريعه، شهاداته، أو كيفية التواصل معه.';
             }
-            if (match(['sentinel', 'security', 'yolo', 'أمن', 'كاميرات', 'سنتينل'])) {
-                return '<b>Sentinel-AI</b> is a real-time security surveillance system powered by YOLOv10 for threat detection and automated alert dispatching.';
+            
+            // About Mohamed
+            if (match(['who are you', 'about you', 'who is mohamed', 'من أنت', 'عن محمد', 'مين محمد', 'من هو'])) {
+                return 'Mohamed Milege is an AI Specialist and Data Analyst studying at Aqaba University of Technology. He is passionate about Machine Learning, Computer Vision, and building smart solutions.<br>محمد مليجي هو متخصص في الذكاء الاصطناعي ومحلل بيانات يدرس في جامعة العقبة للتكنولوجيا، شغوف بتعلم الآلة ورؤية الحاسوب.';
             }
-            if (match(['glasses', 'visually', 'impaired', 'نظارة', 'مكفوفين'])) {
-                return '<b>Smart Glasses for Visually Impaired</b> is an assistive wearable AI with real-time Tesseract OCR and YOLO obstacle audio feedback.';
+
+            // Skills
+            if (match(['skills', 'programming', 'languages', 'مهارات', 'مبرمج', 'لغات البرمجة'])) {
+                return 'Mohamed specializes in Python, Artificial Intelligence, Machine Learning, Computer Vision, and Data Handling. He also possesses strong analytical and problem-solving skills.';
             }
-            if (match(['pixel', 'pixelforge', 'filter', 'صور', 'تعديل'])) {
-                return '<b>PixelForge</b> is an HTML5 Canvas image filtering web app featuring 20+ filters and cinematic presets.';
+
+            // Projects General
+            if (match(['project', 'portfolio', 'work', 'مشاريع', 'اعمال', 'أعمال', 'شغل'])) {
+                return 'Mohamed has 5 main projects: <b>Sentinel-AI</b> (Cybersecurity), <b>Smart Glasses</b> (for visually impaired), <b>PixelForge</b> (Image Processing), <b>AUT Smart Chatbot</b>, and a <b>Cognitive Hybrid RAG System</b>. Ask me about any of them!';
             }
+
+            // Sentinel-AI
+            if (match(['sentinel', 'cybersecurity', 'fraud', 'امن سيبراني', 'أمن سيبراني'])) {
+                return '<b>Sentinel-AI</b> is a multi-agent cybersecurity system with three specialized agents: Analyzer, Forensics, and Decision. It analyzes transactions in real-time to prevent fraud.';
+            }
+
+            // Smart Glasses
+            if (match(['smart glass', 'glasses', 'wearable', 'نظارة', 'نظارات', 'مكفوفين'])) {
+                return '<b>Smart Glasses AI</b> is an AI-powered wearable for the visually impaired. It uses YOLOv8 and Gemini for object detection, OCR text reading, face recognition, and voice commands in Arabic.';
+            }
+
+            // PixelForge
+            if (match(['pixel', 'pixelforge', 'filter', 'image', 'صور', 'تعديل', 'فلاتر'])) {
+                return '<b>PixelForge</b> is a real-time image filtering web app built with pure HTML5 Canvas. It features over 20 filters, 8 cinematic presets, and multi-format export capabilities.';
+            }
+
+            // AUT Chatbot
+            if (match(['aut', 'university', 'chatbot', 'جامعة', 'عقبة', 'شات بوت'])) {
+                return '<b>AUT Smart Chatbot</b> is an intelligent assistant for Aqaba University students. Built with Gemini 2.0 Flash, it calculates GPA, provides faculty info, and uses a custom bilingual NLP pipeline.';
+            }
+
+            // RAG System
             if (match(['rag', 'retrieval', 'hybrid', 'استرجاع', 'بحث'])) {
-                return '<b>Cognitive Hybrid RAG</b> combines ChromaDB vector search and TF-IDF lexical search with Cross-Encoder reranking.';
-            }
-            if (match(['certificate', 'training', 'iso', 'شهادات'])) {
-                return 'Mohamed holds an ISO 21001 AI Training certificate and British University AI Applications credentials. You can download his full certificates PDF from the Certificates section!';
-            }
-            if (match(['contact', 'email', 'phone', 'تواصل', 'رقم', 'ايميل'])) {
-                return 'Contact Mohamed via email at <b>mohamedkhaled2004713@gmail.com</b> or phone at <b>01021118342</b>.';
+                return '<b>Cognitive Hybrid RAG</b> is a QA application combining ChromaDB vector embeddings and TF-IDF lexical search. It uses Cross-Encoder reranking for highly accurate information retrieval.';
             }
 
-            return 'I am trained on Mohamed\'s portfolio! Try asking about his <b>Projects</b>, <b>Skills</b>, <b>Certificates</b>, or <b>Contact</b> info.';
+            // Certifications
+            if (match(['certificate', 'training', 'iso', 'شهادات', 'تدريب'])) {
+                return 'Mohamed holds several certifications, including an ISO 21001 AI Training certificate, AI Applications from The British University in Egypt, and Python & AI courses. You can download his full certificates from the <b>Certificates</b> section.';
+            }
+
+            // Contact
+            if (match(['contact', 'email', 'phone', 'number', 'تواصل', 'رقم', 'ايميل', 'إيميل'])) {
+                return 'You can contact Mohamed via email at <b>mohamedkhaled2004713@gmail.com</b>, call him at <b>01021118342</b>, or use the contact form at the bottom of the page. He is located in Cairo, Egypt.';
+            }
+
+            // Default / Fallback
+            return 'I am not sure I understand. I can answer questions about Mohamed\'s <b>Projects</b> (like Smart Glasses or Sentinel-AI), <b>Skills</b>, <b>Certifications</b>, or <b>Contact info</b>. Try asking in Arabic or English!<br>عذراً، لم أفهم سؤالك. يمكنني الإجابة عن مشاريع محمد، مهاراته، شهاداته أو كيفية التواصل معه!';
         }
     </script>
 </body>

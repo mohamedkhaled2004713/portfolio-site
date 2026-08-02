@@ -343,12 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initSmoothScroll();
     initTiltCards();
-
-    // Welcome Screen Fade Out
-    setTimeout(() => {
-        const ws = document.getElementById('welcome-screen');
-        if (ws) ws.classList.add('fade-out');
-    }, 3300);
 });
 
 // ============ FORM SUBMIT HANDLER ============
