@@ -2434,39 +2434,53 @@ ul  { list-style: none; }
     .hero-cta-group  { justify-content: center; flex-wrap: wrap; gap: 10px; }
     .hero-scroll-cue { display: none; }  /* hide scroll cue on mobile */
 
-    /* Portrait */
+    /* Portrait — full-width hero card */
     .hero-center {
         order: 2;
         height: auto !important;
         min-height: unset !important;
-        width: 100%;
-        margin-top: 0;
-        display: flex;
-        justify-content: center;
-        overflow: visible !important;
+        width: calc(100% + 12%) !important;  /* bleed outside padding */
+        margin-left: -6%;
+        margin-right: -6%;
+        margin-top: 28px;
+        display: block;
+        overflow: hidden !important;
+        border-radius: 24px;
+        position: relative;
     }
     .hero-portrait-stage {
         position: relative !important;
         width: 100%;
-        height: auto !important;
+        height: 380px !important;
         min-height: unset !important;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        overflow: visible !important;
+        display: block;
+        overflow: hidden !important;
+    }
+    /* Subtle gradient fade at bottom to blend into page */
+    .hero-portrait-stage::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to bottom, transparent, #EEF3F9 90%);
+        z-index: 3;
+        pointer-events: none;
     }
     .hero-main-portrait {
         position: relative !important;
         left: auto !important;
         bottom: auto !important;
         transform: none !important;
-        height: auto !important;
-        width: 70% !important;
-        max-width: 320px !important;
-        object-fit: contain;
-        object-position: bottom center;
+        height: 100% !important;
+        width: 100% !important;
+        max-width: none !important;
+        object-fit: cover !important;
+        object-position: top center !important;
         display: block;
-        margin: 0 auto;
+        margin: 0;
+        filter: none;
     }
 
     /* Hide the tech card panel — saves space on mobile */
@@ -2528,7 +2542,7 @@ ul  { list-style: none; }
     .node-title     { font-size: 0.6rem; }
     .nn-layer-badge { font-size: 0.52rem; letter-spacing: 0.8px; }
     .nn-footer-languages { flex-direction: column; align-items: center; gap: 8px; }
-    #skills-nn-canvas { display: none; } /* hide canvas lines on mobile — too messy */
+    /* Canvas stays visible — resize() uses scrollWidth so lines cover full scroll area */
 
     /* ---- SERVICES ---- */
     .services-grid { grid-template-columns: 1fr; }

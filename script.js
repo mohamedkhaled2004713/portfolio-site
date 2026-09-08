@@ -88,8 +88,15 @@ function initNeuralNetworkSkills() {
     let pulseT = 0;
 
     function resize() {
-        canvas.width  = wrapper.offsetWidth;
-        canvas.height = wrapper.offsetHeight;
+        // On mobile the wrapper is a horizontal scroll container;
+        // use scrollWidth so the canvas covers the full content, not just the viewport.
+        const isMobile = window.innerWidth <= 900;
+        const w = isMobile ? wrapper.scrollWidth : wrapper.offsetWidth;
+        canvas.width  = w;
+        canvas.height = wrapper.offsetHeight || wrapper.scrollHeight;
+        // Also set CSS size so the canvas element itself fills the scrollable area
+        canvas.style.width  = w + 'px';
+        canvas.style.height = canvas.height + 'px';
         draw();
     }
 
