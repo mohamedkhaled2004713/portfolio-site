@@ -3,99 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Milege | AI Portfolio</title>
-    <meta name="description" content="Mohamed Milege — Data Analyst & AI Specialist. Explore my portfolio, certifications, and projects in Artificial Intelligence.">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Mohamed Khaled | AI Engineer — RAG, LLM & Computer Vision Systems</title>
+    <meta name="description" content="Mohamed Khaled — AI Engineer specializing in RAG systems, LLM applications, Multi-Agent AI, and Computer Vision. Explore my portfolio of production-grade AI projects.">
+    <meta property="og:title" content="Mohamed Khaled | AI Engineer">
+    <meta property="og:description" content="AI Engineer specializing in RAG systems, LLM applications, Multi-Agent AI, and Computer Vision.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/profile.jpg">
+    <meta name="keywords" content="Mohamed Khaled, AI Engineer, RAG Systems, LLM, Computer Vision, Multi-Agent AI, Python, LangChain, Gemini API, Portfolio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+
     <!-- Particle Canvas Background -->
-    <canvas id="particles-canvas"></canvas>
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-    <!-- Mouse Glow Follower -->
-    <div class="mouse-glow" id="mouse-glow"></div>
-
-    <!-- Background Orbs with parallax -->
-    <div class="bg-orb orb-1" data-parallax="0.02"></div>
-    <div class="bg-orb orb-2" data-parallax="-0.03"></div>
-    <div class="bg-orb orb-3" data-parallax="0.015"></div>
-
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="logo">M.Milege<span>.AI</span></div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home">Home</a></li>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="logo logo-mk" aria-label="Mohamed Khaled — Home">
+            <img src="assets/logo.png" alt="Mohamed Khaled — MK Logo" class="logo-mk-img" width="44" height="36">
+        </a>
+        <ul class="nav-links" id="nav-links" role="list">
+            <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#sentinel">Sentinel-AI</a></li>
-            <li><a href="#smart-glasses">Smart Glasses</a></li>
-            <li><a href="#pixelforge">PixelForge</a></li>
-            <li><a href="#aut-chatbot">AUT Chatbot</a></li>
-            <li><a href="#rag-system">RAG System</a></li>
-            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#certificates">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
+        <div class="nav-right">
+            <a href="#contact" class="nav-cta-btn" aria-label="Let's Connect">
+                <span class="live-dot" aria-hidden="true"></span> Let's Connect <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- ===================== HERO BANNER (Full-Width Profile Photo) ===================== -->
-    <header class="hero-banner" id="home">
-        <div class="hero-banner-overlay"></div>
-        <img src="assets/profile.jpg" alt="Mohamed Milege" class="hero-banner-img">
-        <div class="hero-banner-content">
-            <div class="hero-badge"><i class="fas fa-sparkles"></i> Welcome to My AI Portfolio</div>
-            <h1 class="hero-title">
-                <span class="line line-1">Mohamed</span>
-                <span class="line line-2">Milege</span>
-            </h1>
-            <p class="hero-welcome-phrase-text">Building Production-Ready RAG Systems &amp; Computer Vision Applications</p>
-            <p class="hero-tagline">AI Engineer <span class="accent-dot">•</span> RAG &amp; LLM Systems <span class="accent-dot">•</span> Computer Vision</p>
-            <div class="hero-buttons">
-                <a href="mohamed khaked master cv after edditin.pdf" target="_blank" class="btn primary-btn" style="background: linear-gradient(135deg, #8b5cf6, #d300ff); border: none; margin-right: 10px;">Download CV <i class="fas fa-file-pdf"></i></a>
-                <a href="#about" class="btn primary-btn">Explore My Work <i class="fas fa-arrow-down"></i></a>
-                <a href="#contact" class="btn ghost-btn">Contact Me <i class="fas fa-envelope"></i></a>
+    <!-- ===================== HERO SECTION ===================== -->
+    <header class="hero-section" id="home">
+        <div class="hero-container">
+            <!-- LEFT COLUMN: Identity & Call to Actions -->
+            <div class="hero-left">
+                <div class="hero-tag-row">
+                    <span class="hero-tag">AI ENGINEER</span>
+                    <span class="hero-tag-line" aria-hidden="true"></span>
+                </div>
+                <h1 class="hero-headline">
+                    <span class="headline-part">MOHAMED</span>
+                    <span class="headline-part">KHALED<span class="hero-underscore">_</span></span>
+                </h1>
+                <p class="hero-specialties">
+                    <span>AI &amp; ML</span>
+                    <span class="spec-dot">•</span>
+                    <span>COMPUTER VISION</span>
+                    <span class="spec-dot">•</span>
+                    <span>DATA ANALYSIS</span>
+                    <span class="spec-dot">•</span>
+                    <span>DATA SCIENCE</span>
+                </p>
+                <p class="hero-bio">
+                    Turning ideas into intelligent solutions with the power of AI.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-hero-primary">
+                        View My Projects <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-hero-secondary">
+                        Let's Connect
+                    </a>
+                </div>
+
+                <!-- Scroll To Explore (Aligned in left column matching design reference) -->
+                <div class="hero-scroll-cue" aria-hidden="true">
+                    <div class="scroll-stem-line"></div>
+                    <div class="scroll-cue-body">
+                        <div class="scroll-mouse-icon">
+                            <div class="mouse-scroll-wheel"></div>
+                        </div>
+                        <span class="scroll-cue-text">Scroll</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
+
+            <!-- CENTER COLUMN: Signature Character Portrait -->
+            <div class="hero-center">
+                <div class="hero-portrait-stage" id="hero-portrait-stage">
+                    <img
+                        src="ChatGPT Image Sep 8, 2026, 08_12_52 PM.png"
+                        alt="Mohamed Khaled — AI Engineer"
+                        class="hero-main-portrait"
+                        id="hero-main-portrait"
+                        draggable="false"
+                    >
+
+                    <!-- Face HUD Framing Brackets with Cyber Pointer Callout matching reference -->
+                    <div class="face-hud-frame" id="face-hud-frame" aria-hidden="true">
+                        <div class="hud-bracket tl"></div>
+                        <div class="hud-bracket tr"></div>
+                        <div class="hud-bracket bl"></div>
+                        <div class="hud-bracket br"></div>
+                        
+                        <!-- Angled Cyber Callout Line & Badge -->
+                        <div class="hud-pointer-callout">
+                            <svg class="hud-callout-svg" width="160" height="70" viewBox="0 0 160 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 60 L38 12 L160 12" stroke="#1677FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="hud-callout-text-group">
+                                <span class="hud-callout-dot"></span>
+                                <span class="hud-callout-label">AI ENGINEER</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span>Scroll Down</span>
+
+            <!-- RIGHT COLUMN: Minimal Technical AI Engineer Panel -->
+            <div class="hero-right">
+                <div class="hero-tech-card" aria-hidden="true">
+                    <div class="card-bracket tl"></div>
+                    <div class="card-bracket tr"></div>
+                    <div class="card-bracket bl"></div>
+                    <div class="card-bracket br"></div>
+                    
+                    <ul class="tech-flow-list">
+                        <li class="tech-flow-item">
+                            <span class="flow-icon"><i class="fas fa-brain"></i></span>
+                            <span class="flow-name">Build</span>
+                        </li>
+                        <li class="flow-arrow"><i class="fas fa-arrow-down"></i></li>
+                        <li class="tech-flow-item">
+                            <span class="flow-icon"><i class="fas fa-eye"></i></span>
+                            <span class="flow-name">Train</span>
+                        </li>
+                        <li class="flow-arrow"><i class="fas fa-arrow-down"></i></li>
+                        <li class="tech-flow-item">
+                            <span class="flow-icon"><i class="fas fa-database"></i></span>
+                            <span class="flow-name">Analyze</span>
+                        </li>
+                        <li class="flow-arrow"><i class="fas fa-arrow-down"></i></li>
+                        <li class="tech-flow-item">
+                            <span class="flow-icon"><i class="fas fa-check-circle"></i></span>
+                            <span class="flow-name">Solve</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hero-bottom-tag" aria-hidden="true">
+                    <span class="bottom-tag-line"></span>
+                    <span class="bottom-tag-text">BUILDING INTELLIGENT SYSTEMS</span>
+                </div>
+            </div>
         </div>
     </header>
-
-    <!-- ===================== ROBOT SECTION ===================== -->
-    <section class="robot-section" id="robot-reveal">
-        <div class="section-header">
-            <h2 class="reveal-text">The <span class="accent">AI</span> Behind the Vision</h2>
-            <p class="section-subtitle reveal-text">Hover to reveal the future</p>
-        </div>
-        <div class="robot-container reveal-text">
-            <div class="robot-card">
-                <!-- Animated ring -->
-                <div class="rotating-ring"></div>
-                <div class="rotating-ring ring-2"></div>
-                <!-- The image -->
-                <div class="robot-image-wrapper">
-                    <div class="robot-placeholder">
-                        <i class="fas fa-robot"></i>
-                        <span>Hover Me</span>
-                    </div>
-                    <img src="assets/robot.jpg" alt="AI Robot Vision" class="robot-img">
-                </div>
-                <!-- Floating particles around robot -->
-                <div class="float-particle fp-1"></div>
-                <div class="float-particle fp-2"></div>
-                <div class="float-particle fp-3"></div>
-                <div class="float-particle fp-4"></div>
-                <div class="float-particle fp-5"></div>
-                <div class="float-particle fp-6"></div>
-            </div>
-        </div>
-    </section>
 
     <!-- ===================== ABOUT SECTION ===================== -->
     <section id="about" class="about-section glass-panel">
@@ -109,8 +173,8 @@
             </div>
             <div class="about-stats reveal-text">
                 <div class="stat-box tilt-card">
-                    <h3 class="counter" data-target="4">0</h3>
-                    <p>AI Projects</p>
+                    <h3 class="counter" data-target="5">0</h3>
+                    <p>AI Projects Built</p>
                 </div>
                 <div class="stat-box tilt-card">
                     <h3>10+</h3>
@@ -124,105 +188,397 @@
         </div>
     </section>
 
-    <!-- ===================== SKILLS SECTION ===================== -->
+    <!-- ===================== SKILLS SECTION — NEURAL NETWORK ARCHITECTURE ===================== -->
     <section id="skills" class="skills-section glass-panel">
-        <div class="section-header">
-            <h2 class="reveal-text">My <span class="accent">Skills</span></h2>
+        <div class="section-header reveal-text">
+            <div class="section-eyebrow"><i class="fas fa-network-wired"></i> NEURAL NETWORK ARCHITECTURE</div>
+            <h2>Technical <span class="accent">Skills Topology</span></h2>
+            <p class="section-subtext">Interactive Neural Synapses — Hover over any node to highlight synaptic connections across foundational, deep learning, vision, and LLM layers.</p>
         </div>
-        <div class="skills-container">
-            <div class="skill-category reveal-text">
-                <h3><i class="fas fa-robot"></i> Generative AI &amp; LLM Engineering</h3>
-                <div class="skill-tags">
-                    <span class="tag" data-delay="0">Generative AI &amp; LLMs</span>
-                    <span class="tag" data-delay="1">RAG Systems</span>
-                    <span class="tag" data-delay="2">Agentic AI</span>
-                    <span class="tag" data-delay="3">Multi-Agent Systems</span>
-                    <span class="tag" data-delay="4">LangGraph Orchestration</span>
-                    <span class="tag" data-delay="5">Prompt Engineering</span>
-                    <span class="tag" data-delay="6">Vector Databases (ChromaDB)</span>
-                    <span class="tag" data-delay="7">Cross-Encoder Reranking</span>
-                    <span class="tag" data-delay="8">Semantic Search</span>
+
+        <div class="skills-nn-wrapper" id="skills-nn-wrapper">
+            <!-- Synapse canvas for dynamic neural connection lines -->
+            <canvas id="skills-nn-canvas" aria-hidden="true"></canvas>
+
+            <div class="nn-layers-container">
+                <!-- LAYER 1: Core & Foundations -->
+                <div class="nn-layer" data-layer="foundations">
+                    <div class="nn-layer-badge">INPUT · FOUNDATIONS</div>
+                    <div class="nn-nodes-column">
+                        <div class="nn-node" data-skill="python" data-connections="pandas,pytorch,cv,langchain,api">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fab fa-python"></i></span>
+                            <span class="node-title">Python (Advanced)</span>
+                        </div>
+                        <div class="nn-node" data-skill="git" data-connections="python,api">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fab fa-git-alt"></i></span>
+                            <span class="node-title">Git &amp; GitHub</span>
+                        </div>
+                        <div class="nn-node" data-skill="sql" data-connections="pandas,data_analysis">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-database"></i></span>
+                            <span class="node-title">SQL Databases</span>
+                        </div>
+                        <div class="nn-node" data-skill="excel" data-connections="data_analysis">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-table"></i></span>
+                            <span class="node-title">MS Excel (Advanced)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 2: Data Science & Analytics -->
+                <div class="nn-layer" data-layer="data">
+                    <div class="nn-layer-badge">LAYER 2 · DATA SCIENCE</div>
+                    <div class="nn-nodes-column">
+                        <div class="nn-node" data-skill="pandas" data-connections="python,data_analysis,scikit">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-chart-bar"></i></span>
+                            <span class="node-title">Pandas &amp; NumPy</span>
+                        </div>
+                        <div class="nn-node" data-skill="data_analysis" data-connections="pandas,scikit,evaluation">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-project-diagram"></i></span>
+                            <span class="node-title">Data Analysis &amp; Viz</span>
+                        </div>
+                        <div class="nn-node" data-skill="evaluation" data-connections="data_analysis,rag,scikit">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-check-double"></i></span>
+                            <span class="node-title">Model Evaluation Metrics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 3: Machine Learning & Deep Learning -->
+                <div class="nn-layer" data-layer="ml">
+                    <div class="nn-layer-badge">LAYER 3 · DEEP LEARNING</div>
+                    <div class="nn-nodes-column">
+                        <div class="nn-node" data-skill="scikit" data-connections="pandas,pytorch,evaluation">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-cogs"></i></span>
+                            <span class="node-title">Scikit-Learn (ML)</span>
+                        </div>
+                        <div class="nn-node featured-node" data-skill="pytorch" data-connections="python,cv,rag,transformers">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-fire"></i></span>
+                            <span class="node-title">PyTorch &amp; Neural Nets</span>
+                        </div>
+                        <div class="nn-node" data-skill="transformers" data-connections="pytorch,rag,langchain,genai">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-brain"></i></span>
+                            <span class="node-title">Transformers &amp; Cross-Encoders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 4: Generative AI, RAG & LLMs -->
+                <div class="nn-layer" data-layer="genai">
+                    <div class="nn-layer-badge">LAYER 4 · GENAI &amp; AGENTS</div>
+                    <div class="nn-nodes-column">
+                        <div class="nn-node featured-node" data-skill="genai" data-connections="rag,agentic,langchain,gemini">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-robot"></i></span>
+                            <span class="node-title">Generative AI &amp; LLMs</span>
+                        </div>
+                        <div class="nn-node featured-node" data-skill="rag" data-connections="genai,chroma,langchain,transformers">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-layer-group"></i></span>
+                            <span class="node-title">Hybrid RAG Systems</span>
+                        </div>
+                        <div class="nn-node featured-node" data-skill="agentic" data-connections="genai,langchain,api">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-network-wired"></i></span>
+                            <span class="node-title">Multi-Agent AI &amp; LangGraph</span>
+                        </div>
+                        <div class="nn-node" data-skill="langchain" data-connections="rag,agentic,gemini,chroma">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-link"></i></span>
+                            <span class="node-title">LangChain &amp; Prompt Eng</span>
+                        </div>
+                        <div class="nn-node" data-skill="chroma" data-connections="rag,transformers">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-cubes"></i></span>
+                            <span class="node-title">Vector DBs (ChromaDB)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAYER 5: Vision & Output Applications -->
+                <div class="nn-layer" data-layer="output">
+                    <div class="nn-layer-badge">OUTPUT · VISION &amp; APPS</div>
+                    <div class="nn-nodes-column">
+                        <div class="nn-node featured-node" data-skill="cv" data-connections="pytorch,yolo">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-eye"></i></span>
+                            <span class="node-title">Computer Vision (OpenCV)</span>
+                        </div>
+                        <div class="nn-node featured-node" data-skill="yolo" data-connections="cv">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-crosshairs"></i></span>
+                            <span class="node-title">YOLOv8 &amp; Object Detection</span>
+                        </div>
+                        <div class="nn-node" data-skill="gemini" data-connections="genai,rag">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-microchip"></i></span>
+                            <span class="node-title">Gemini API &amp; Multimodal</span>
+                        </div>
+                        <div class="nn-node" data-skill="api" data-connections="agentic,python">
+                            <div class="node-glow"></div>
+                            <span class="node-icon"><i class="fas fa-bolt"></i></span>
+                            <span class="node-title">FastAPI &amp; REST APIs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-category reveal-text">
-                <h3><i class="fas fa-eye"></i> Computer Vision &amp; NLP</h3>
-                <div class="skill-tags">
-                    <span class="tag" data-delay="0">Computer Vision</span>
-                    <span class="tag" data-delay="1">YOLOv8 Object Detection</span>
-                    <span class="tag" data-delay="2">Facial Recognition</span>
-                    <span class="tag" data-delay="3">OCR (Tesseract)</span>
-                    <span class="tag" data-delay="4">Image Processing</span>
-                    <span class="tag" data-delay="5">NLP</span>
-                    <span class="tag" data-delay="6">Conversational AI</span>
-                    <span class="tag" data-delay="7">Speech Recognition &amp; TTS</span>
+
+            <!-- Language Pills footer -->
+            <div class="nn-footer-languages">
+                <span class="lang-pill"><i class="fas fa-globe"></i> Arabic — Native</span>
+                <span class="lang-pill"><i class="fas fa-globe-americas"></i> English — Fluent Professional Technical</span>
+                <span class="lang-pill"><i class="fas fa-award"></i> IBM Certified Data Scientist (DEPI Track)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SERVICES SECTION ===================== -->
+    <section id="services" class="services-section glass-panel">
+        <div class="section-header reveal-text">
+            <div class="section-eyebrow"><i class="fas fa-microchip"></i> AI PRODUCTION CAPABILITIES</div>
+            <h2>Engineering <span class="accent">Services</span></h2>
+            <p class="section-subtext">Enterprise-grade artificial intelligence solutions engineered for precision, speed, and real-world impact.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card tilt-card reveal-text">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                    <span class="service-badge">PRODUCTION LLM</span>
+                </div>
+                <h3>Retrieval-Augmented Generation (RAG)</h3>
+                <p>Custom enterprise RAG systems eliminating hallucination. Built with hybrid vector-lexical search (ChromaDB + BM25/TF-IDF), multi-query expansion, cross-encoder reranking, and automated 6-metric response quality evaluation.</p>
+                <div class="service-tags">
+                    <span>LangChain</span>
+                    <span>Gemini API</span>
+                    <span>ChromaDB</span>
+                    <span>Cross-Encoder</span>
                 </div>
             </div>
-            <div class="skill-category reveal-text">
-                <h3><i class="fas fa-code"></i> Data Analysis &amp; Programming</h3>
-                <div class="skill-tags">
-                    <span class="tag" data-delay="0">Python (Advanced)</span>
-                    <span class="tag" data-delay="1">JavaScript (ES6+)</span>
-                    <span class="tag" data-delay="2">SQL</span>
-                    <span class="tag" data-delay="3">Data Analysis &amp; Visualization</span>
-                    <span class="tag" data-delay="4">Model Evaluation Metrics</span>
-                    <span class="tag" data-delay="5">MS Excel (Advanced)</span>
-                    <span class="tag" data-delay="6">API Integration</span>
-                    <span class="tag" data-delay="7">Git &amp; GitHub</span>
-                    <span class="tag" data-delay="8">LangChain</span>
-                    <span class="tag" data-delay="9">Gemini API</span>
+
+            <div class="service-card tilt-card reveal-text">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                    <span class="service-badge">AUTONOMOUS</span>
+                </div>
+                <h3>Agentic AI &amp; Multi-Agent Workflows</h3>
+                <p>Autonomous AI agents equipped with planning, tool calling, memory management, and self-correction loops. Orchestrated with LangGraph to automate complex multi-step workflows, research, and data operations.</p>
+                <div class="service-tags">
+                    <span>LangGraph</span>
+                    <span>Multi-Agent</span>
+                    <span>Tool Calling</span>
+                    <span>Autonomous</span>
                 </div>
             </div>
-            <div class="skill-category reveal-text">
-                <h3><i class="fas fa-language"></i> Languages</h3>
-                <div class="skill-tags">
-                    <span class="tag language-tag" data-delay="0">Arabic — Native</span>
-                    <span class="tag language-tag" data-delay="1">English — Excellent (R/W) | Very Good (L/S)</span>
+
+            <div class="service-card tilt-card reveal-text">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fas fa-glasses"></i></div>
+                    <span class="service-badge">EMBEDDED &amp; EDGE</span>
+                </div>
+                <h3>Computer Vision &amp; Assistive Systems</h3>
+                <p>Real-time visual perception pipelines from edge cameras to cloud APIs. Specializing in YOLOv8 real-time object detection, face recognition, OCR document analysis, and wearable assistive technologies (e.g. Smart Glasses).</p>
+                <div class="service-tags">
+                    <span>YOLOv8</span>
+                    <span>OpenCV</span>
+                    <span>Edge AI</span>
+                    <span>Face Recognition</span>
                 </div>
             </div>
+
+            <div class="service-card tilt-card reveal-text">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="service-badge">DEPI · IBM TRACK</span>
+                </div>
+                <h3>Data Science &amp; Predictive Analytics</h3>
+                <p>Comprehensive data pipelines from exploratory data analysis and feature engineering to statistical hypothesis testing, classification/regression modeling, and interactive dashboards.</p>
+                <div class="service-tags">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>Scikit-Learn</span>
+                    <span>IBM Track</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <div class="projects-intro-wrapper" id="projects">
+        <div class="section-header reveal-text">
+            <div class="section-eyebrow"><i class="fas fa-rocket"></i> PORTFOLIO INNOVATIONS</div>
+            <h2>Selected <span class="accent">Work</span></h2>
+            <p class="projects-intro-text">AI engineering projects — from a real-world graduation wearable to autonomous cybersecurity agents.</p>
+        </div>
+    </div>
+
+    <!-- ===== FLAGSHIP: Smart Glasses ===== -->
+    <section id="smart-glasses" class="flagship-section reveal-text">
+        <div class="flagship-inner">
+            <!-- Text side -->
+            <div class="flagship-text">
+                <div class="flagship-eyebrow"><i class="fas fa-crown"></i> FLAGSHIP GRADUATION PROJECT</div>
+                <h2 class="flagship-title">Smart <span class="accent">Glasses</span></h2>
+                <p class="flagship-desc">An AI-powered wearable assistive system for the visually impaired. Integrates real-time <strong>YOLOv8 Object Detection</strong>, <strong>Gemini OCR</strong>, <strong>Face Recognition</strong>, and full <strong>Arabic Voice Control</strong> — enabling independent navigation and daily interaction.</p>
+                <div class="flagship-pills">
+                    <span><i class="fas fa-bolt"></i> 30+ FPS Edge Vision</span>
+                    <span><i class="fas fa-eye"></i> YOLOv8</span>
+                    <span><i class="fas fa-robot"></i> Gemini AI</span>
+                    <span><i class="fas fa-microphone"></i> Arabic Voice</span>
+                    <span><i class="fas fa-sos"></i> Emergency SOS</span>
+                    <span><i class="fab fa-python"></i> Python</span>
+                    <span><i class="fas fa-camera"></i> OpenCV</span>
+                    <span><i class="fas fa-coins"></i> Currency ID</span>
+                </div>
+                <div class="flagship-cta">
+                    <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" rel="noopener noreferrer" class="btn primary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            <!-- Image side -->
+            <div class="flagship-img-wrap">
+                <img src="assets/smart_glasses_hero.png" alt="Smart Glasses AI — wearable assistive device" class="flagship-img">
+                <div class="flagship-img-badge"><i class="fas fa-star"></i> FEATURED PROJECT</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OTHER PROJECTS — compact cards ===== -->
+    <section class="other-projects-section">
+        <div class="section-header reveal-text">
+            <h3 class="other-projects-title">More <span class="accent">Projects</span></h3>
+        </div>
+        <div class="other-projects-grid">
+
+            <!-- Cognitive Hybrid RAG -->
+            <div class="proj-card reveal-text" id="rag-system">
+                <div class="proj-card-img-wrap">
+                    <img src="assets/rag_system_hero.png" alt="Cognitive Hybrid RAG System" class="proj-card-img">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-card-badge"><i class="fas fa-brain"></i> RAG ENGINE</div>
+                    <h3 class="proj-card-title">Cognitive Hybrid <span class="accent">RAG</span></h3>
+                    <p class="proj-card-desc">Production-ready hybrid RAG system combining ChromaDB vector search + TF-IDF lexical retrieval with Cross-Encoder reranking and LLM query expansion — delivering hallucination-free answers.</p>
+                    <div class="proj-card-tags">
+                        <span>Python</span><span>ChromaDB</span><span>LangChain</span><span>Gemini API</span><span>Streamlit</span>
+                    </div>
+                    <div class="proj-card-links">
+                        <a href="rag-system/index.html" target="_blank" rel="noopener noreferrer" class="btn primary-btn btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/mohamedkhaled2004713/rag-system.git" target="_blank" rel="noopener noreferrer" class="btn outline-btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sentinel-AI -->
+            <div class="proj-card reveal-text" id="sentinel">
+                <div class="proj-card-img-wrap">
+                    <img src="assets/sentinel_hero.png" alt="Sentinel-AI — Multi-Agent Fraud Detection" class="proj-card-img">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-card-badge"><i class="fas fa-shield-alt"></i> CYBERSECURITY</div>
+                    <h3 class="proj-card-title">Sentinel-<span class="accent">AI</span></h3>
+                    <p class="proj-card-desc">Intelligent multi-agent fraud detection system with three specialized AI agents — Analyzer, Forensics, and Decision — providing real-time transaction security verdicts.</p>
+                    <div class="proj-card-tags">
+                        <span>Python</span><span>Gemini AI</span><span>Streamlit</span><span>Multi-Agent</span>
+                    </div>
+                    <div class="proj-card-links">
+                        <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" rel="noopener noreferrer" class="btn primary-btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUT Smart Chatbot -->
+            <div class="proj-card reveal-text" id="aut-chatbot">
+                <div class="proj-card-img-wrap">
+                    <img src="assets/chatbot_fullpage.png" alt="AUT Smart Chatbot" class="proj-card-img">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-card-badge"><i class="fas fa-comments"></i> CHATBOT</div>
+                    <h3 class="proj-card-title">AUT Smart <span class="accent">Chatbot</span></h3>
+                    <p class="proj-card-desc">Bilingual Arabic/English AI assistant for Aqaba University of Technology. Built with Gemini 2.0 Flash, featuring GPA calculation, faculty directory, and a custom NLP pipeline.</p>
+                    <div class="proj-card-tags">
+                        <span>JavaScript</span><span>Gemini 2.0</span><span>NLP</span><span>HTML/CSS</span>
+                    </div>
+                    <div class="proj-card-links">
+                        <a href="chatbot/index.html" target="_blank" rel="noopener noreferrer" class="btn primary-btn btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/mohamedkhaled2004713/chatbot-for-aqaba-universty" target="_blank" rel="noopener noreferrer" class="btn outline-btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PixelForge -->
+            <div class="proj-card reveal-text" id="pixelforge">
+                <div class="proj-card-img-wrap">
+                    <img src="assets/pixelforge_hero.png" alt="PixelForge — Real-Time Image Filtering Studio" class="proj-card-img">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-card-badge"><i class="fas fa-magic"></i> IMAGE PROCESSING</div>
+                    <h3 class="proj-card-title">Pixel<span class="accent">Forge</span></h3>
+                    <p class="proj-card-desc">Real-time image filtering web app with 20+ filters, 8 one-click presets, live histogram, and multi-format export — built entirely in vanilla HTML5 Canvas with zero dependencies.</p>
+                    <div class="proj-card-tags">
+                        <span>HTML5</span><span>Canvas API</span><span>Vanilla JS</span><span>CSS3</span>
+                    </div>
+                    <div class="proj-card-links">
+                        <a href="pixelforge/index.html" target="_blank" rel="noopener noreferrer" class="btn primary-btn btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" rel="noopener noreferrer" class="btn outline-btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- ===================== CERTIFICATES SECTION ===================== -->
     <section id="certificates" class="certificates-section glass-panel">
         <div class="section-header">
-            <h2 class="reveal-text">Training & <span class="accent">Certifications</span></h2>
+            <h2 class="reveal-text">Training &amp; <span class="accent">Certifications</span></h2>
         </div>
         <div class="cert-list">
             <div class="cert-item reveal-text">
-                <div class="cert-number">01</div>
-                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-number" aria-hidden="true">01</div>
+                <i class="fas fa-award cert-icon" aria-hidden="true"></i>
                 <div class="cert-details">
                     <h4>ISO Artificial Intelligence Training</h4>
                     <p>MediX International Accredited Institution</p>
                 </div>
             </div>
             <div class="cert-item reveal-text">
-                <div class="cert-number">02</div>
-                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-number" aria-hidden="true">02</div>
+                <i class="fas fa-award cert-icon" aria-hidden="true"></i>
                 <div class="cert-details">
                     <h4>Applications of Artificial Intelligence (15 Hours)</h4>
                     <p>The British University in Egypt (SCE)</p>
                 </div>
             </div>
             <div class="cert-item reveal-text">
-                <div class="cert-number">03</div>
-                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-number" aria-hidden="true">03</div>
+                <i class="fas fa-award cert-icon" aria-hidden="true"></i>
                 <div class="cert-details">
                     <h4>Artificial Intelligence Training</h4>
                     <p>Telecom Egypt (WE)</p>
                 </div>
             </div>
             <div class="cert-item reveal-text">
-                <div class="cert-number">04</div>
-                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-number" aria-hidden="true">04</div>
+                <i class="fas fa-award cert-icon" aria-hidden="true"></i>
                 <div class="cert-details">
                     <h4>Python &amp; AI Course (36 Hours)</h4>
-                    <p>Black Horse Courses - Grade: Excellent</p>
+                    <p>Black Horse Courses — Grade: Excellent</p>
                 </div>
             </div>
             <div class="cert-item reveal-text">
-                <div class="cert-number">05</div>
-                <i class="fas fa-award cert-icon"></i>
+                <div class="cert-number" aria-hidden="true">05</div>
+                <i class="fas fa-award cert-icon" aria-hidden="true"></i>
                 <div class="cert-details">
                     <h4>Integrated English Program (94%)</h4>
                     <p>Egyptian Foundation for Information Technology</p>
@@ -230,702 +586,313 @@
             </div>
         </div>
         <div class="cert-download reveal-text">
-            <a href="certificates.pdf" target="_blank" class="btn primary-btn">
-                <i class="fas fa-file-pdf"></i> View Official Certificates
+            <a href="certificates.pdf" target="_blank" rel="noopener" class="btn primary-btn" aria-label="View official certificates PDF">
+                <i class="fas fa-file-pdf" aria-hidden="true"></i> View Official Certificates
             </a>
         </div>
     </section>
 
-    <!-- ===================== SENTINEL-AI SECTION ===================== -->
-    <section id="sentinel" class="sg-showcase">
-        <!-- Hero Image -->
-        <div class="sg-hero reveal-text">
-            <img src="assets/sentinel_hero.png" alt="Sentinel-AI System" class="sg-hero-img">
-            <div class="sg-hero-overlay"></div>
-            <div class="sg-hero-content">
-                <div class="sg-badge"><i class="fas fa-shield"></i> CYBERSECURITY SYSTEM</div>
-                <h2 class="sg-title">Sentinel-<span class="accent">AI</span></h2>
-                <p class="sg-subtitle">Multi-Agent Fraud Detection & Cybersecurity Hub</p>
+    <!-- ===================== CONTACT SECTION — REDESIGNED ===================== -->
+    <section id="contact" class="contact-section">
+        <div class="contact-wrapper">
+            <div class="contact-header reveal-text">
+                <span class="contact-eyebrow">OPEN FOR INQUIRIES</span>
+                <h2>Get In <span class="accent">Touch</span></h2>
+                <p class="contact-intro">Send a direct message or reach out through any of my communication channels below.</p>
             </div>
-        </div>
 
-        <!-- Description -->
-        <div class="sg-description glass-panel reveal-text">
-            <p>Sentinel-AI is an intelligent <strong>multi-agent system</strong> designed to analyze transactions, detect threats, and make real-time security decisions. It combines three specialized AI agents working in harmony to provide comprehensive fraud detection and cybersecurity analysis.</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="sg-features">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-brain"></i> Core Agents</h3>
-            <div class="sg-features-grid">
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-magnifying-glass"></i></div>
-                    <h4>Analyzer Agent</h4>
-                    <p>Reads transaction data and measures anomaly scores with rapid precision. Detects unusual patterns and calculates risk indicators in real-time.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-search"></i></div>
-                    <h4>Forensics Agent</h4>
-                    <p>Traces technical paths and analyzes exploitation indicators. Investigates transaction routes and identifies suspicious behavioral patterns.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-gavel"></i></div>
-                    <h4>Decision Agent</h4>
-                    <p>Issues final verdict: SAFE, SUSPICIOUS, or FRAUD. Provides recommendations and confidence scores based on all agent analyses.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h4>Real-Time Processing</h4>
-                    <p>Analyzes transactions instantly with sub-second latency. Provides immediate alerts and actionable insights for security teams.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="sg-techstack glass-panel reveal-text">
-            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
-            <div class="sg-tech-tags">
-                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
-                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini AI</span>
-                <span class="sg-tech-tag"><i class="fas fa-chart-line"></i> Streamlit</span>
-                <span class="sg-tech-tag"><i class="fas fa-shield"></i> Cybersecurity</span>
-                <span class="sg-tech-tag"><i class="fas fa-database"></i> Data Analysis</span>
-                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Multi-Agent</span>
-            </div>
-        </div>
-
-        <!-- GitHub Link -->
-        <div class="sg-cta reveal-text">
-            <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn primary-btn">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-    </section>
-
-    <!-- ===================== SMART GLASSES — DEDICATED SHOWCASE ===================== -->
-    <section id="smart-glasses" class="sg-showcase">
-        <!-- Hero Image -->
-        <div class="sg-hero reveal-text">
-            <img src="assets/smart_glasses_hero.png" alt="Smart Glasses AI Project" class="sg-hero-img">
-            <div class="sg-hero-overlay"></div>
-            <div class="sg-hero-content">
-                <div class="sg-badge"><i class="fas fa-graduation-cap"></i> GRADUATION PROJECT</div>
-                <h2 class="sg-title">Smart <span class="accent">Glasses</span></h2>
-                <p class="sg-subtitle">AI-Powered Wearable for the Visually Impaired</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="sg-description glass-panel reveal-text">
-            <p>An innovative wearable AI device that transforms how visually impaired individuals interact with the world. By integrating real-time <strong>Computer Vision</strong>, <strong>OCR</strong>, <strong>Face Recognition</strong>, and <strong>Voice AI</strong> into a single Python-powered system, the Smart Glasses provide essential auditory feedback — from reading text aloud to recognizing faces and detecting obstacles — making daily life safer and more accessible.</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="sg-features">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-bolt"></i> Core Features</h3>
-            <div class="sg-features-grid">
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-eye"></i></div>
-                    <h4>Object Detection</h4>
-                    <p>Real-time YOLOv8 object detection with directional audio feedback — tells user what's on their left, right, or ahead.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-file-alt"></i></div>
-                    <h4>OCR Text Reading</h4>
-                    <p>Reads any text in front of the camera powered by Gemini AI — from documents to street signs and product labels.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-user-check"></i></div>
-                    <h4>Face Recognition</h4>
-                    <p>Learns and remembers faces. Announces known people by name with 25-frame training for high accuracy.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <h4>Safety Mode</h4>
-                    <p>Continuous obstacle monitoring with proximity warnings — alerts the user when objects get dangerously close.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-coins"></i></div>
-                    <h4>Currency Recognition</h4>
-                    <p>Identifies banknotes and their value using AI vision — helping users handle money independently.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-sos"></i></div>
-                    <h4>Emergency SOS</h4>
-                    <p>Voice-activated distress signal that sends email with GPS location to emergency contacts instantly.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-microphone"></i></div>
-                    <h4>Voice Control</h4>
-                    <p>Full Arabic voice command system — switch modes, save faces, ask time, and trigger features hands-free.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon"><i class="fas fa-battery-half"></i></div>
-                    <h4>Battery Saver Mode</h4>
-                    <p>Intelligent power management that disables heavy AI tasks to extend battery life when needed.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Image Gallery -->
-        <div class="sg-gallery">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-images"></i> How It Works</h3>
-            <div class="sg-gallery-grid">
-                <div class="sg-gallery-item reveal-text">
-                    <img src="assets/glasses_detection.png" alt="Object Detection View">
-                    <div class="sg-gallery-label">Object Detection & Scene Analysis</div>
-                </div>
-                <div class="sg-gallery-item reveal-text">
-                    <img src="assets/glasses_ocr.png" alt="OCR Text Reading">
-                    <div class="sg-gallery-label">OCR & Text Reading</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="sg-techstack glass-panel reveal-text">
-            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
-            <div class="sg-tech-tags">
-                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
-                <span class="sg-tech-tag"><i class="fas fa-brain"></i> YOLOv8</span>
-                <span class="sg-tech-tag"><i class="fas fa-robot"></i> Gemini AI</span>
-                <span class="sg-tech-tag"><i class="fas fa-camera"></i> OpenCV</span>
-                <span class="sg-tech-tag"><i class="fas fa-comment-dots"></i> gTTS</span>
-                <span class="sg-tech-tag"><i class="fas fa-microphone-alt"></i> SpeechRecognition</span>
-                <span class="sg-tech-tag"><i class="fas fa-text-width"></i> Tesseract OCR</span>
-                <span class="sg-tech-tag"><i class="fas fa-map-marker-alt"></i> Geolocation API</span>
-            </div>
-        </div>
-
-        <!-- GitHub Link -->
-        <div class="sg-cta reveal-text">
-            <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn primary-btn">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-    </section>
-
-    <!-- ===================== PIXELFORGE SECTION ===================== -->
-    <section id="pixelforge" class="sg-showcase">
-        <!-- Hero Image -->
-        <div class="sg-hero reveal-text">
-            <img src="assets/pixelforge_hero.png" alt="PixelForge Image Filter App" class="sg-hero-img">
-            <div class="sg-hero-overlay"></div>
-            <div class="sg-hero-content">
-                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3)); border-color: rgba(139,92,246,0.5);"><i class="fas fa-magic"></i> IMAGE PROCESSING APP</div>
-                <h2 class="sg-title">Pixel<span class="accent">Forge</span></h2>
-                <p class="sg-subtitle">Real-Time Image Filtering & Processing Studio</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="sg-description glass-panel reveal-text">
-            <p>PixelForge is a powerful, professional <strong>real-time image filtering web application</strong> built with pure HTML5, CSS3, and Vanilla JavaScript using the Canvas API. It delivers pixel-level image manipulation with zero dependencies — drag, drop, filter, and export in seconds.</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="sg-features">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-sliders-h"></i> Core Features</h3>
-            <div class="sg-features-grid">
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);"><i class="fas fa-upload"></i></div>
-                    <h4>Smart Upload</h4>
-                    <p>Drag & Drop, file browser, or paste directly from clipboard (Ctrl+V). Supports JPG, PNG, WEBP & GIF up to 20MB.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0e7490, #06b6d4);"><i class="fas fa-palette"></i></div>
-                    <h4>20+ Filters</h4>
-                    <p>Grayscale, Edge Detection, Blur, Sepia, Invert, Emboss, Sharpen, Vintage, Cartoon, Oil Paint and many more effects.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-layer-group"></i></div>
-                    <h4>Stack Filters</h4>
-                    <p>Enable Stack Mode to combine multiple filters simultaneously for unique, creative effects.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);"><i class="fas fa-th-large"></i></div>
-                    <h4>8 One-Click Presets</h4>
-                    <p>Cinematic, Noir, Dreamy, Retro, Comic, Ghost, Cyberpunk & Watercolor — instant professional looks.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #0891b2, #0e7490);"><i class="fas fa-columns"></i></div>
-                    <h4>3 View Modes</h4>
-                    <p>Preview, Side-by-Side Compare, and interactive Split Slider — see your edits with full context.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);"><i class="fas fa-chart-bar"></i></div>
-                    <h4>Live Histogram</h4>
-                    <p>Real-time RGB histogram displayed during filtering. Brightness, Contrast, Blur & Intensity controls.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"><i class="fas fa-download"></i></div>
-                    <h4>Multi-Format Export</h4>
-                    <p>Export in PNG (lossless), JPEG (adjustable quality), or WebP (modern format) with one click.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #06b6d4);"><i class="fas fa-tachometer-alt"></i></div>
-                    <h4>Zero Dependencies</h4>
-                    <p>Runs entirely in the browser — no server, no libraries, no install. Just open index.html and start creating.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="sg-techstack glass-panel reveal-text">
-            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
-            <div class="sg-tech-tags">
-                <span class="sg-tech-tag"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="sg-tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span class="sg-tech-tag"><i class="fab fa-js"></i> Vanilla JS</span>
-                <span class="sg-tech-tag"><i class="fas fa-paint-brush"></i> Canvas API</span>
-                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python (OpenCV)</span>
-                <span class="sg-tech-tag"><i class="fas fa-image"></i> Image Processing</span>
-            </div>
-        </div>
-
-        <!-- Links -->
-        <div class="sg-cta reveal-text">
-            <a href="pixelforge/index.html" target="_blank" class="btn primary-btn">
-                <i class="fas fa-external-link-alt"></i> Try Live Demo
-            </a>
-            <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn ghost-btn">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-    </section>
-    <!-- ===================== AUT SMART CHATBOT SECTION ===================== -->
-    <section id="aut-chatbot" class="sg-showcase">
-        <!-- Hero Image -->
-        <div class="sg-hero reveal-text">
-            <img src="assets/chatbot_fullpage.png" alt="AUT Chatbot Interface" class="sg-hero-img" style="filter: brightness(0.8);">
-            <div class="sg-hero-overlay"></div>
-            <div class="sg-hero-content">
-                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(37,99,235,0.3)); border-color: rgba(59,130,246,0.5);"><i class="fas fa-robot"></i> AI CONVERSATIONAL AGENT</div>
-                <h2 class="sg-title">AUT Smart <span class="accent">Chatbot</span></h2>
-                <p class="sg-subtitle">Intelligent Assistant for Aqaba University of Technology</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="sg-description glass-panel reveal-text">
-            <p>A specialized <strong>AI-powered conversational agent</strong> designed for Aqaba University of Technology (AUT). Built with Gemini 2.0 Flash, it features a custom NLP pipeline for Arabic/English normalization, intent classification, and real-time knowledge retrieval from university-specific databases.</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="sg-features">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-microchip"></i> Key Capabilities</h3>
-            <div class="sg-features-grid">
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);"><i class="fas fa-calculator"></i></div>
-                    <h4>GPA Calculator</h4>
-                    <p>Interactive tool for students to calculate Semester and Cumulative GPA with personalized motivational feedback.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #1e40af, #2563eb);"><i class="fas fa-user-tie"></i></div>
-                    <h4>Faculty Directory</h4>
-                    <p>Instant access to instructor profiles, office hours, and contact details for all university departments.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #1e3a8a, #1e40af);"><i class="fas fa-graduation-cap"></i></div>
-                    <h4>Admission Guide</h4>
-                    <p>Real-time answers on registration requirements, fees, and procedures for local and international students.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);"><i class="fas fa-language"></i></div>
-                    <h4>Bilingual NLP</h4>
-                    <p>Advanced Arabic text normalization and intent detection pipeline for high-accuracy understanding of student queries.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="sg-techstack glass-panel reveal-text">
-            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
-            <div class="sg-tech-tags">
-                <span class="sg-tech-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
-                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini 2.0 Flash</span>
-                <span class="sg-tech-tag"><i class="fab fa-html5"></i> HTML5/CSS3</span>
-                <span class="sg-tech-tag"><i class="fas fa-database"></i> JSON Knowledge Base</span>
-                <span class="sg-tech-tag"><i class="fas fa-terminal"></i> NLP Pipeline</span>
-                <span class="sg-tech-tag"><i class="fas fa-mobile-alt"></i> Responsive UI</span>
-            </div>
-        </div>
-
-        <!-- Links -->
-        <div class="sg-cta reveal-text">
-            <a href="chatbot/index.html" target="_blank" class="btn primary-btn">
-                <i class="fas fa-external-link-alt"></i> Try Live Demo
-            </a>
-            <a href="https://github.com/mohamedkhaled2004713/chatbot-for-aqaba-universty" target="_blank" class="btn ghost-btn">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-    </section>
-
-    <!-- ===================== COGNITIVE HYBRID RAG SYSTEM SECTION ===================== -->
-    <section id="rag-system" class="sg-showcase">
-        <!-- Hero Image -->
-        <div class="sg-hero reveal-text">
-            <img src="assets/rag_system_hero.png" alt="Cognitive Hybrid RAG System Interface" class="sg-hero-img" style="filter: brightness(0.85);">
-            <div class="sg-hero-overlay"></div>
-            <div class="sg-hero-content">
-                <div class="sg-badge" style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(99,102,241,0.3)); border-color: rgba(139,92,246,0.5);"><i class="fas fa-brain"></i> COGNITIVE RETRIEVAL ENGINE</div>
-                <h2 class="sg-title">Cognitive Hybrid <span class="accent">RAG</span></h2>
-                <p class="sg-subtitle">Production-Ready Hybrid Lexical & Semantic Retrieval System</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="sg-description glass-panel reveal-text">
-            <p>A production-ready, highly advanced **Retrieval-Augmented Generation (RAG)** application. It features bilingual English/Arabic preprocessing, hybrid scoring (Vector cosine similarity + TF-IDF lexical search), LLM query expansion, Cross-Encoder reranking, and an automated 6-metric response evaluator — delivering highly precise, hallucination-free answers.</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="sg-features">
-            <h3 class="sg-section-title reveal-text"><i class="fas fa-cogs"></i> System Features</h3>
-            <div class="sg-features-grid">
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);"><i class="fas fa-layer-group"></i></div>
-                    <h4>Hybrid Scoring</h4>
-                    <p>Fuses Vector Search (cosine similarity) and lexical search (TF-IDF) using a weighted linear combination formula.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #4f46e5, #8b5cf6);"><i class="fas fa-random"></i></div>
-                    <h4>Multi-Query Expansion</h4>
-                    <p>Uses Gemini to formulate alternative queries, boosting document retrieval recall for complex questions.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #6366f1, #06b6d4);"><i class="fas fa-sort-amount-down"></i></div>
-                    <h4>Cross-Encoder Reranking</h4>
-                    <p>Uses sentence-transformers to rerank chunks based on relevance, filtering noise and highlighting key passages.</p>
-                </div>
-                <div class="sg-feature-card tilt-card reveal-text">
-                    <div class="sg-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"><i class="fas fa-chart-line"></i></div>
-                    <h4>6-Metric Evaluator</h4>
-                    <p>Scores outputs on Context Relevance, Faithfulness, Precision, Recall, Answer Relevancy, and Retrieval Accuracy.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="sg-techstack glass-panel reveal-text">
-            <h3 class="sg-section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
-            <div class="sg-tech-tags">
-                <span class="sg-tech-tag"><i class="fab fa-python"></i> Python</span>
-                <span class="sg-tech-tag"><i class="fas fa-database"></i> ChromaDB</span>
-                <span class="sg-tech-tag"><i class="fas fa-brain"></i> Gemini API</span>
-                <span class="sg-tech-tag"><i class="fas fa-sliders-h"></i> Streamlit</span>
-                <span class="sg-tech-tag"><i class="fas fa-chart-bar"></i> Plotly</span>
-                <span class="sg-tech-tag"><i class="fas fa-code"></i> LangChain</span>
-            </div>
-        </div>
-
-        <!-- Links -->
-        <div class="sg-cta reveal-text">
-            <a href="rag-system/index.html" target="_blank" class="btn primary-btn">
-                <i class="fas fa-external-link-alt"></i> Try Live Demo
-            </a>
-            <a href="https://github.com/mohamedkhaled2004713/rag-system.git" target="_blank" class="btn ghost-btn">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-    </section>
-
-    <!-- ===================== PROJECTS SECTION ===================== -->
-    <section id="projects" class="projects-section glass-panel">
-        <div class="section-header">
-            <h2 class="reveal-text">Featured <span class="accent">Projects</span></h2>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card tilt-card reveal-text">
-                <div class="project-icon"><i class="fas fa-shield"></i></div>
-                <h3>Sentinel-AI</h3>
-                <p class="project-tech"><i class="fas fa-code"></i> Python • Gemini • Streamlit</p>
-                <p class="project-desc">Multi-Agent Cybersecurity & Fraud Detection Hub. Real-time transaction analysis with specialized AI agents for comprehensive threat detection.</p>
-                <div class="project-actions">
-                    <a href="https://github.com/mohamedkhaled2004713/Sentinel-AI" target="_blank" class="btn btn-sm primary-btn">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card tilt-card reveal-text">
-                <div class="project-icon"><i class="fas fa-glasses"></i></div>
-                <h3>Smart Glasses AI</h3>
-                <p class="project-tech"><i class="fas fa-code"></i> YOLOv8 • OpenCV • Gemini</p>
-                <p class="project-desc">AI-Powered Wearable for the Visually Impaired. Computer Vision, OCR, Face Recognition, and Voice AI integrated into one assistive device.</p>
-                <div class="project-actions">
-                    <a href="https://github.com/mohamedkhaled2004713/Smart-Glasses-AI" target="_blank" class="btn btn-sm primary-btn">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card tilt-card reveal-text">
-                <div class="project-icon" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);"><i class="fas fa-magic"></i></div>
-                <h3>PixelForge</h3>
-                <p class="project-tech"><i class="fas fa-code"></i> HTML5 • Canvas API • Vanilla JS</p>
-                <p class="project-desc">Real-Time Image Filtering Studio. 20+ filters, 8 presets, live histogram, stack mode, and multi-format export — all in the browser with zero dependencies.</p>
-                <div class="project-actions">
-                    <a href="pixelforge/index.html" target="_blank" class="btn btn-sm primary-btn">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/mohamedkhaled2004713/PixelForge" target="_blank" class="btn btn-sm ghost-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card tilt-card reveal-text">
-                <div class="project-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);"><i class="fas fa-robot"></i></div>
-                <h3>AUT Smart Chatbot</h3>
-                <p class="project-tech"><i class="fas fa-code"></i> Vanilla JS • Gemini • NLP</p>
-                <p class="project-desc">Intelligent conversational agent for Aqaba University. Features bilingual NLP, GPA calculator, and real-time university database integration.</p>
-                <div class="project-actions">
-                    <a href="chatbot/index.html" target="_blank" class="btn btn-sm primary-btn">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/mohamedkhaled2004713/chatbot-for-aqaba-universty" target="_blank" class="btn btn-sm ghost-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card tilt-card reveal-text">
-                <div class="project-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);"><i class="fas fa-brain"></i></div>
-                <h3>Hybrid RAG System</h3>
-                <p class="project-tech"><i class="fas fa-code"></i> ChromaDB • Gemini • Python</p>
-                <p class="project-desc">Production-grade Retrieval-Augmented Generation. Features multilingual TF-IDF + vector hybrid search, Cross-Encoder reranking, and 6-metric confidence evaluation.</p>
-                <div class="project-actions">
-                    <a href="rag-system/index.html" target="_blank" class="btn btn-sm primary-btn">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/mohamedkhaled2004713/rag-system.git" target="_blank" class="btn btn-sm ghost-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== CONTACT SECTION ===================== -->
-    <section id="contact" class="contact-section glass-panel">
-        <div class="section-header">
-            <h2 class="reveal-text">Get In <span class="accent">Touch</span></h2>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <!-- Contact Form via Formspree -->
-                <form action="https://formspree.io/f/xjgjydrg" method="POST" class="contact-form reveal-text">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn primary-btn submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-                
-                <!-- Quick Contact Info -->
-                <div class="direct-contact">
-                    <h3>Or reach me directly:</h3>
-                    <a href="mailto:mohamedkhaled2004713@gmail.com" class="contact-card reveal-text">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">mohamedkhaled2004713@gmail.com</span>
+            <div class="contact-grid">
+                <!-- LEFT: Contact Form -->
+                <div class="contact-form-col reveal-text">
+                    <h3 class="contact-col-title">Send Direct Message</h3>
+                    <p class="contact-col-sub">Your message delivers directly to <span class="accent-text">mohamedkhaled2004713@gmail.com</span></p>
+                    <form action="https://formspree.io/f/xjgjydrg" method="POST" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
                         </div>
-                    </a>
-                    <a href="tel:01021118342" class="contact-card reveal-text">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <span class="contact-label">Phone</span>
-                            <span class="contact-value">01021118342</span>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
                         </div>
-                    </a>
-                    <div class="contact-card reveal-text">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                    <div class="contact-card reveal-text">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value">Cairo, Egypt</span>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
                         </div>
-                    </div>
+                        <button type="submit" class="btn primary-btn submit-btn" id="submit-btn">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
+                        </button>
+                    </form>
+                </div>
 
-                    <!-- Social Media Links -->
-                    <div class="social-links reveal-text">
-                        <h3>Follow Me</h3>
-                        <div class="social-icons">
-                            <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" class="social-icon instagram" title="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" class="social-icon linkedin" title="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://github.com/mohamedkhaled2004713" target="_blank" class="social-icon github" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                <!-- RIGHT: Platform Links (no title/subtitle, aligned to form top) -->
+                <div class="contact-platforms-col reveal-text">
+                    <div class="platform-links">
+                        <a href="https://wa.me/201021118342" target="_blank" rel="noopener noreferrer" class="platform-row" aria-label="Chat on WhatsApp">
+                            <div class="platform-icon">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name">Chat on WhatsApp</span>
+                                <span class="platform-handle">01021118342 · Direct Link</span>
+                            </div>
+                            <div class="platform-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" rel="noopener noreferrer" class="platform-row" aria-label="Connect on LinkedIn">
+                            <div class="platform-icon">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name">Connect on LinkedIn</span>
+                                <span class="platform-handle">Mohamed Khaled</span>
+                            </div>
+                            <div class="platform-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+
+                        <a href="https://github.com/mohamedkhaled2004713" target="_blank" rel="noopener noreferrer" class="platform-row" aria-label="Explore on GitHub">
+                            <div class="platform-icon">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name">Explore on GitHub</span>
+                                <span class="platform-handle">@mohamedkhaled2004713</span>
+                            </div>
+                            <div class="platform-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+
+                        <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" rel="noopener noreferrer" class="platform-row" aria-label="Follow on Instagram">
+                            <div class="platform-icon">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name">Follow on Instagram</span>
+                                <span class="platform-handle">@_muhvmedkhvled</span>
+                            </div>
+                            <div class="platform-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+
+                        <a href="mailto:mohamedkhaled2004713@gmail.com" class="platform-row" aria-label="Send a direct email">
+                            <div class="platform-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name">Direct Email</span>
+                                <span class="platform-handle">mohamedkhaled2004713@gmail.com</span>
+                            </div>
+                            <div class="platform-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== CHATBOT ===================== -->
-    <div class="chatbot-container">
-        <button class="chatbot-button" id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with me">
-            <i class="fas fa-comments"></i>
+    <!-- ===================== CHATBOT WIDGET ===================== -->
+    <div class="chatbot-container" id="chatbot-container" role="complementary" aria-label="AI portfolio assistant">
+        <button class="chatbot-button" id="chatbot-toggle" aria-label="Open AI chat assistant" aria-expanded="false">
+            <i class="fas fa-comments" aria-hidden="true"></i>
         </button>
-        <div class="chatbot-window" id="chatbot-window">
+        <div class="chatbot-window" id="chatbot-window" role="dialog" aria-label="AI Assistant" aria-hidden="true">
             <div class="chatbot-header">
-                <i class="fas fa-robot"></i> Assistant
-                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="chatbot-name">AI Assistant</div>
+                        <div class="chatbot-status"><span class="chatbot-status-dot"></span> Online</div>
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbot-close-btn" aria-label="Close chat assistant">&times;</button>
             </div>
             <div class="chatbot-messages" id="chatbot-messages">
                 <div class="message assistant">
                     <div class="message-content">
-                        Hi! Ask me about Sentinel-AI, Smart Glasses, my projects, or how to contact me.
+                        Hi! Ask me about Smart Glasses, RAG systems, my projects, or how to contact me.
                         <br><br>
-                        <a href="chatbot/index.html" target="_blank" class="btn btn-sm primary-btn" style="padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; display: inline-flex;">
-                            <i class="fas fa-robot"></i> Try University Chatbot
+                        <a href="chatbot/index.html" target="_blank" rel="noopener" class="btn btn-sm primary-btn" style="padding:5px 10px;font-size:0.8rem;margin-top:5px;display:inline-flex;">
+                            <i class="fas fa-robot" aria-hidden="true"></i> Try University Chatbot
                         </a>
                     </div>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
-                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)" aria-label="Chat message input">
+                <button id="chatbot-send-btn" onclick="sendChatMessage()" aria-label="Send chat message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-social">
-            <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" class="social-icon instagram" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" class="social-icon linkedin" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/mohamedkhaled2004713" target="_blank" class="social-icon github" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">M.Khaled<span class="accent">.AI</span></span>
+                <p class="footer-copy">© 2026 Mohamed Khaled. Built with engineering precision.</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/_muhvmedkhvled/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram profile">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-khaled-96938532b/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn profile">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/mohamedkhaled2004713" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub profile">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Chatbot Functions
-        function toggleChatbot() {
-            const chatWindow = document.getElementById('chatbot-window');
-            chatWindow.classList.toggle('active');
+        // ============ CHATBOT FUNCTIONS ============
+        function toggleChatbot(forceState) {
+            const win = document.getElementById('chatbot-window');
+            const btn = document.getElementById('chatbot-toggle');
+            if (!win) return;
+            
+            const currentlyOpen = win.classList.contains('active') || win.classList.contains('open');
+            const shouldOpen = (typeof forceState === 'boolean') ? forceState : !currentlyOpen;
+
+            if (shouldOpen) {
+                win.classList.add('active', 'open');
+                win.setAttribute('aria-hidden', 'false');
+                if (btn) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    const icon = btn.querySelector('i');
+                    if (icon) icon.className = 'fas fa-times';
+                }
+                const input = document.getElementById('chatbot-input');
+                if (input) setTimeout(() => input.focus(), 150);
+            } else {
+                win.classList.remove('active', 'open');
+                win.setAttribute('aria-hidden', 'true');
+                if (btn) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    const icon = btn.querySelector('i');
+                    if (icon) icon.className = 'fas fa-comments';
+                }
+            }
         }
+
+        // Initialize Chatbot Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('chatbot-toggle');
+            const closeBtn = document.getElementById('chatbot-close-btn');
+            const container = document.getElementById('chatbot-container');
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleChatbot();
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleChatbot(false);
+                });
+            }
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') toggleChatbot(false);
+            });
+
+            // Prevent clicks inside chatbot window from bubbling
+            const win = document.getElementById('chatbot-window');
+            if (win) {
+                win.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (container && !container.contains(e.target)) {
+                    toggleChatbot(false);
+                }
+            });
+        });
 
         function sendChatMessage() {
             const input = document.getElementById('chatbot-input');
-            const message = input.value.trim();
-            if (!message) return;
-
-            const messagesDiv = document.getElementById('chatbot-messages');
-            
-            // User message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            userMsg.innerHTML = `<div class="message-content">${message}</div>`;
-            messagesDiv.appendChild(userMsg);
-
-            // Get response
-            const response = getChatResponse(message);
-            
-            setTimeout(() => {
-                const assistantMsg = document.createElement('div');
-                assistantMsg.className = 'message assistant';
-                assistantMsg.innerHTML = `<div class="message-content">${response}</div>`;
-                messagesDiv.appendChild(assistantMsg);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }, 500);
-
+            const msg = input.value.trim();
+            if (!msg) return;
+            const div = document.getElementById('chatbot-messages');
+            const userEl = document.createElement('div');
+            userEl.className = 'message user';
+            userEl.innerHTML = `<div class="message-content">${escapeHtml(msg)}</div>`;
+            div.appendChild(userEl);
             input.value = '';
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            div.scrollTop = div.scrollHeight;
+
+            const resp = getChatResponse(msg);
+            setTimeout(() => {
+                const aiEl = document.createElement('div');
+                aiEl.className = 'message assistant';
+                aiEl.innerHTML = `<div class="message-content">${resp}</div>`;
+                div.appendChild(aiEl);
+                div.scrollTop = div.scrollHeight;
+            }, 450);
         }
 
-        function handleChatKeypress(event) {
-            if (event.key === 'Enter') {
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function handleChatKeypress(e) { 
+            if (e.key === 'Enter') {
+                e.preventDefault();
                 sendChatMessage();
             }
         }
 
         function getChatResponse(input) {
-            const text = input.toLowerCase().trim();
+            const t = input.toLowerCase().trim();
+            const m = (kw) => kw.some(k => t.includes(k));
             
-            // Define Arabic and English keyword matchers
-            const match = (keywords) => keywords.some(keyword => text.includes(keyword));
-
-            // Greeting
-            if (match(['hello', 'hi', 'hey', 'مرحبا', 'اهلا', 'أهلا', 'السلام عليكم'])) {
-                return 'Hi there! I am Mohamed Milege\'s virtual assistant. I can tell you about his skills, projects, certifications, or how to contact him. What would you like to know?<br>أهلاً بك! أنا المساعد الافتراضي لمحمد مليجي. يمكنني إخبارك عن مهاراته، مشاريعه، شهاداته، أو كيفية التواصل معه.';
-            }
+            // Greetings
+            if (m(['hello','hi','hey','مرحبا','اهلا','أهلا','سلام','صباح','مساء'])) 
+                return 'Hi! I\'m Mohamed Khaled\'s portfolio assistant. Feel free to ask me about his projects, technical skills, certifications, or how to get in touch!';
             
-            // About Mohamed
-            if (match(['who are you', 'about you', 'who is mohamed', 'من أنت', 'عن محمد', 'مين محمد', 'من هو'])) {
-                return 'Mohamed Milege is an AI Specialist and Data Analyst studying at Aqaba University of Technology. He is passionate about Machine Learning, Computer Vision, and building smart solutions.<br>محمد مليجي هو متخصص في الذكاء الاصطناعي ومحلل بيانات يدرس في جامعة العقبة للتكنولوجيا، شغوف بتعلم الآلة ورؤية الحاسوب.';
-            }
-
-            // Skills
-            if (match(['skills', 'programming', 'languages', 'مهارات', 'مبرمج', 'لغات البرمجة'])) {
-                return 'Mohamed specializes in Python, Artificial Intelligence, Machine Learning, Computer Vision, and Data Handling. He also possesses strong analytical and problem-solving skills.';
-            }
-
-            // Projects General
-            if (match(['project', 'portfolio', 'work', 'مشاريع', 'اعمال', 'أعمال', 'شغل'])) {
-                return 'Mohamed has 5 main projects: <b>Sentinel-AI</b> (Cybersecurity), <b>Smart Glasses</b> (for visually impaired), <b>PixelForge</b> (Image Processing), <b>AUT Smart Chatbot</b>, and a <b>Cognitive Hybrid RAG System</b>. Ask me about any of them!';
-            }
-
-            // Sentinel-AI
-            if (match(['sentinel', 'cybersecurity', 'fraud', 'امن سيبراني', 'أمن سيبراني'])) {
-                return '<b>Sentinel-AI</b> is a multi-agent cybersecurity system with three specialized agents: Analyzer, Forensics, and Decision. It analyzes transactions in real-time to prevent fraud.';
-            }
-
-            // Smart Glasses
-            if (match(['smart glass', 'glasses', 'wearable', 'نظارة', 'نظارات', 'مكفوفين'])) {
-                return '<b>Smart Glasses AI</b> is an AI-powered wearable for the visually impaired. It uses YOLOv8 and Gemini for object detection, OCR text reading, face recognition, and voice commands in Arabic.';
-            }
-
-            // PixelForge
-            if (match(['pixel', 'pixelforge', 'filter', 'image', 'صور', 'تعديل', 'فلاتر'])) {
-                return '<b>PixelForge</b> is a real-time image filtering web app built with pure HTML5 Canvas. It features over 20 filters, 8 cinematic presets, and multi-format export capabilities.';
-            }
-
-            // AUT Chatbot
-            if (match(['aut', 'university', 'chatbot', 'جامعة', 'عقبة', 'شات بوت'])) {
-                return '<b>AUT Smart Chatbot</b> is an intelligent assistant for Aqaba University students. Built with Gemini 2.0 Flash, it calculates GPA, provides faculty info, and uses a custom bilingual NLP pipeline.';
-            }
-
-            // RAG System
-            if (match(['rag', 'retrieval', 'hybrid', 'استرجاع', 'بحث'])) {
-                return '<b>Cognitive Hybrid RAG</b> is a QA application combining ChromaDB vector embeddings and TF-IDF lexical search. It uses Cross-Encoder reranking for highly accurate information retrieval.';
-            }
-
+            // Specific Projects (check first before generic words)
+            if (m(['smart glass','glasses','wearable','نظارة','مكفوفين','نظاره'])) 
+                return '<b>Smart Glasses AI</b> is an AI-powered wearable for visually impaired individuals. It integrates YOLOv8 for real-time obstacle & object detection, Gemini API for visual reasoning, OCR for text-to-speech reading, and facial recognition with Arabic voice commands.';
+            
+            if (m(['rag','hybrid rag','retrieval','chromadb','استرجاع'])) 
+                return '<b>Cognitive Hybrid RAG</b> is an enterprise retrieval-augmented generation engine combining ChromaDB dense vector search with BM25/TF-IDF sparse keyword retrieval and Cross-Encoder re-ranking for zero-hallucination accuracy.';
+            
+            if (m(['sentinel','cybersecurity','fraud','احتيال','cyber'])) 
+                return '<b>Sentinel-AI</b> is an autonomous multi-agent fraud detection system. It coordinates Analyzer, Forensics, and Decision agents to identify and mitigate anomalous financial transactions in real time.';
+            
+            if (m(['aut','university chatbot','aqaba','جامعة','بوت الجامعة'])) 
+                return '<b>AUT Smart Chatbot</b> is an intelligent bilingual conversational agent built for Aqaba University using Gemini 2.0 Flash, featuring custom NLP intent matching and GPA calculation.';
+            
+            if (m(['pixel','pixelforge','filter','image processing','فلتر','صور'])) 
+                return '<b>PixelForge</b> is a hardware-accelerated image manipulation studio supporting 20+ real-time convolution filters, custom presets, and multi-format export via pure HTML5 Canvas.';
+            
+            if (m(['project','portfolio','work','مشاريع','مشروع','اعمال'])) 
+                return 'Mohamed has built 5 production-grade AI projects:<br>• <b>Smart Glasses AI</b> (Flagship Wearable)<br>• <b>Cognitive Hybrid RAG</b><br>• <b>Sentinel-AI</b> (Multi-Agent)<br>• <b>AUT University Chatbot</b><br>• <b>PixelForge</b><br>Ask me for details on any of them!';
+            
+            // Skills & Tech Stack
+            if (m(['skill','مهارات','programming','tech','tools','تقنيات','لغات','python','yolo','langchain'])) 
+                return 'Mohamed specializes in <b>Python, RAG Systems, LangChain, Gemini API, PyTorch, YOLOv8, OpenCV, Multi-Agent Systems, NLP, and Data Analysis</b>.';
+            
             // Certifications
-            if (match(['certificate', 'training', 'iso', 'شهادات', 'تدريب'])) {
-                return 'Mohamed holds several certifications, including an ISO 21001 AI Training certificate, AI Applications from The British University in Egypt, and Python & AI courses. You can download his full certificates from the <b>Certificates</b> section.';
-            }
+            if (m(['certificate','certif','training','شهادات','شهادة','كورسات'])) 
+                return 'Mohamed holds verified credentials including <b>ISO AI Training Certification</b>, <b>AI Applications from The British University in Egypt</b>, and advanced specializations in Python & Machine Learning.';
+            
+            // About Mohamed (who is he)
+            if (m(['who','about mohamed','about you','who are you','من هو','عن محمد','مين محمد','مين انت','من انت','about'])) 
+                return '<b>Mohamed Khaled</b> is an AI Engineer graduating in 2026, specializing in RAG architectures, LLM orchestration, Multi-Agent AI systems, and Computer Vision.';
+            
+            // Contact & Hire
+            if (m(['contact','email','whatsapp','phone','hire','تواصل','ايميل','واتساب','رقم','توظيف'])) 
+                return 'You can connect directly with Mohamed via:<br>📧 <b>mohamedkhaled2004713@gmail.com</b><br>💬 WhatsApp: <b>01021118342</b><br>🔗 Or using the contact form on this page.';
 
-            // Contact
-            if (match(['contact', 'email', 'phone', 'number', 'تواصل', 'رقم', 'ايميل', 'إيميل'])) {
-                return 'You can contact Mohamed via email at <b>mohamedkhaled2004713@gmail.com</b>, call him at <b>01021118342</b>, or use the contact form at the bottom of the page. He is located in Cairo, Egypt.';
-            }
-
-            // Default / Fallback
-            return 'I am not sure I understand. I can answer questions about Mohamed\'s <b>Projects</b> (like Smart Glasses or Sentinel-AI), <b>Skills</b>, <b>Certifications</b>, or <b>Contact info</b>. Try asking in Arabic or English!<br>عذراً، لم أفهم سؤالك. يمكنني الإجابة عن مشاريع محمد، مهاراته، شهاداته أو كيفية التواصل معه!';
+            return 'I can answer questions about Mohamed\'s <b>Projects</b> (Smart Glasses, RAG, Sentinel-AI), <b>Technical Skills</b>, <b>Certifications</b>, or <b>Contact details</b>. Try asking in Arabic or English!';
         }
     </script>
 </body>
