@@ -2404,14 +2404,23 @@ ul  { list-style: none; }
 }
 
 @media (max-width: 900px) {
+
+    /* ---- HERO ---- */
+    .hero-section {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
-        padding: 90px 5% 40px;
-        align-items: center;
-        gap: 32px;
+        padding: 100px 6% 60px;
+        gap: 0;
+        align-items: start;
     }
 
+    /* Left: text comes first */
     .hero-left {
         order: 1;
         padding-right: 0;
@@ -2419,17 +2428,27 @@ ul  { list-style: none; }
         align-items: center;
     }
 
+    .hero-tag-row  { justify-content: center; }
+    .hero-bio      { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
+    .hero-cta-group { justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .hero-scroll-cue { align-items: center; margin-top: 16px; }
+
+    /* Portrait second */
     .hero-center {
         order: 2;
-        height: 60vw;
-        min-height: 320px;
-        max-height: 480px;
+        height: 70vw;
+        min-height: 260px;
+        max-height: 420px;
         width: 100%;
+        margin-top: 32px;
     }
 
     .hero-portrait-stage {
-        min-height: 100%;
+        width: 100%;
         height: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
     }
 
     .hero-main-portrait {
@@ -2439,47 +2458,36 @@ ul  { list-style: none; }
         position: relative;
         left: auto;
         transform: none;
+        object-fit: contain;
+        object-position: bottom;
     }
 
+    /* HUD brackets hidden on mobile — too complex */
+    .face-hud-frame { display: none; }
+
+    /* Right (tech card) third */
     .hero-right {
         order: 3;
         align-items: center;
         padding-left: 0;
-        margin-top: 10px;
+        margin-top: 28px;
+        width: 100%;
     }
 
     .hero-tech-card {
-        max-width: 260px;
+        max-width: 240px;
         margin: 0 auto;
     }
 
     .hero-bottom-tag {
-        margin-top: 24px;
+        margin-top: 20px;
         max-width: 100%;
         justify-content: center;
     }
 
     .hero-tag-row { justify-content: center; }
-    .hero-bio { text-align: center; max-width: 100%; }
-    .hero-cta-group { justify-content: center; }
-    .hero-scroll-cue { align-items: center; }
 
-    .face-hud-frame { display: none; }
-
-    .flagship-inner {
-        grid-template-columns: 1fr;
-        padding: 28px 24px;
-        gap: 28px;
-    }
-
-    .other-projects-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-
+    /* ---- NAVBAR ---- */
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .nav-links.active {
@@ -2497,17 +2505,101 @@ ul  { list-style: none; }
         gap: 12px;
     }
 
-    .glass-panel { padding: 36px 24px; margin: 20px 4%; }
+    /* ---- ABOUT ---- */
+    .about-grid    { grid-template-columns: 1fr; }
+
+    /* ---- SKILLS ---- */
+    .skill-columns { flex-direction: column; }
+    .skill-col     { width: 100%; }
+
+    /* ---- PROJECTS ---- */
+    .flagship-inner {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        gap: 24px;
+    }
+    .flagship-img-wrap {
+        height: 220px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .other-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* ---- CONTACT ---- */
+    .contact-grid  { grid-template-columns: 1fr; }
+    .form-row      { grid-template-columns: 1fr; }
+
+    /* ---- MISC ---- */
+    .glass-panel   { padding: 40px 20px; margin: 16px 3%; }
+    .section-header { margin-bottom: 32px; }
+    .chatbot-container { bottom: 16px; right: 16px; }
+    .nav-cta-btn   { display: none; }
 }
 
 @media (max-width: 600px) {
-    .hero-headline { font-size: 2.5rem; letter-spacing: -1.5px; }
-    .hero-specialties { font-size: 0.72rem; justify-content: center; }
-    .hero-cta-group { flex-direction: column; width: 100%; }
-    .hero-cta-group .btn { width: 100%; justify-content: center; }
-    .form-row { grid-template-columns: 1fr; }
-    .flagship-title { font-size: 1.8rem; }
-    .other-projects-title { font-size: 1.5rem; }
-    .nav-cta-btn { display: none; }
-    .chatbot-container { bottom: 16px; right: 16px; }
+
+    /* ---- HERO ---- */
+    .hero-container {
+        padding: 90px 5% 50px;
+    }
+
+    .hero-headline {
+        font-size: clamp(2.4rem, 11vw, 3rem);
+        letter-spacing: -1.5px;
+    }
+
+    .hero-specialties {
+        font-size: 0.68rem;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .hero-bio { font-size: 0.92rem; }
+
+    /* Buttons: full-width stack */
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .hero-cta-group .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+
+    .hero-center {
+        height: 65vw;
+        min-height: 220px;
+        margin-top: 24px;
+    }
+
+    /* ---- PROJECTS ---- */
+    .flagship-title        { font-size: 1.6rem; }
+    .other-projects-title  { font-size: 1.4rem; }
+    .proj-card-img-wrap    { height: 160px; }
+
+    /* ---- ABOUT stats ---- */
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    .stat-box { padding: 16px 10px; }
+    .stat-box h3 { font-size: 1.5rem; }
+
+    /* ---- SECTION headings ---- */
+    .section-header h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+
+    /* ---- GLASS PANEL ---- */
+    .glass-panel { padding: 30px 16px; margin: 12px 2%; }
+}
+
+@media (max-width: 400px) {
+    .hero-headline { font-size: 2.1rem; letter-spacing: -1px; }
+    .hero-center   { height: 60vw; }
+    .hero-tech-card { max-width: 200px; }
+    .about-stats   { grid-template-columns: 1fr; }
 }
