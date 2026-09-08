@@ -493,6 +493,32 @@ ul  { list-style: none; }
     transform: translateY(-2px);
 }
 
+/* CV Download Button */
+.btn-hero-cv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 50px;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.91rem;
+    font-weight: 600;
+    border: 1.5px dashed rgba(7, 21, 47, 0.35);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-hero-cv i { font-size: 0.85rem; }
+.btn-hero-cv:hover {
+    border-color: #16a34a;
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.06);
+    transform: translateY(-2px);
+}
+
+
 /* Scroll cue bottom-left */
 .hero-scroll-cue {
     display: flex;
