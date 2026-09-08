@@ -45,6 +45,7 @@ body {
     color: var(--text);
     overflow-x: hidden;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
 }
 
 img { display: block; max-width: 100%; }
@@ -2407,20 +2408,19 @@ ul  { list-style: none; }
 
     /* ---- HERO ---- */
     .hero-section {
-        height: auto;
+        height: auto !important;
         min-height: 100svh;
-        overflow: visible;
+        overflow-x: hidden;
     }
 
     .hero-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         grid-template-rows: auto auto auto;
         padding: 100px 6% 60px;
         gap: 0;
         align-items: start;
     }
 
-    /* Left: text comes first */
     .hero-left {
         order: 1;
         padding-right: 0;
@@ -2428,19 +2428,18 @@ ul  { list-style: none; }
         align-items: center;
     }
 
-    .hero-tag-row  { justify-content: center; }
-    .hero-bio      { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
+    .hero-tag-row   { justify-content: center; }
+    .hero-bio       { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
     .hero-cta-group { justify-content: center; flex-wrap: wrap; gap: 10px; }
-    .hero-scroll-cue { align-items: center; margin-top: 16px; }
+    .hero-scroll-cue { align-items: center; margin-top: 20px; }
 
-    /* Portrait second */
     .hero-center {
         order: 2;
-        height: 70vw;
-        min-height: 260px;
-        max-height: 420px;
+        height: 72vw;
+        min-height: 240px;
+        max-height: 400px;
         width: 100%;
-        margin-top: 32px;
+        margin-top: 36px;
     }
 
     .hero-portrait-stage {
@@ -2449,23 +2448,22 @@ ul  { list-style: none; }
         display: flex;
         align-items: flex-end;
         justify-content: center;
+        overflow: hidden;
     }
 
     .hero-main-portrait {
-        height: 100%;
+        height: 100% !important;
         width: auto;
-        max-width: 100%;
-        position: relative;
-        left: auto;
-        transform: none;
+        max-width: 85%;
+        position: relative !important;
+        left: auto !important;
+        transform: none !important;
         object-fit: contain;
-        object-position: bottom;
+        object-position: bottom center;
     }
 
-    /* HUD brackets hidden on mobile — too complex */
-    .face-hud-frame { display: none; }
+    .face-hud-frame { display: none !important; }
 
-    /* Right (tech card) third */
     .hero-right {
         order: 3;
         align-items: center;
@@ -2475,7 +2473,7 @@ ul  { list-style: none; }
     }
 
     .hero-tech-card {
-        max-width: 240px;
+        max-width: 220px;
         margin: 0 auto;
     }
 
@@ -2485,11 +2483,10 @@ ul  { list-style: none; }
         justify-content: center;
     }
 
-    .hero-tag-row { justify-content: center; }
-
     /* ---- NAVBAR ---- */
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .nav-cta-btn { display: none; }
     .nav-links.active {
         display: flex;
         flex-direction: column;
@@ -2506,11 +2503,30 @@ ul  { list-style: none; }
     }
 
     /* ---- ABOUT ---- */
-    .about-grid    { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
 
-    /* ---- SKILLS ---- */
-    .skill-columns { flex-direction: column; }
-    .skill-col     { width: 100%; }
+    /* ---- SKILLS — make neural network horizontally scrollable ---- */
+    .skills-nn-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 16px 4px 20px;
+        min-height: unset;
+    }
+    .nn-layers-container {
+        min-width: 700px;       /* keeps the full 5-layer layout intact */
+        min-height: unset;
+        gap: 12px;
+        padding-bottom: 8px;
+    }
+    .nn-node {
+        min-width: 90px;
+        max-width: 120px;
+        padding: 10px 8px;
+    }
+    .node-icon  { font-size: 1.1rem; }
+    .node-title { font-size: 0.65rem; }
+    .nn-layer-badge { font-size: 0.55rem; letter-spacing: 1px; }
+    .nn-footer-languages { flex-direction: column; align-items: center; gap: 8px; }
 
     /* ---- PROJECTS ---- */
     .flagship-inner {
@@ -2519,7 +2535,7 @@ ul  { list-style: none; }
         gap: 24px;
     }
     .flagship-img-wrap {
-        height: 220px;
+        height: 200px;
         border-radius: 12px;
         overflow: hidden;
     }
@@ -2529,14 +2545,14 @@ ul  { list-style: none; }
     }
 
     /* ---- CONTACT ---- */
-    .contact-grid  { grid-template-columns: 1fr; }
-    .form-row      { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row     { grid-template-columns: 1fr; }
 
     /* ---- MISC ---- */
-    .glass-panel   { padding: 40px 20px; margin: 16px 3%; }
+    .glass-panel    { padding: 40px 20px; margin: 16px 3%; }
     .section-header { margin-bottom: 32px; }
     .chatbot-container { bottom: 16px; right: 16px; }
-    .nav-cta-btn   { display: none; }
+    .services-grid  { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
