@@ -972,6 +972,8 @@ ul  { list-style: none; }
     align-items: center;
     gap: 12px;
     flex: 1;
+    position: relative;
+    z-index: 2;
 }
 
 .nn-layer-badge {
@@ -2527,8 +2529,10 @@ ul  { list-style: none; }
         background-attachment: local, local;
     }
     .nn-layers-container {
+        position: relative;
+        z-index: 2;
         width: max-content;   /* shrink-to-content then scroll */
-        min-width: unset;
+        min-width: 100%;
         min-height: unset;
         gap: 10px;
         padding: 0 12px 8px;

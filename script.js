@@ -77,9 +77,10 @@ function initHUDFrame() {
 
 // ============ NEURAL NETWORK SKILLS TOPOLOGY ============
 function initNeuralNetworkSkills() {
-    const wrapper = document.getElementById('skills-nn-wrapper');
-    const canvas  = document.getElementById('skills-nn-canvas');
+    const wrapper   = document.getElementById('skills-nn-wrapper');
+    const canvas    = document.getElementById('skills-nn-canvas');
     if (!wrapper || !canvas) return;
+    const container = wrapper.querySelector('.nn-layers-container') || wrapper;
 
     const ctx = canvas.getContext('2d');
     const nodes = Array.from(wrapper.querySelectorAll('.nn-node'));
@@ -88,21 +89,22 @@ function initNeuralNetworkSkills() {
     let pulseT = 0;
 
     function resize() {
-        // On mobile the wrapper is a horizontal scroll container;
-        // use scrollWidth so the canvas covers the full content, not just the viewport.
-        const isMobile = window.innerWidth <= 900;
-        const w = isMobile ? wrapper.scrollWidth : wrapper.offsetWidth;
+        // Measure container which encompasses all layers horizontally & vertically
+        const w = Math.max(container.scrollWidth, container.offsetWidth);
+        const h = Math.max(container.scrollHeight, container.offsetHeight);
+        if (w === 0 || h === 0) return;
+
         canvas.width  = w;
-        canvas.height = wrapper.offsetHeight || wrapper.scrollHeight;
-        // Also set CSS size so the canvas element itself fills the scrollable area
+        canvas.height = h;
         canvas.style.width  = w + 'px';
-        canvas.style.height = canvas.height + 'px';
+        canvas.style.height = h + 'px';
         draw();
     }
 
     // Map of nodes by skill key
     function getNodePositions() {
-        const wrapRect = wrapper.getBoundingClientRect();
+        // Canvas is inside .nn-layers-container, so canvas rect perfectly tracks container scroll
+        const originRect = canvas.getBoundingClientRect();
         const map = new Map();
 
         nodes.forEach(node => {
@@ -110,12 +112,12 @@ function initNeuralNetworkSkills() {
             const rect = node.getBoundingClientRect();
             map.set(key, {
                 el: node,
-                x: rect.left - wrapRect.left + rect.width / 2,
-                y: rect.top - wrapRect.top + rect.height / 2,
-                left: rect.left - wrapRect.left,
-                right: rect.right - wrapRect.left,
-                top: rect.top - wrapRect.top,
-                bottom: rect.bottom - wrapRect.top,
+                x: rect.left - originRect.left + rect.width / 2,
+                y: rect.top - originRect.top + rect.height / 2,
+                left: rect.left - originRect.left,
+                right: rect.right - originRect.left,
+                top: rect.top - originRect.top,
+                bottom: rect.bottom - originRect.top,
                 width: rect.width,
                 height: rect.height,
                 connections: (node.dataset.connections || '').split(',').map(s => s.trim()).filter(Boolean)
@@ -162,9 +164,9 @@ function initNeuralNetworkSkills() {
 
                 if (isHoveredLine) {
                     // Highlighted electric blue synapse
-                    ctx.strokeStyle = 'rgba(22, 119, 255, 0.75)';
-                    ctx.lineWidth = 2.2;
-                    ctx.shadowColor = 'rgba(22, 119, 255, 0.6)';
+                    ctx.strokeStyle = 'rgba(22, 119, 255, 0.85)';
+                    ctx.lineWidth = 2.4;
+                    ctx.shadowColor = 'rgba(22, 119, 255, 0.7)';
                     ctx.shadowBlur = 8;
                     ctx.stroke();
                     ctx.shadowBlur = 0;
@@ -183,9 +185,9 @@ function initNeuralNetworkSkills() {
                     ctx.shadowBlur = 0;
                 } else {
                     // Ambient resting synapse line
-                    const alpha = isAnyHovered ? 0.04 : 0.16;
+                    const alpha = isAnyHovered ? 0.04 : 0.18;
                     ctx.strokeStyle = `rgba(22, 119, 255, ${alpha})`;
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = 1.2;
                     ctx.stroke();
                 }
             });
@@ -196,52 +198,82 @@ function initNeuralNetworkSkills() {
         }
     }
 
-    // Attach hover listeners to nodes
+    function activateSkill(skillKey) {
+        hoveredSkill = skillKey;
+        const nodeMap = getNodePositions();
+        const thisNode = nodeMap.get(skillKey);
+        const connectedKeys = new Set(thisNode ? thisNode.connections : []);
+
+        // Also include any nodes that connect TO this node
+        nodeMap.forEach((data, key) => {
+            if (data.connections.includes(skillKey)) {
+                connectedKeys.add(key);
+            }
+        });
+
+        nodes.forEach(n => {
+            const k = n.dataset.skill;
+            if (k === skillKey) {
+                n.classList.add('active-hover');
+                n.classList.remove('dimmed', 'connected-highlight');
+            } else if (connectedKeys.has(k)) {
+                n.classList.add('connected-highlight');
+                n.classList.remove('dimmed', 'active-hover');
+            } else {
+                n.classList.add('dimmed');
+                n.classList.remove('active-hover', 'connected-highlight');
+            }
+        });
+
+        cancelAnimationFrame(animFrame);
+        animFrame = requestAnimationFrame(draw);
+    }
+
+    function deactivateSkill() {
+        hoveredSkill = null;
+        nodes.forEach(n => n.classList.remove('active-hover', 'connected-highlight', 'dimmed'));
+        cancelAnimationFrame(animFrame);
+        draw();
+    }
+
+    // Attach hover & touch listeners to nodes
     nodes.forEach(node => {
         const skillKey = node.dataset.skill;
 
-        node.addEventListener('mouseenter', () => {
-            hoveredSkill = skillKey;
-            const nodeMap = getNodePositions();
-            const thisNode = nodeMap.get(skillKey);
-            const connectedKeys = new Set(thisNode ? thisNode.connections : []);
+        node.addEventListener('mouseenter', () => activateSkill(skillKey));
+        node.addEventListener('mouseleave', deactivateSkill);
 
-            // Also include any nodes that connect TO this node
-            nodeMap.forEach((data, key) => {
-                if (data.connections.includes(skillKey)) {
-                    connectedKeys.add(key);
-                }
-            });
-
-            nodes.forEach(n => {
-                const k = n.dataset.skill;
-                if (k === skillKey) {
-                    n.classList.add('active-hover');
-                    n.classList.remove('dimmed', 'connected-highlight');
-                } else if (connectedKeys.has(k)) {
-                    n.classList.add('connected-highlight');
-                    n.classList.remove('dimmed', 'active-hover');
-                } else {
-                    n.classList.add('dimmed');
-                    n.classList.remove('active-hover', 'connected-highlight');
-                }
-            });
-
-            cancelAnimationFrame(animFrame);
-            animFrame = requestAnimationFrame(draw);
-        });
-
-        node.addEventListener('mouseleave', () => {
-            hoveredSkill = null;
-            nodes.forEach(n => n.classList.remove('active-hover', 'connected-highlight', 'dimmed'));
-            cancelAnimationFrame(animFrame);
-            draw();
+        // Tap toggle on mobile devices
+        node.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (hoveredSkill === skillKey) {
+                deactivateSkill();
+            } else {
+                activateSkill(skillKey);
+            }
         });
     });
 
+    // Dismiss active state when tapping outside any node
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nn-node') && hoveredSkill) {
+            deactivateSkill();
+        }
+    }, { passive: true });
+
+    // Handle resize & layout changes
     window.addEventListener('resize', resize, { passive: true });
-    // Initial draw after layout settles
+    window.addEventListener('orientationchange', () => setTimeout(resize, 200), { passive: true });
+
+    if (window.ResizeObserver && container) {
+        const ro = new ResizeObserver(() => resize());
+        ro.observe(container);
+    }
+
+    // Initial draw passes after layout settles
     setTimeout(resize, 100);
+    setTimeout(resize, 400);
+    setTimeout(resize, 1000);
 }
 
 // ============ PARTICLE SYSTEM ============
