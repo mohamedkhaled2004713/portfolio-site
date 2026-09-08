@@ -2437,29 +2437,36 @@ ul  { list-style: none; }
     /* Portrait */
     .hero-center {
         order: 2;
-        height: 55vw;
-        min-height: 200px;
-        max-height: 340px;
+        height: auto !important;
+        min-height: unset !important;
         width: 100%;
         margin-top: 0;
+        display: flex;
+        justify-content: center;
+        overflow: visible !important;
     }
     .hero-portrait-stage {
+        position: relative !important;
         width: 100%;
-        height: 100%;
+        height: auto !important;
+        min-height: unset !important;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        overflow: hidden;
+        overflow: visible !important;
     }
     .hero-main-portrait {
-        height: 100% !important;
-        width: auto;
-        max-width: 75%;
         position: relative !important;
         left: auto !important;
+        bottom: auto !important;
         transform: none !important;
+        height: auto !important;
+        width: 70% !important;
+        max-width: 320px !important;
         object-fit: contain;
         object-position: bottom center;
+        display: block;
+        margin: 0 auto;
     }
 
     /* Hide the tech card panel — saves space on mobile */
